@@ -1,0 +1,10 @@
+﻿# Ignore configuration files containing sensitive data
+appsettings.json
+appsettings.Development.json
+
+# Ignore build and temporary files
+bin/
+obj/
+
+# Ignore Visual Studio specific files
+.vs/

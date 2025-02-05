@@ -1,0 +1,8 @@
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.csproj.AssemblyReference.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.RegisterViewModel.resources
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.csproj.GenerateResource.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.AssemblyInfoInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.AssemblyInfo.cs
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.csproj.CoreCompileInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\netstandard2.0\AspNet.Shared.sourcelink.json

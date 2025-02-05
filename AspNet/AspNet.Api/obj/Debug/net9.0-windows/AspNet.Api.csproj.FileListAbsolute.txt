@@ -1,0 +1,7 @@
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.csproj.AssemblyReference.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.AssemblyInfoInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.AssemblyInfo.cs
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.csproj.CoreCompileInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Api\obj\Debug\net9.0-windows\AspNet.Api.sourcelink.json

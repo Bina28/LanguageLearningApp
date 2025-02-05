@@ -1,0 +1,14 @@
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\bin\Debug\net9.0-windows\AspNet.Shared.deps.json
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\bin\Debug\net9.0-windows\AspNet.Shared.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\bin\Debug\net9.0-windows\AspNet.Shared.pdb
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.RegisterViewModel.resources
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.csproj.GenerateResource.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.AssemblyInfoInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.AssemblyInfo.cs
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.csproj.CoreCompileInputs.cache
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.sourcelink.json
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\refint\AspNet.Shared.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\AspNet.Shared.pdb
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageApp\AspNet\AspNet.Shared\obj\Debug\net9.0-windows\ref\AspNet.Shared.dll
