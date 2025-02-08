@@ -73,7 +73,15 @@ var token= await _userManager.GeneratePasswordResetTokenAsync(user);
 		var validToken = WebEncoders.Base64UrlEncode(encodedToken);
 
 		string url = $"{_configuration["AppUrl"]}/ResetPassword?email={email}&token={validToken}";
+		await _mailService.SendEmailAsync(email, "Reset Password", "<h1>Follow the instructions to reset your password</h1>" +
+		 $"<p> To reset your password <a href='{url}'> Click here </a></p>");
 
+		return new UserManagerResponse
+		{
+			Message = "Reset password URL  has been sent to the email susseccfully!",
+			IsSuccess = true,
+
+		};
 	}
 
 	public async Task<UserManagerResponse> LoginUserAsync(LoginViewModel model)

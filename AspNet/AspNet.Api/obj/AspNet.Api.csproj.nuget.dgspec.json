@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj": {}
+    "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj": {
+    "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
+        "projectUniqueName": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
         "projectName": "AspNet.Api",
-        "projectPath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
+        "projectPath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
         "packagesPath": "C:\\Users\\dyako\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\obj\\",
+        "outputPath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

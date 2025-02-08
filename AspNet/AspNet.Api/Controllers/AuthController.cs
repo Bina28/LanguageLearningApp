@@ -76,4 +76,20 @@ public class AuthController : ControllerBase
 
 		return BadRequest(result);
 	}
+
+	[HttpPost("ForgetPassword")]
+	public async Task<IActionResult> ForgetPassword(string email)
+	{
+		if(string.IsNullOrEmpty(email)) 
+			return NotFound();
+
+		var result = await _userService.ForgetPasswordAsync(email);
+
+		if (result.IsSuccess)
+		{
+			return Ok(result);
+		}
+
+		return BadRequest(result);
+	}
 }

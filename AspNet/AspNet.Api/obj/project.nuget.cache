@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AhlXPFpd9CI=",
+  "dgSpecHash": "tBnKNE1KCmA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
+  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\AspNet\\AspNet.Api\\AspNet.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyako\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\dyako\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
