@@ -5,15 +5,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    width: 90%; /* Сужаем ширину, чтобы он не прилипал к краям */
-    max-width: 1200px; /* Ограничиваем максимальную ширину */
+    width: 90%; 
+    max-width: 1200px; 
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translateX(-50%); /* Центрируем */
+    transform: translateX(-50%); 
     z-index: 1000;
     font-family: 'Poppins', sans-serif;
-    border-radius: 10px; /* Округляем края */
+    border-radius: 10px;
     font-size: 1.3rem;
 }
 
