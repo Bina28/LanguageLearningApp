@@ -1,25 +1,26 @@
 import { Routes, Route} from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Components/Nav/Navbar.jsx";
-import Login from "./Components/LoginSignup/Login.jsx";
-import SignUp from "./Components/LoginSignup/SignUp.jsx";
-import Home from "./Components/Home.js";
-import UserPage from "./Components/UserPage.jsx";
+import Navbar from "./Components/Nav/Navbar";
+import Login from "./Components/LoginSignup/Login";
+import SignUp from "./Components/LoginSignup/SignUp";
+import Home from "./Components/Home"
+import UserPage from "./Components/Home";
+import React from "react";
 
 function App() {
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const expiresAt = localStorage.getItem("expiresAt");
+    const storedUser: string | null = localStorage.getItem("user");
+    const expiresAt: string | null = localStorage.getItem("expiresAt");
 
-    if (!user || !expiresAt) {
+    if (! storedUser || !expiresAt) {
       return;
     }
 
-    const now = new Date().getTime();
+    const now: number = Date.now();
     if (now > parseInt(expiresAt, 10)) {
 
       localStorage.removeItem("user");

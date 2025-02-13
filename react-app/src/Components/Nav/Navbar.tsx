@@ -14,8 +14,12 @@ export default function Navbar() {
     </nav>
   );
 }
+interface CustomLinkProps {
+  to: string;
+  children: React.ReactNode;
+}
 
-function CustomLink({ to, children, ...props }) {
+function CustomLink({ to, children}: CustomLinkProps) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
   

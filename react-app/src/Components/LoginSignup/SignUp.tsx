@@ -6,16 +6,23 @@ import passwordIcon from "../Assets/password.png";
 import "./LoginSignup.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
+interface User {
+  userId: string;
+  email: string;
+  fullName: string;
+}
 
 export default function SignUp() {
-    const [name, setName] = useState("");  
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [name, setName] = useState<string>("");  
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+
     const navigate = useNavigate();
   
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>):Promise<void> => {
       e.preventDefault();
       
       if (password !== confirmPassword) {
@@ -28,12 +35,13 @@ export default function SignUp() {
       try {
         console.log("Sending Sign Up request:", requestData);
   
-        const response = await axios.post("http://localhost:5117/api/auth/register", requestData, {
+        const response = await axios.post<User>("http://localhost:5117/api/auth/register", requestData, {
           headers: { "Content-Type": "application/json" },
         });
         localStorage.setItem("user", JSON.stringify({
             userId: response.data.userId, 
-            email: response.data.email
+            email: response.data.email,
+            fullName: response.data.fullName,
           }));
           navigate("/user");
           
@@ -41,8 +49,8 @@ export default function SignUp() {
         alert("Sign-up successful!");
       
       } catch (error) {
-        console.error("Error:", error.response?.data || error.message);
-        alert(`An error occurred: ${error.response?.data || error.message}`);
+        console.error("Error:", error instanceof Error ? error.message : "Unknown error");
+        alert(`An error occurred:  ${error instanceof Error ? error.message : "Unknown error"}`);
       }
     };
   
