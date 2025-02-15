@@ -1,47 +1,52 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import React from "react";
 
-interface User{
-  userId: string;
+
+interface User {
+  id: number;
   email: string;
   fullName: string;
 }
 
 export default function UserPage() {
-  const [user, setUser] = useState<User |null>(null);
-
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    
-    if (!storedUser) {
-      alert("No user data found. Please log in.");
+    const userData = localStorage.getItem("user");
+
+    if (!userData) {
       navigate("/login");
       return;
     }
-    const parsedUser: User = JSON.parse(storedUser);
 
-    const fetchProfile = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5117/api/auth/profile/${parsedUser.userId}`);
-        setUser(response.data);
-      } catch (error) {
-        console.error("Failed to fetch user profile:", error);
-        alert("Error fetching user data");
-      }
-    };
+    try {
+      const parsedUser: User = JSON.parse(userData);
 
-    fetchProfile();
-  }, [navigate]);
+      const fetchProfile = async () => {
+        try {
+          const response = await axios.get<User>(`http://localhost:5117/api/auth/profile/${parsedUser.id}`);
+
+          if (response.status === 200) {
+            setUser(response.data);          
+            }          
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      fetchProfile();
+    } catch (error) {
+      navigate("/login");
+    }
+  }, [navigate]); 
 
   if (!user) return <p>Loading user data...</p>;
 
   return (
     <div>
-          <h2>User Profile</h2>
+      <h2>User Profile</h2>
       <h2>Welcome, {user.fullName}!</h2>
       <p>Email: {user.email}</p>
     </div>

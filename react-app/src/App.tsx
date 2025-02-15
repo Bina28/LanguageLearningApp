@@ -5,8 +5,9 @@ import Navbar from "./Components/Nav/Navbar";
 import Login from "./Components/LoginSignup/Login";
 import SignUp from "./Components/LoginSignup/SignUp";
 import Home from "./Components/Home"
-import UserPage from "./Components/Home";
-import React from "react";
+import UserPage from "./Components/UserPage";
+import Courses  from "./Components/Courses/Courses";
+import Cards  from "./Components/Cards/Cards";
 
 function App() {
 
@@ -38,6 +39,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<UserPage />} />
+        <Route path="/courses" element={<Courses />} />        
+        <Route path="/courses/:courseId" element={<Cards />} />
+
       </Routes>
     </>
   );

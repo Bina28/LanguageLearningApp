@@ -8,73 +8,76 @@ import React from "react";
 
 
 interface User {
-  userId: string;
+  id: number;
   email: string;
   fullName: string;
 }
 
 export default function Login() {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-  
-    const navigate = useNavigate();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const userData = localStorage.getItem("user");
-        const expiresAt = localStorage.getItem("expiresAt");
-    
-        if (userData && expiresAt) {
-          const user: User = JSON.parse(userData);
-          const now: number = Date.now();
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    const expiresAt = localStorage.getItem("expiresAt");
 
-          if (now < parseInt(expiresAt, 10)) {
-            navigate("/user");
-          }
-        }
-      }, [navigate]);
-    
+    if (userData && expiresAt && Date.now() < parseInt(expiresAt, 10)) {
+      setTimeout(() => navigate("/user"), 100);
+    }
+  }, [navigate]);
 
-    const handleSubmit = async (): Promise<void> => {
-        try {
-          const response = await axios.post<User>("http://localhost:5117/api/auth/login", {
-            email,
-            password,
-          });
-             
-          const expiresAt = (Date.now() + 24 * 60 * 60 * 1000).toString(); 
-          localStorage.setItem("user", JSON.stringify(response.data));
-          localStorage.setItem("expiresAt", expiresAt); 
-    
-          navigate("/user");
-        } catch (error) {
-          console.error("Error:", error instanceof Error ? error.message : "Unknown error");
-          alert("An error occurred.");
-        }
-      };
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
 
-    return (
-      <div className="container">
-        <div className="glass-box">
-          <h2 className="text">Login</h2>
-          <div className="underline"></div>
+    try {
+      const response = await axios.post<User>("http://localhost:5117/api/auth/login", {
+        email,
+        password,
+      });
 
+      const { id, fullName } = response.data;
+      const expiresAt = (Date.now() + 24 * 60 * 60 * 1000).toString();
+
+      localStorage.setItem("user", JSON.stringify({ id, fullName, email }));
+      localStorage.setItem("expiresAt", expiresAt);
+
+      navigate("/user");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert(error.response?.status === 401 ? "Invalid email or password." : "Login failed.");
+      } else {
+        alert("An unexpected error occurred.");
+      }
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="glass-box">
+        <h2 className="text">Login</h2>
+        <div className="underline"></div>
+
+        <form onSubmit={handleSubmit}>
           <div className="inputs">
             <div className="input">
-              <img src={emailIcon} alt="Email" className="icon" />  
+              <img src={emailIcon} alt="Email" className="icon" />
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="input">
-              <img src={passwordIcon} alt="Password" className="icon" />  
+              <img src={passwordIcon} alt="Password" className="icon" />
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -84,9 +87,10 @@ export default function Login() {
           </div>
 
           <div className="submit-container">
-            <button className="submit" onClick={handleSubmit}>Login</button>
+            <button className="submit" type="submit">Login</button>
           </div>
-        </div>
+        </form>
       </div>
-    );
+    </div>
+  );
 }

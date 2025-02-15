@@ -2,12 +2,14 @@ import React from "react";
 import { Link, useResolvedPath, useMatch } from "react-router-dom";
 import "./Navbar.css";
 
+
 export default function Navbar() {
   return (
     <nav className="nav">
       <Link to="/" className="logo">Logo</Link>
       <ul>
         <CustomLink to="/home">Home</CustomLink>
+        <CustomLink to="/courses">Courses</CustomLink>
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/signup">Sign Up</CustomLink>
       </ul>

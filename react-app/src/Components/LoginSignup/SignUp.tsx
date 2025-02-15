@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 
 interface User {
-  userId: string;
+  id: number;
   email: string;
   fullName: string;
 }
@@ -39,7 +39,7 @@ export default function SignUp() {
           headers: { "Content-Type": "application/json" },
         });
         localStorage.setItem("user", JSON.stringify({
-            userId: response.data.userId, 
+            id: response.data.id, 
             email: response.data.email,
             fullName: response.data.fullName,
           }));
