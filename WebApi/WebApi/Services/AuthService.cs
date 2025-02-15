@@ -61,7 +61,7 @@ public class AuthService : IAuthService
 		var user = await _context.Users.FindAsync(userId);
 		if (user == null) return null;
 
-		return new UserProfileDto { FullName = user.FullName, Email = user.Email };
+		return new UserProfileDto { Id = user.Id,  FullName = user.FullName, Email = user.Email };
 	}
 
 	private static string HashPassword(string password)

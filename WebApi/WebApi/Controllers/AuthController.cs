@@ -46,7 +46,7 @@ namespace WebApi.Controllers;
 
 		return Ok(new
 		{
-			userId = user.Id,
+			id = user.Id,
 			email = user.Email,
 			fullName = user.FullName,
 			lastLoginDate = user.LastLoginDate

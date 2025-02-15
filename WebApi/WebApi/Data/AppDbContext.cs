@@ -32,7 +32,7 @@ public class AppDbContext : DbContext
 			new Course { CourseId = 7, Title = "Time & Dates", Description = "Telling time and discussing dates" },
 			new Course { CourseId = 8, Title = "Travel", Description = "Useful phrases for traveling" },
 			new Course { CourseId = 9, Title = "Work & Business", Description = "Professional conversations" },
-			new Course { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergencieCourCourseId" }
+			new Course { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergency" }
 
 		});
 

@@ -170,5 +170,5 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebA
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Debug\net8.0\WebApi.pdb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Debug\net8.0\ref\WebApi.dll
-C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

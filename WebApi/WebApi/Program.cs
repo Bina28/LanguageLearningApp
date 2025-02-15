@@ -29,14 +29,21 @@ builder.Services.AddCors(options =>
 		});
 });
 
-var app = builder.Build();
 
-app.UseCors(MyAllowSpecificOrigins);  // Enable CORS
+try
+{
+	var app = builder.Build();
+	app.UseCors(MyAllowSpecificOrigins);
+	app.UseSwagger();
+	app.UseSwaggerUI();
+	app.UseAuthorization();
+	app.MapControllers();
+	app.Run();
+}
+catch (Exception ex)
+{
+	Console.WriteLine($"Application failed to start: {ex.Message}");
+}
 
-app.UseSwagger();
-app.UseSwaggerUI();
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
 
 
