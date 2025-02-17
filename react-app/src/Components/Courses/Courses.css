@@ -75,3 +75,12 @@
 .course-card:hover .course-description {
     opacity: 1;
 }
+
+.course-card.locked {
+ /* Prevent clicks */
+    opacity: 0.5; /* Gray out */
+  }
+  
+  .course-card.locked:hover {
+    background-color: #ccc; /* Darker gray on hover */
+  }

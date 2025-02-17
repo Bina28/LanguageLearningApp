@@ -1,0 +1,59 @@
+.user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1b1f3b, #13162d);
+  }
+  
+  .user-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .user-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: url('https://via.placeholder.com/100') center/cover no-repeat;
+    margin: 0 auto 15px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .user-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .user-email {
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .progress-bar {
+    height: 10px;
+    background: #00c3ff;
+    transition: width 0.5s ease-in-out;
+  }
+  
