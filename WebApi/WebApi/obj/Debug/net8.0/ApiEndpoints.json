@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "WebApi.Controllers.AuthController",
+    "Method": "CompleteUnit",
+    "RelativePath": "api/auth/complete",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "WebApi.Dtos.UnitCompletionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AuthController",
     "Method": "GetCourses",
     "RelativePath": "api/auth/courses",
     "HttpMethod": "GET",
@@ -45,6 +61,22 @@
     "ContainingType": "WebApi.Controllers.AuthController",
     "Method": "GetProfile",
     "RelativePath": "api/auth/profile/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AuthController",
+    "Method": "GetCompletedUnits",
+    "RelativePath": "api/auth/progress/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

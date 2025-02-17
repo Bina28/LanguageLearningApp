@@ -14,6 +14,8 @@ public class User
 
 	[Required]
 	public string PasswordHash { get; set; } = string.Empty;
-	
+
+	public int CompletedUnits { get; set; }
+
 	public DateTime? LastLoginDate { get; set; }
 }

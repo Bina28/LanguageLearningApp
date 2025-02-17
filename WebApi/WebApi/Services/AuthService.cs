@@ -88,4 +88,26 @@ public class AuthService : IAuthService
 		.ToListAsync();
 	}
 
+	public async Task<bool> CompleteUnit(int userId, int correctAnswers)
+	{
+		var user = await _context.Users.FindAsync(userId);
+		if (user == null) return false;
+
+		if (correctAnswers < 3)
+		{
+			return false; // User did not pass, cannot go to next unit
+		}
+
+		// Increase the completed units count
+		user.CompletedUnits++;
+		await _context.SaveChangesAsync();
+		return true;
+	}
+
+	public async Task<int> GetCompletedUnits(int userId)
+	{
+		var user = await _context.Users.FindAsync(userId);
+		return user?.CompletedUnits ?? 0;
+	}
+
 }

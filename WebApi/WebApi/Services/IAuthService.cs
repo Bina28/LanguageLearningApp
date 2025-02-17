@@ -12,4 +12,6 @@ public interface IAuthService
 
 	Task<List<Course>> GetCourses();
 	Task<List<CardsDto>> GetCards(int id);
+	Task<bool> CompleteUnit(int id, int correctAnswers);
+	Task<int> GetCompletedUnits(int userId);
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Dtos;
 using WebApi.Services;
 
@@ -76,6 +77,26 @@ namespace WebApi.Controllers;
 	{
 		var cards = await _authService.GetCards(id);
 		return Ok(cards);
+	}
+
+	[HttpPost("complete")]
+	public async Task<IActionResult> CompleteUnit([FromBody] UnitCompletionDto request)
+	{
+		var success = await _authService.CompleteUnit(request.Id, request.CorrectAnswers);
+
+		if (!success)
+		{
+			return BadRequest("You need at least 3 correct answers to proceed.");
+		}
+
+		return Ok(new { message = "Unit completed successfully" });
+	}
+
+	[HttpGet("progress/{userId}")]
+	public async Task<IActionResult> GetCompletedUnits(int userId)
+	{
+		int completedUnits = await _authService.GetCompletedUnits(userId);
+		return Ok(new { completedUnits });
 	}
 }
 

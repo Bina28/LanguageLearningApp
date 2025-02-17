@@ -28,7 +28,7 @@ public class AppDbContext : DbContext
 			new Course { CourseId = 3, Title = "Common Phrases", Description = "Daily conversations" },
 			new Course { CourseId = 4, Title = "Food & Drinks", Description = "Ordering in a café" },
 			new Course { CourseId = 5, Title = "Directions", Description = "Asking for directions" },
-		 new Course { CourseId = 6, Title = "Shopping", Description = "Buying things and transactions" },
+		    new Course { CourseId = 6, Title = "Shopping", Description = "Buying things and transactions" },
 			new Course { CourseId = 7, Title = "Time & Dates", Description = "Telling time and discussing dates" },
 			new Course { CourseId = 8, Title = "Travel", Description = "Useful phrases for traveling" },
 			new Course { CourseId = 9, Title = "Work & Business", Description = "Professional conversations" },
@@ -39,7 +39,7 @@ public class AppDbContext : DbContext
 		modelBuilder.Entity<CourseCard>().HasData(new List<CourseCard>
 		{
 				// Unit 1 - Greetings
-		new CourseCard { Id = 1, CourseId = 1, EnglishText = "Hello", NorwegianText = "Hallo" },
+new CourseCard { Id = 1, CourseId = 1, EnglishText = "Hello", NorwegianText = "Hallo" },
 new CourseCard { Id = 2, CourseId = 1, EnglishText = "Hi", NorwegianText = "Hei" },
 new CourseCard { Id = 3, CourseId = 1, EnglishText = "Good morning", NorwegianText = "God morgen" },
 new CourseCard { Id = 4, CourseId = 1, EnglishText = "Good afternoon", NorwegianText = "God ettermiddag" },
@@ -51,19 +51,19 @@ new CourseCard { Id = 9, CourseId = 1, EnglishText = "What’s your name?", Norw
 new CourseCard { Id = 10, CourseId = 1, EnglishText = "My name is...", NorwegianText = "Jeg heter..." },
 		
 		// Unit 2 - Numbers
-            new CourseCard { Id = 11, CourseId = 2, EnglishText = "One", NorwegianText = "En" },
-			new CourseCard { Id = 12, CourseId = 2, EnglishText = "Two", NorwegianText = "To" },
-			new CourseCard { Id = 13, CourseId = 2, EnglishText = "Three", NorwegianText = "Tre" },
-			new CourseCard { Id = 14,  CourseId = 2, EnglishText = "Four", NorwegianText = "Fire" },
-			new CourseCard { Id = 15, CourseId = 2, EnglishText = "Five", NorwegianText = "Fem" },
-			new CourseCard { Id = 16, CourseId = 2, EnglishText = "Six", NorwegianText = "Seks" },
-			new CourseCard { Id = 17, CourseId = 2, EnglishText = "Seven", NorwegianText = "Sju" },
-			new CourseCard{ Id = 18, CourseId = 2, EnglishText = "Eight", NorwegianText = "Åtte" },
-			new CourseCard { Id = 19, CourseId = 2, EnglishText = "Nine", NorwegianText = "Ni" },
-			new CourseCard{ Id = 20, CourseId = 2, EnglishText = "Ten", NorwegianText = "Ti" },
+new CourseCard { Id = 11, CourseId = 2, EnglishText = "One", NorwegianText = "En" },
+new CourseCard { Id = 12, CourseId = 2, EnglishText = "Two", NorwegianText = "To" },
+new CourseCard { Id = 13, CourseId = 2, EnglishText = "Three", NorwegianText = "Tre" },
+new CourseCard { Id = 14,  CourseId = 2, EnglishText = "Four", NorwegianText = "Fire" },
+new CourseCard { Id = 15, CourseId = 2, EnglishText = "Five", NorwegianText = "Fem" },
+new CourseCard { Id = 16, CourseId = 2, EnglishText = "Six", NorwegianText = "Seks" },
+new CourseCard { Id = 17, CourseId = 2, EnglishText = "Seven", NorwegianText = "Sju" },
+new CourseCard{ Id = 18, CourseId = 2, EnglishText = "Eight", NorwegianText = "Åtte" },
+new CourseCard { Id = 19, CourseId = 2, EnglishText = "Nine", NorwegianText = "Ni" },
+new CourseCard{ Id = 20, CourseId = 2, EnglishText = "Ten", NorwegianText = "Ti" },
 
 			//Unit 3 - Common Phrases
-		new CourseCard { Id = 21, CourseId = 3, EnglishText = "Hello", NorwegianText = "Hei" },
+new CourseCard { Id = 21, CourseId = 3, EnglishText = "Hello", NorwegianText = "Hei" },
 new CourseCard { Id = 22, CourseId = 3, EnglishText = "Good morning", NorwegianText = "God morgen" },
 new CourseCard { Id = 23, CourseId = 3, EnglishText = "Good night", NorwegianText = "God natt" },
 new CourseCard { Id = 24, CourseId = 3, EnglishText = "How are you?", NorwegianText = "Hvordan har du det?" },
