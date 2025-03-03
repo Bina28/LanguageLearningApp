@@ -14,7 +14,7 @@ interface User {
 export default function UserPage() {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
-  const { completedUnits } = useUserProgress();
+  const { completedUnits, refreshProgress } = useUserProgress();
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -33,6 +33,7 @@ export default function UserPage() {
 
           if (response.status === 200) {
             setUser(response.data);
+            refreshProgress();
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
@@ -43,7 +44,7 @@ export default function UserPage() {
     } catch (error) {
       navigate("/login");
     }
-  }, []);
+  }, );
 
   if (!user) return <p>Loading user data...</p>;
 
