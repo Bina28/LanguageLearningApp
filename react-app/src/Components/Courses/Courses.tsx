@@ -46,10 +46,11 @@ export default function Courses() {
 
           return (
             <div
-              key={course.courseId}
-              className={`course-card ${isLocked ? "locked" : ""}`}
-              onClick={() => !isLocked && navigate(`/courses/${course.courseId}`)}
-            >
+            key={course.courseId}
+            className={`course-card ${isLocked ? "locked" : ""}`}
+            onClick={() => !isLocked && navigate(`/courses/${course.courseId}`)}
+          >
+            {isLocked && <span className="lock-icon">🔒</span>}
               <div className="course-content">
                 <div className="course-index">Unit {index + 1}</div>
                 <div className="course-title">{course.title}</div>

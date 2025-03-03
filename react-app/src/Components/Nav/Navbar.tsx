@@ -13,7 +13,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsAuthenticated(!!localStorage.getItem("user"));
-  }, [authUpdated]); 
+  }); 
 
   const handleLogout = () => {
     logout();
