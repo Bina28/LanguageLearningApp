@@ -43,7 +43,7 @@ export default function UserPage() {
     } catch (error) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, []);
 
   if (!user) return <p>Loading user data...</p>;
 
