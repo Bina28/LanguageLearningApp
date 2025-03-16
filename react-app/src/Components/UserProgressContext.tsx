@@ -20,7 +20,7 @@ export const UserProgressProvider: React.FC<{ children: React.ReactNode }> = ({ 
       const userId = user.id;
 
       const response = await axios.get<{ completedUnits: number }>(
-        `http://localhost:5117/api/auth/progress/${userId}`
+        `http://localhost:5117/api/learning/progress/${userId}`
       );
 
       setCompletedUnits(response.data.completedUnits);

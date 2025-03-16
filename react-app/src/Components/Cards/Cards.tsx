@@ -26,7 +26,7 @@ export default function Cards() {
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
-        const response = await axios.get<Cards[]>(`http://localhost:5117/api/auth/cards/${courseId}`);
+        const response = await axios.get<Cards[]>(`http://localhost:5117/api/learning/cards/${courseId}`);
         const shuffledCards = response.data.sort(() => 0.5 - Math.random()).slice(0, 5);
         setFlashcards(shuffledCards);
       } catch (error) {
@@ -45,7 +45,7 @@ export default function Cards() {
       const user = JSON.parse(userString);
       const userId = user.id;
 
-      await axios.post(`http://localhost:5117/api/auth/complete`, {
+      await axios.post(`http://localhost:5117/api/learning/complete`, {
         Id: userId,
         CorrectAnswers: correctAnswers + 1,
       });
