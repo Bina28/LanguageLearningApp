@@ -28,11 +28,27 @@ public class AppDbContext : DbContext
 			new Course { CourseId = 3, Title = "Common Phrases", Description = "Daily conversations" },
 			new Course { CourseId = 4, Title = "Food & Drinks", Description = "Ordering in a café" },
 			new Course { CourseId = 5, Title = "Directions", Description = "Asking for directions" },
-		    new Course { CourseId = 6, Title = "Shopping", Description = "Buying things and transactions" },
+			new Course { CourseId = 6, Title = "Shopping", Description = "Buying things and transactions" },
 			new Course { CourseId = 7, Title = "Time & Dates", Description = "Telling time and discussing dates" },
 			new Course { CourseId = 8, Title = "Travel", Description = "Useful phrases for traveling" },
 			new Course { CourseId = 9, Title = "Work & Business", Description = "Professional conversations" },
-			new Course { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergency" }
+			new Course { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergency" },
+			new Course { CourseId = 11, Title = "Weather", Description = "Talking about the weather" },
+            new Course { CourseId = 12, Title = "Hobbies & Interests", Description = "Discussing hobbies and free time" },
+            new Course { CourseId = 13, Title = "Health & Medical", Description = "Going to the doctor and describing symptoms" },
+            new Course { CourseId = 14, Title = "At the Hotel", Description = "Checking in, booking, and hotel services" },
+            new Course { CourseId = 15, Title = "Public Transport", Description = "Using buses, trains, and taxis" },
+            new Course { CourseId = 16, Title = "At the Airport", Description = "Common phrases at the airport" },
+            new Course { CourseId = 17, Title = "Making Appointments", Description = "Scheduling and confirming meetings" },
+            new Course { CourseId = 18, Title = "Entertainment", Description = "Movies, music, and leisure activities" },
+            new Course { CourseId = 19, Title = "Technology & Devices", Description = "Talking about gadgets and tech" },
+            new Course { CourseId = 20, Title = "Sports", Description = "Discussing sports and fitness" },
+            new Course { CourseId = 21, Title = "House & Home", Description = "Describing homes and furniture" },
+            new Course { CourseId = 22, Title = "Family & Relationships", Description = "Talking about family members" },
+            new Course { CourseId = 23, Title = "Celebrations & Holidays", Description = "Wishing and talking about traditions" },
+            new Course { CourseId = 24, Title = "Idioms & Expressions", Description = "Learning common idioms" },
+            new Course { CourseId = 25, Title = "Advanced Conversations", Description = "Deep discussions on various topics" }
+
 
 		});
 

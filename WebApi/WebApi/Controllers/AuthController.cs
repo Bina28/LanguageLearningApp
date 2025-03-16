@@ -10,15 +10,18 @@ namespace WebApi.Controllers;
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
-	private readonly IAuthService _authService; 
+	private readonly IAuthService _authService;
+	private readonly IUserService _userService;
 
-	public AuthController(IAuthService authService) 
+
+	public AuthController(IAuthService authService, IUserService userService) 
 	{
 		_authService = authService;
+		_userService = userService;
 	}
 
 	[HttpPost("register")]
-		public async Task<IActionResult> Register(RegisterDto dto)
+		public async Task<ActionResult> Register(RegisterDto dto)
 		{
 			var success = await _authService.RegisterUser(dto);
 			if (!success) return BadRequest("Email already in use.");
@@ -27,7 +30,7 @@ namespace WebApi.Controllers;
 		}
 
 	[HttpPost("login")]
-	public async Task<IActionResult> Login(LoginDto dto)
+	public async Task<ActionResult> Login(LoginDto dto)
 	{
 		var user = await _authService.ValidateUser(dto);
 
@@ -43,7 +46,7 @@ namespace WebApi.Controllers;
 		user.LastLoginDate = DateTime.Now;
 
 
-		await _authService.UpdateUser(user);
+		await _userService.UpdateUser(user);
 
 		return Ok(new
 		{
@@ -56,48 +59,15 @@ namespace WebApi.Controllers;
 
 
 	[HttpGet("profile/{userId}")]
-		public async Task<IActionResult> GetProfile(int userId)
+		public async Task<ActionResult> GetProfile(int userId)
 		{
-			var profile = await _authService.GetUserProfile(userId);
+			var profile = await _userService.GetUserProfile(userId);
 			if (profile == null) return NotFound();
 
 			return Ok(profile);
 		}
 
 
-	[HttpGet("courses")]
-	public async Task<IActionResult> GetCourses()
-	{
-		var courses = await _authService.GetCourses();
-		return Ok(courses);
-	}
-
-	[HttpGet("cards/{id}")]
-	public async Task<IActionResult> GetCards(int id)
-	{
-		var cards = await _authService.GetCards(id);
-		return Ok(cards);
-	}
-
-	[HttpPost("complete")]
-	public async Task<IActionResult> CompleteUnit([FromBody] UnitCompletionDto request)
-	{
-		var success = await _authService.CompleteUnit(request.Id, request.CorrectAnswers);
-
-		if (!success)
-		{
-			return BadRequest("You need at least 3 correct answers to proceed.");
-		}
-
-		return Ok(new { message = "Unit completed successfully" });
-	}
-
-	[HttpGet("progress/{userId}")]
-	public async Task<IActionResult> GetCompletedUnits(int userId)
-	{
-		int completedUnits = await _authService.GetCompletedUnits(userId);
-		return Ok(new { completedUnits });
-	}
 }
 
 

@@ -90,22 +90,59 @@
         }
       }
     },
-    "/api/auth/courses": {
+    "/api/learning/courses": {
       "get": {
         "tags": [
-          "Auth"
+          "Learning"
+        ],
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/auth/cards/{id}": {
+    "/api/learning/cards/{id}": {
       "get": {
         "tags": [
-          "Auth"
+          "Learning"
         ],
         "parameters": [
           {
@@ -125,10 +162,10 @@
         }
       }
     },
-    "/api/auth/complete": {
+    "/api/learning/complete": {
       "post": {
         "tags": [
-          "Auth"
+          "Learning"
         ],
         "requestBody": {
           "content": {
@@ -156,10 +193,10 @@
         }
       }
     },
-    "/api/auth/progress/{userId}": {
+    "/api/learning/progress/{userId}": {
       "get": {
         "tags": [
-          "Auth"
+          "Learning"
         ],
         "parameters": [
           {
@@ -182,6 +219,22 @@
   },
   "components": {
     "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginDto": {
         "type": "object",
         "properties": {
