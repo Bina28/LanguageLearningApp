@@ -49,3 +49,9 @@ const response = await axios.post("http://yourapiurl:port/api/auth/signup", {
 
 Example:
 const response = await axios.get("http://yourapiurl:port/api/auth/profile/" + storedUser.userId);
+
+
+System Design
+
+![image](https://github.com/user-attachments/assets/cf262fb6-f3fd-4fcd-b2ad-09815b9a8dec)
+
