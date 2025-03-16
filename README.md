@@ -51,7 +51,7 @@ Example:
 const response = await axios.get("http://yourapiurl:port/api/auth/profile/" + storedUser.userId);
 
 
-System Design
+## 6. System Design
 
 ![image](https://github.com/user-attachments/assets/cf262fb6-f3fd-4fcd-b2ad-09815b9a8dec)
 
