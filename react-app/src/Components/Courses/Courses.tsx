@@ -32,7 +32,7 @@ const fetchCourses = async () => {
 
     console.log("API Response:", response.data); // Проверка формата ответа
 
-    setCourses((prev) => [...prev, ...response.data.data.items]);
+    setCourses(response.data.data.items);
     setTotalPages(response.data.data.totalPages); // Сохраняем общее количество страниц
   } catch (error) {
     console.error("Error fetching courses: ", error);
@@ -45,38 +45,50 @@ useEffect(() => {
 
 
 
-    return (
-      <div className="courses-container">
-        <h2>Available Courses</h2>
-        <div className="courses-grid">
-          {courses.map((course, index) => {
-            const isLocked = index > completedUnits;
-    
-            return (
-              <div
-                key={course.courseId}
-                className={`course-card ${isLocked ? "locked" : ""}`}
-                onClick={() => !isLocked && navigate(`/courses/${course.courseId}`)}
-              >
-                {isLocked && <span className="lock-icon">🔒</span>}
-                <div className="course-content">
-                  <div className="course-index">Unit {index + 1}</div>
-                  <div className="course-title">{course.title}</div>
-                  <div className="course-description">{course.description}</div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <button className="show-more-button"
-  onClick={() => setPage((prev) => prev + 1)} 
-  disabled={page >= totalPages}
->
-  Show More
-</button>
+return (
+  <div className="courses-container">
+    <div className="pagination">
+      <button onClick={() => setPage(1)} disabled={page === 1}>First</button>
+      <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))} disabled={page === 1}>Previous</button>
 
-      </div>
-    );
-    
-  
+      {[...Array(totalPages)].map((_, i) => (
+        <button
+          key={i + 1}
+          onClick={() => setPage(i + 1)}
+          className={page === i + 1 ? "active" : ""}
+        >
+          {i + 1}
+        </button>
+      ))}
+
+      <button onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))} disabled={page === totalPages}>Next</button>
+      <button onClick={() => setPage(totalPages)} disabled={page === totalPages}>Last</button>
+    </div>
+
+    <h2>Available Courses</h2>
+    <div className="courses-grid">
+      {courses.map((course, index) => {
+        const globalIndex = (page - 1) * pageSize + index; // Riktig nummer
+        const isLocked = globalIndex > completedUnits; // Korrekt låsing
+
+        return ( // MÅ ha return her!
+          <div
+            key={course.courseId}
+            className={`course-card ${isLocked ? "locked" : ""}`}
+            onClick={() => !isLocked && navigate(`/courses/${course.courseId}`)}
+          >
+            {isLocked && <span className="lock-icon">🔒</span>}
+            <div className="course-content">
+              <div className="course-index">Unit {globalIndex + 1}</div>
+              <div className="course-title">{course.title}</div>
+              <div className="course-description">{course.description}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
+
+
 }

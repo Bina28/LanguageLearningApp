@@ -92,8 +92,7 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
   }
-  
-  /* Låseikon plassert direkte i HTML */
+ 
   .lock-icon {
     font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
@@ -101,25 +100,44 @@
     left: 8px;
     top: 8px;
   }
-   
-  .show-more-button {
-    background-color: #6200ea;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    display: block;
-    margin: 20px auto;
-    width: 200px; /* Ограничиваем ширину */
-    text-align: center;
+
+  .pagination-container {
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
   }
   
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px; /* Mindre mellomrom mellom knappene */
+    width: 35%; /* Setter bredden til 1/4 av hele siden */
+    min-width: 200px; /* Sikrer at det ikke blir for smalt på små skjermer */
+  }
   
-  .show-more-button:hover {
-    background-color: #3700b3;
+  .pagination button {
+    padding: 8px 14px; /* Gjør knappene mindre */
+    font-size: 15px; /* Reduserer tekststørrelsen */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .pagination button:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+  }
+  
+  .pagination button.active {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
   }
   
