@@ -23,6 +23,7 @@ export default function Cards() {
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
+
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
@@ -37,6 +38,25 @@ export default function Cards() {
     fetchFlashcards();
   }, [courseId]);
 
+  const updateUserCourse = async (isCompleted: boolean) => {
+    try {
+      const userString = localStorage.getItem("user");
+      if (!userString) return;
+
+      const user = JSON.parse(userString);
+      const userId = user.id;
+
+      // Call the API to update UserCourse (increment attempts and set completion status)
+      await axios.post(`http://localhost:5117/api/usercourse`, {
+        Id: userId,
+        CourseId: courseId,
+        IsCompleted: isCompleted,
+      });
+    } catch (error) {
+      console.error("Error updating UserCourse:", error);
+    }
+  };
+
   const completeUnit = async () => {
     try {
       const userString = localStorage.getItem("user");
@@ -45,12 +65,17 @@ export default function Cards() {
       const user = JSON.parse(userString);
       const userId = user.id;
 
-      await axios.post(`http://localhost:5117/api/learning/complete`, {
-        Id: userId,
-        CorrectAnswers: correctAnswers + 1,
-      });
+      const isCompleted = correctAnswers >= 3;
 
-      refreshProgress(); 
+      // Update user progress if the course is completed
+      if (isCompleted) {
+        await axios.post(`http://localhost:5117/api/learning/complete`, {
+          Id: userId,
+          CorrectAnswers: correctAnswers,
+        });
+
+        refreshProgress();
+      }
     } catch (error) {
       console.error("Error updating completed units:", error);
     }
@@ -69,16 +94,30 @@ export default function Cards() {
     setIsAnswered(true);
 
     setTimeout(async () => {
-      if (currentIndex + 1 < flashcards.length) {
-        setCurrentIndex((prev) => prev + 1);
-        setUserAnswer("");
-        setFeedback(null);
-        setIsAnswered(false);
-      } else {
-        if (correctAnswers + (isCorrect ? 1 : 0) >= 3) {
-          await completeUnit();
+      try {
+        if (currentIndex + 1 < flashcards.length) {
+          // Move to the next flashcard
+          setCurrentIndex((prev) => prev + 1);
+          setUserAnswer("");
+          setFeedback(null);
+          setIsAnswered(false);
+        } else {
+          // User has finished the flashcards
+          const isCompleted = correctAnswers + (isCorrect ? 1 : 0) >= 3;
+
+          // Update UserCourse (increment attempts and set completion status)
+          await updateUserCourse(isCompleted);
+
+          // Complete the unit if the user passed
+          if (isCompleted) {
+            await completeUnit();
+          }
+
+          // Show the result
+          setShowResult(true);
         }
-        setShowResult(true);
+      } catch (error) {
+        console.error("Error during setTimeout operation:", error);
       }
     }, 2500);
   };
@@ -111,3 +150,4 @@ export default function Cards() {
     </div>
   );
 }
+

@@ -8,6 +8,7 @@ import Home from "./Components/Home/Home";
 import UserPage from "./Components/UserPage/UserPage";
 import Courses from "./Components/Courses/Courses";
 import Cards from "./Components/Cards/Cards";
+import UserCourses from "./Components/UserCourses/UserCourses";
 import { UserProgressProvider } from "./Components/UserProgressContext";
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
           <Route path="/user" element={<UserPage />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:courseId" element={<Cards />} />
+          <Route path="/usercourses" element={<UserCourses />} />
+
         </Routes>
       </UserProgressProvider>
     </>

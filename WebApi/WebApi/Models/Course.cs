@@ -16,4 +16,5 @@ public class Course
 	// Navigation Property
 
 	public List<CourseCard> Cards { get; set; } = new();
+	public List<UserCourse> UserCourses { get; set; } = new();
 }

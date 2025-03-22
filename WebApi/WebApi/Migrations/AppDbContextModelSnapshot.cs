@@ -956,6 +956,30 @@ namespace WebApi.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WebApi.Models.UserCourse", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Attempts")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastCompletedDay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("UserCourses");
+                });
+
             modelBuilder.Entity("WebApi.Models.CourseCard", b =>
                 {
                     b.HasOne("WebApi.Models.Course", "Course")
@@ -967,9 +991,35 @@ namespace WebApi.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("WebApi.Models.UserCourse", b =>
+                {
+                    b.HasOne("WebApi.Models.Course", "Course")
+                        .WithMany("UserCourses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApi.Models.User", "User")
+                        .WithMany("UserCourses")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebApi.Models.Course", b =>
                 {
                     b.Navigation("Cards");
+
+                    b.Navigation("UserCourses");
+                });
+
+            modelBuilder.Entity("WebApi.Models.User", b =>
+                {
+                    b.Navigation("UserCourses");
                 });
 #pragma warning restore 612, 618
         }

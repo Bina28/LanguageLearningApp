@@ -7,5 +7,6 @@ namespace WebApi.Services
 	{
 		Task<UserProfileDto> GetUserProfile(int userId);
 		Task UpdateUser(User user);
+		Task<List<UserCourseDto?>> GetUserCoursesInfo(int userId);
 	}
 }

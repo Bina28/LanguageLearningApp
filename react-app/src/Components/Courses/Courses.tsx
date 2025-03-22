@@ -17,11 +17,11 @@ interface ApiResponse<T> {
 }
 
 export default function Courses() {
-  const { completedUnits } = useUserProgress(); // Берём данные из контекста
+  const { completedUnits } = useUserProgress(); 
   const [courses, setCourses] = useState<Course[]>([]);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const pageSize = 10; // Количество курсов на странице
+  const pageSize = 10; 
   const [totalPages, setTotalPages] = useState(1);
 
 const fetchCourses = async () => {
@@ -30,10 +30,10 @@ const fetchCourses = async () => {
       params: { pageIndex: page, pageSize }
     });
 
-    console.log("API Response:", response.data); // Проверка формата ответа
+    console.log("API Response:", response.data); 
 
     setCourses(response.data.data.items);
-    setTotalPages(response.data.data.totalPages); // Сохраняем общее количество страниц
+    setTotalPages(response.data.data.totalPages);
   } catch (error) {
     console.error("Error fetching courses: ", error);
   }
@@ -68,10 +68,10 @@ return (
     <h2>Available Courses</h2>
     <div className="courses-grid">
       {courses.map((course, index) => {
-        const globalIndex = (page - 1) * pageSize + index; // Riktig nummer
-        const isLocked = globalIndex > completedUnits; // Korrekt låsing
+        const globalIndex = (page - 1) * pageSize + index; 
+        const isLocked = globalIndex > completedUnits; 
 
-        return ( // MÅ ha return her!
+        return ( 
           <div
             key={course.courseId}
             className={`course-card ${isLocked ? "locked" : ""}`}

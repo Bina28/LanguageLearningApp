@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
 	public DbSet<User> Users { get; set; }
 	public DbSet<Course> Courses { get; set; }
 	public DbSet<CourseCard> CourseCards { get; set; }
+	public DbSet<UserCourse> UserCourses { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -20,6 +21,19 @@ public class AppDbContext : DbContext
 		.WithMany(c => c.Cards)
 		.HasForeignKey(c => c.CourseId)
 		.OnDelete(DeleteBehavior.Cascade);
+
+		modelBuilder.Entity<UserCourse>()
+	  .HasKey(uc => new { uc.Id, uc.CourseId });
+
+		modelBuilder.Entity<UserCourse>()
+			.HasOne(uc => uc.User)
+			.WithMany(u => u.UserCourses)
+			.HasForeignKey(uc => uc.Id);
+
+		modelBuilder.Entity<UserCourse>()
+			.HasOne(uc => uc.Course)
+			.WithMany(c => c.UserCourses)
+			.HasForeignKey(uc => uc.CourseId);
 
 		modelBuilder.Entity<Course>().HasData(new List<Course>
 		{

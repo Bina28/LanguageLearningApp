@@ -9,4 +9,5 @@ public interface ILearningService
 	Task<List<CardsDto>> GetCards(int id);
 	Task<bool> CompleteUnit(int id, int correctAnswers);
 	Task<int> GetCompletedUnits(int userId);
+	Task AddOrUpdateUserCourse(int userId, int courseId, bool isCompleted);
 }

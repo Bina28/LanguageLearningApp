@@ -38,15 +38,18 @@ public class LearningService : ILearningService
 
 		if (correctAnswers < 3)
 		{
-			return false; // User did not pass, cannot go to next unit
+			return false;
 		}
 
-		// Increase the completed units count
-		user.CompletedUnits++;
-		await _context.SaveChangesAsync();
-		return true;
-	}
+		if (user.CompletedUnits == user.CompletedUnits)
+		{
+			user.CompletedUnits++;
+			await _context.SaveChangesAsync();
+		}
 
+		return true;
+
+	}
 	public async Task<int> GetCompletedUnits(int userId)
 	{
 		var user = await _context.Users.FindAsync(userId);
@@ -66,5 +69,39 @@ public class LearningService : ILearningService
 
 		return new PaginatedCourseList<Course>(courses, pageIndex, totalPages);
 	}
+	public async Task AddOrUpdateUserCourse(int userId, int courseId, bool isCompleted)
+	{
+		var userCourse = await _context.UserCourses
+			.FirstOrDefaultAsync(uc => uc.Id == userId && uc.CourseId == courseId);
+
+		if (userCourse == null)
+		{
+			userCourse = new UserCourse
+			{
+				Id = userId, 
+				CourseId = courseId,
+				LastCompletedDay = isCompleted ? DateTime.UtcNow : null,
+				Attempts = 1,
+				IsCompleted = isCompleted
+			};
+
+			await _context.UserCourses.AddAsync(userCourse);
+		}
+		else
+		{			
+			userCourse.Attempts += 1;
+
+			if (isCompleted)
+			{
+				userCourse.LastCompletedDay = DateTime.UtcNow;
+				userCourse.IsCompleted = true;
+			}
+		}
+
+		await _context.SaveChangesAsync(); 
+	}
 
 }
+
+
+

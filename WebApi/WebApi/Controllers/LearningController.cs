@@ -9,7 +9,7 @@ namespace WebApi.Controllers;
 
 [Route("api/learning")]
 [ApiController]
-public class LearningController: ControllerBase
+public class LearningController : ControllerBase
 {
 	private readonly ILearningService _learningService;
 
@@ -51,4 +51,5 @@ public class LearningController: ControllerBase
 		int completedUnits = await _learningService.GetCompletedUnits(userId);
 		return Ok(new { completedUnits });
 	}
+
 }

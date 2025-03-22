@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useUserProgress } from "../UserProgressContext";
 import "./UserPage.css"; 
 
+
 interface User {
   id: number;
   email: string;
@@ -15,6 +16,7 @@ export default function UserPage() {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const { completedUnits, refreshProgress } = useUserProgress();
+ 
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -46,7 +48,16 @@ export default function UserPage() {
     }
   }, );
 
+  const goToCourses = () => {
+    if (!user) {
+      console.error("User is null, cannot navigate to courses.");
+      return;
+    }
+    navigate("/usercourses", { state: { userId: user.id } });
+};
+
   if (!user) return <p>Loading user data...</p>;
+
 
   return (
     <div className="user-container">
@@ -71,7 +82,11 @@ export default function UserPage() {
             transition={{ duration: 0.8 }}
           />
         </div>
+         <button onClick={goToCourses} className="my-coursesbtn">See My Courses</button>
       </motion.div>
+
+    
     </div>
   );
+ 
 }

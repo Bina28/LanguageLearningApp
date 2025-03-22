@@ -111,14 +111,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px; /* Mindre mellomrom mellom knappene */
-    width: 35%; /* Setter bredden til 1/4 av hele siden */
-    min-width: 200px; /* Sikrer at det ikke blir for smalt på små skjermer */
+    gap: 4px; 
+    width: 35%; 
+    min-width: 200px; 
   }
   
   .pagination button {
-    padding: 8px 14px; /* Gjør knappene mindre */
-    font-size: 15px; /* Reduserer tekststørrelsen */
+    padding: 8px 14px; 
+    font-size: 15px; 
     border-radius: 4px;
     border: 1px solid #ccc;
     background-color: white;

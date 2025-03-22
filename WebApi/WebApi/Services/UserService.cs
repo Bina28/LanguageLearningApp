@@ -26,4 +26,28 @@ public class UserService:IUserService
 
 		return new UserProfileDto { Id = user.Id, FullName = user.FullName, Email = user.Email };
 	}
+
+
+	public async Task<List<UserCourseDto?>> GetUserCoursesInfo(int userId)
+	{
+		var userCourse = await _context.UserCourses
+			.Include(uc => uc.Course)
+		.Where(uc => uc.Id == userId) 
+		.Select(uc => new UserCourseDto
+		{
+			Id = uc.Id,
+			CourseId = uc.CourseId,
+			CourseTitle = uc.Course.Title, 
+			CourseDescription = uc.Course.Description, 
+			LastCompletedDay = uc.LastCompletedDay,
+			Attempts = uc.Attempts,
+			IsCompleted = uc.IsCompleted
+		})
+		.ToListAsync(); 
+
+		return userCourse;
+
+		
+	}
+
 }

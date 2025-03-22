@@ -18,4 +18,5 @@ public class User
 	public int CompletedUnits { get; set; }
 
 	public DateTime? LastLoginDate { get; set; }
+	public List<UserCourse> UserCourses { get; set; } = new();
 }
