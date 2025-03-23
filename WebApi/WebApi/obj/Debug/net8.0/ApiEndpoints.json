@@ -127,6 +127,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApi.Controllers.LearningController",
+    "Method": "SearchCourses",
+    "RelativePath": "api/learning/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchQuery",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApi.Models.ApiResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebApi.Controllers.UserCourseController",
     "Method": "AddOrUpdateUserCourse",
     "RelativePath": "api/usercourse",

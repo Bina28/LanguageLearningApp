@@ -10,4 +10,6 @@ public interface ILearningService
 	Task<bool> CompleteUnit(int id, int correctAnswers);
 	Task<int> GetCompletedUnits(int userId);
 	Task AddOrUpdateUserCourse(int userId, int courseId, bool isCompleted);
+	Task<List<Course>> SearchCourses(string? searchQuery);
+
 }

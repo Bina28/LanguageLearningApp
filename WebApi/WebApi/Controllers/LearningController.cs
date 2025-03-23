@@ -52,4 +52,11 @@ public class LearningController : ControllerBase
 		return Ok(new { completedUnits });
 	}
 
+	[HttpGet("search")]
+	public async Task<ActionResult<ApiResponse>> SearchCourses(string? searchQuery = null)
+	{
+		var courses = await _learningService.SearchCourses(searchQuery);
+		return new ApiResponse(true, null, courses);
+	}
+
 }

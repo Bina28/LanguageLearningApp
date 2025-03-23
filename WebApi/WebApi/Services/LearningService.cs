@@ -69,6 +69,20 @@ public class LearningService : ILearningService
 
 		return new PaginatedCourseList<Course>(courses, pageIndex, totalPages);
 	}
+
+	public async Task<List<Course>> SearchCourses(string? searchQuery)
+	{
+		IQueryable<Course> query = _context.Courses;
+
+		if (!string.IsNullOrEmpty(searchQuery))
+		{
+			query = query.Where(c => c.Title.Contains(searchQuery) ||
+									 c.Description.Contains(searchQuery));
+		}
+
+		return await query.OrderBy(c => c.CourseId).ToListAsync();
+	}
+
 	public async Task AddOrUpdateUserCourse(int userId, int courseId, bool isCompleted)
 	{
 		var userCourse = await _context.UserCourses
