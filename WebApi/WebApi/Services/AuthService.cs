@@ -15,11 +15,13 @@ public class AuthService : IAuthService
 		_context = context;
 	}
 
-	public async Task<bool> RegisterUser(RegisterDto dto)
+	public async Task<User> RegisterUser(RegisterDto dto)
 	{
+		// Check if the email already exists
 		if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
-			return false; // Email already exists
+			return null; // Email already exists
 
+		// Create a new user
 		var user = new User
 		{
 			FullName = dto.FullName,
@@ -28,10 +30,12 @@ public class AuthService : IAuthService
 			LastLoginDate = DateTime.Now
 		};
 
+		// Add the new user to the database
 		_context.Users.Add(user);
 		await _context.SaveChangesAsync();
-		return true;
+		return user; // Return the created user
 	}
+
 
 	public async Task<User?> ValidateUser(LoginDto dto)
 	{
@@ -51,11 +55,10 @@ public class AuthService : IAuthService
 	}
 
 
-
 	private static string HashPassword(string password)
 	{
 		return BCrypt.Net.BCrypt.HashPassword(password);
 	}
 
-
+	
 }

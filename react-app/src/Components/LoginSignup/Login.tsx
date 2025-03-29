@@ -41,7 +41,8 @@ export default function Login() {
 
       localStorage.setItem("user", JSON.stringify({ id, fullName, email }));
       localStorage.setItem("expiresAt", expiresAt);
-
+         
+      console.log("Login", response.data);
       navigate("/user");
     } catch (error) {
       if (axios.isAxiosError(error)) {

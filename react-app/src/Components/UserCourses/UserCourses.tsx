@@ -16,7 +16,7 @@ interface Course {
 
 export default function UserCourses() {
   const location = useLocation();
-  const userId = location.state?.userId;
+  const userId = location.state?.id;
   const [courses, setCourses] = useState<Course[]>([]);
 
   const navigate = useNavigate();

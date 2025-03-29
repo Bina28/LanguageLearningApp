@@ -20,7 +20,7 @@ export default function UserPage() {
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
-
+ 
     if (!userData) {
       navigate("/login");
       return;
@@ -28,6 +28,7 @@ export default function UserPage() {
 
     try {
       const parsedUser: User = JSON.parse(userData);
+      
 
       const fetchProfile = async () => {
         try {
@@ -53,7 +54,7 @@ export default function UserPage() {
       console.error("User is null, cannot navigate to courses.");
       return;
     }
-    navigate("/usercourses", { state: { userId: user.id } });
+    navigate("/usercourses", { state: {id: user.id } });
 };
 
   if (!user) return <p>Loading user data...</p>;

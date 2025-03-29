@@ -101,7 +101,7 @@ export default function Courses() {
       <h2 className="course-title">Available Courses</h2>
       <div className="courses-grid">
         {courses.map((course) => {
-          const isLocked = course.courseId > completedUnits;
+          const isLocked = course.courseId > completedUnits+1;
 
           return (
             <div

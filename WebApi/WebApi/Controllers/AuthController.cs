@@ -21,13 +21,24 @@ namespace WebApi.Controllers;
 	}
 
 	[HttpPost("register")]
-		public async Task<ActionResult> Register(RegisterDto dto)
-		{
-			var success = await _authService.RegisterUser(dto);
-			if (!success) return BadRequest("Email already in use.");
+	public async Task<ActionResult> Register(RegisterDto dto)
+	{
+		// Call the RegisterUser service to create a new user
+		var user = await _authService.RegisterUser(dto);
 
-			return Ok("User registered successfully.");
-		}
+		// If the user is null, email already exists
+		if (user == null)
+			return BadRequest("Email already in use.");
+
+		// Return the user data (id, email, fullName)
+		return Ok(new
+		{
+			id = user.Id,
+			email = user.Email,
+			fullName = user.FullName
+		});
+	}
+
 
 	[HttpPost("login")]
 	public async Task<ActionResult> Login(LoginDto dto)

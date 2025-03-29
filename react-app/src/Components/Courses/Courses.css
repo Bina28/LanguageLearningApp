@@ -9,11 +9,12 @@
 
 .courses-grid {
   margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
-  min-height: 300px;
+  
 }
 
 .course-card {

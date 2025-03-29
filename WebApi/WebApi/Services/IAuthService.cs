@@ -5,7 +5,8 @@ namespace WebApi.Services;
 
 public interface IAuthService
 {
-	Task<bool> RegisterUser(RegisterDto dto);
+
+	Task<User> RegisterUser(RegisterDto dto);
 	Task<User> ValidateUser(LoginDto dto);
 
 

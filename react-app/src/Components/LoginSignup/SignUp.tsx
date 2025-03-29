@@ -38,11 +38,12 @@ export default function SignUp() {
         const response = await axios.post<User>("http://localhost:5117/api/auth/register", requestData, {
           headers: { "Content-Type": "application/json" },
         });
-        localStorage.setItem("user", JSON.stringify({
-            id: response.data.id, 
-            email: response.data.email,
-            fullName: response.data.fullName,
-          }));
+        const { id, fullName, email } = response.data;
+
+        // Save the user data to localStorage
+        localStorage.setItem("user", JSON.stringify({ id, fullName, email }));
+    
+         
           navigate("/user");
           
         console.log("Registration Success:", response.data);
