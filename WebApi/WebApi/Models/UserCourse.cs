@@ -5,7 +5,6 @@ namespace WebApi.Models;
 
 public class UserCourse
 {
-
 	public int Id { get; set; } 
 	public int CourseId { get; set; } 
 	public DateTime? LastCompletedDay { get; set; } 

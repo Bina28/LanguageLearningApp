@@ -15,8 +15,6 @@ public class LearningService : ILearningService
 		_context = context;
 	}
 
-
-
 	public async Task<List<CardsDto>> GetCards(int id)
 	{
 		return await _context.CourseCards

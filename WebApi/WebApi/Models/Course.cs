@@ -14,7 +14,6 @@ public class Course
 	public string Description { get; set; } =string.Empty;
 
 	// Navigation Property
-
 	public List<CourseCard> Cards { get; set; } = new();
 	public List<UserCourse> UserCourses { get; set; } = new();
 }

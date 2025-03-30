@@ -46,7 +46,6 @@ public class UserService:IUserService
 		.ToListAsync(); 
 
 		return userCourse;
-
 		
 	}
 

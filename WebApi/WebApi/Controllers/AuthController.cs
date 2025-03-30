@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApi.Dtos;
 using WebApi.Services;
 
 namespace WebApi.Controllers;
 
 
-	[Route("api/auth")]
-	[ApiController]
-	public class AuthController : ControllerBase
-	{
+[Route("api/auth")]
+[ApiController]
+public class AuthController : ControllerBase
+{
 	private readonly IAuthService _authService;
 	private readonly IUserService _userService;
 
 
-	public AuthController(IAuthService authService, IUserService userService) 
+	public AuthController(IAuthService authService, IUserService userService)
 	{
 		_authService = authService;
 		_userService = userService;
@@ -48,7 +47,7 @@ namespace WebApi.Controllers;
 		if (user == null)
 			return Unauthorized("Invalid email or password.");
 
-	
+
 		if (user.LastLoginDate.HasValue && (DateTime.UtcNow - user.LastLoginDate.Value).TotalHours > 24)
 		{
 			return Unauthorized("Your last login was more than 24 hours ago. Please log in again.");
@@ -70,13 +69,13 @@ namespace WebApi.Controllers;
 
 
 	[HttpGet("profile/{userId}")]
-		public async Task<ActionResult> GetProfile(int userId)
-		{
-			var profile = await _userService.GetUserProfile(userId);
-			if (profile == null) return NotFound();
+	public async Task<ActionResult> GetProfile(int userId)
+	{
+		var profile = await _userService.GetUserProfile(userId);
+		if (profile == null) return NotFound();
 
-			return Ok(profile);
-		}
+		return Ok(profile);
+	}
 
 
 }

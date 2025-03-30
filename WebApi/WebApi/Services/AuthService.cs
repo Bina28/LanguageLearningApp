@@ -36,7 +36,6 @@ public class AuthService : IAuthService
 		return user; // Return the created user
 	}
 
-
 	public async Task<User?> ValidateUser(LoginDto dto)
 	{
 		var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
@@ -46,7 +45,6 @@ public class AuthService : IAuthService
 		if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
 			return null;
 
-
 		user.LastLoginDate = DateTime.Now;
 		_context.Users.Update(user);
 		await _context.SaveChangesAsync();
@@ -54,11 +52,9 @@ public class AuthService : IAuthService
 		return user;
 	}
 
-
 	private static string HashPassword(string password)
 	{
 		return BCrypt.Net.BCrypt.HashPassword(password);
 	}
-
-	
+		
 }

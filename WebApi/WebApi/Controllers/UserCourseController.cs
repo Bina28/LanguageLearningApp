@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Dtos;
-using WebApi.Models;
 using WebApi.Services;
 
 namespace WebApi.Controllers;
@@ -8,7 +7,7 @@ namespace WebApi.Controllers;
 
 [Route("api/usercourse")]
 [ApiController]
-public class UserCourseController: ControllerBase
+public class UserCourseController : ControllerBase
 {
 	private readonly ILearningService _learningService;
 	private readonly IUserService _userService;
