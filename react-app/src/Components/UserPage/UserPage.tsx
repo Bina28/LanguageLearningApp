@@ -32,7 +32,8 @@ export default function UserPage() {
 
       const fetchProfile = async () => {
         try {
-          const response = await axios.get<User>(`http://localhost:5117/api/auth/profile/${parsedUser.id}`);
+          const apiUrl = process.env.REACT_APP_API_URL;
+          const response = await axios.get<User>(`${apiUrl}/api/auth/profile/${parsedUser.id}`);
 
           if (response.status === 200) {
             setUser(response.data);

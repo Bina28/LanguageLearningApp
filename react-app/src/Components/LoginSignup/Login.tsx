@@ -31,7 +31,8 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post<User>("http://localhost:5117/api/auth/login", {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await axios.post<User>(`${apiUrl}/api/auth/login`, {
         email,
         password,
       });

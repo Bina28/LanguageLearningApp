@@ -26,9 +26,10 @@ export default function Courses() {
   const [searchQuery, setSearchQuery] = useState("");
   const fetchCourses = async () => {
     try {
+      const apiUrl = process.env.REACT_APP_API_URL;
       const endpoint = searchQuery
-        ? "http://localhost:5117/api/learning/search"
-        : "http://localhost:5117/api/learning/courses";
+        ? `${apiUrl}/api/learning/search`
+        : `${apiUrl}/api/learning/courses`;
 
       const response = await axios.get(endpoint, {
         params: searchQuery ? { searchQuery } : { pageIndex: page, pageSize },

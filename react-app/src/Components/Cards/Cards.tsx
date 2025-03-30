@@ -27,7 +27,8 @@ export default function Cards() {
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
-        const response = await axios.get<Cards[]>(`http://localhost:5117/api/learning/cards/${courseId}`);
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await axios.get<Cards[]>(`${apiUrl}/api/learning/cards/${courseId}`);
         const shuffledCards = response.data.sort(() => 0.5 - Math.random()).slice(0, 5);
         setFlashcards(shuffledCards);
       } catch (error) {
@@ -40,6 +41,7 @@ export default function Cards() {
 
   const updateUserCourse = async (isCompleted: boolean) => {
     try {
+      const apiUrl = process.env.REACT_APP_API_URL;
       const userString = localStorage.getItem("user");
       if (!userString) return;
 
@@ -47,7 +49,7 @@ export default function Cards() {
       const userId = user.id;
 
       // Call the API to update UserCourse (increment attempts and set completion status)
-      await axios.post(`http://localhost:5117/api/usercourse`, {
+      await axios.post(`${apiUrl}/api/usercourse`, {
         Id: userId,
         CourseId: courseId,
         IsCompleted: isCompleted,
@@ -59,6 +61,7 @@ export default function Cards() {
 
   const completeUnit = async () => {
     try {
+      const apiUrl = process.env.REACT_APP_API_URL;
       const userString = localStorage.getItem("user");
       if (!userString) return;
 
@@ -69,7 +72,7 @@ export default function Cards() {
 
       // Update user progress if the course is completed
       if (isCompleted) {
-        await axios.post(`http://localhost:5117/api/learning/complete`, {
+        await axios.post(`${apiUrl}/api/learning/complete`, {
           Id: userId,
           CorrectAnswers: correctAnswers,
         });

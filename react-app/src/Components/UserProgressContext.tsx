@@ -18,9 +18,9 @@ export const UserProgressProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
       const user = JSON.parse(userString);
       const userId = user.id;
-
+      const apiUrl = process.env.REACT_APP_API_URL;
       const response = await axios.get<{ completedUnits: number }>(
-        `http://localhost:5117/api/learning/progress/${userId}`
+        `${apiUrl}/api/learning/progress/${userId}`
       );
 
       setCompletedUnits(response.data.completedUnits);

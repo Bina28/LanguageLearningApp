@@ -34,8 +34,8 @@ export default function SignUp() {
   
       try {
         console.log("Sending Sign Up request:", requestData);
-  
-        const response = await axios.post<User>("http://localhost:5117/api/auth/register", requestData, {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await axios.post<User>(`${apiUrl}/api/auth/register`, requestData, {
           headers: { "Content-Type": "application/json" },
         });
         const { id, fullName, email } = response.data;

@@ -29,7 +29,8 @@ export default function UserCourses() {
 
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:5117/api/usercourse/${userId}`);
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await axios.get(`${apiUrl}/api/usercourse/${userId}`);
         
         console.log("API Response:", response.data);
         
