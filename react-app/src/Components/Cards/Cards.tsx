@@ -88,7 +88,7 @@ export default function Cards() {
     const isCorrect = userAnswer.trim().toLowerCase() === flashcards[currentIndex].norwegianText.toLowerCase();
 
     if (isCorrect) {
-      setCorrectAnswers((prev) => prev + 1);
+      setCorrectAnswers((prev:number) => prev + 1);
       setFeedback("✅ Riktig!");
     } else {
       setFeedback(`❌ Feil! Riktig svar: ${flashcards[currentIndex].norwegianText}`);
@@ -100,7 +100,7 @@ export default function Cards() {
       try {
         if (currentIndex + 1 < flashcards.length) {
           // Move to the next flashcard
-          setCurrentIndex((prev) => prev + 1);
+          setCurrentIndex((prev:number) => prev + 1);
           setUserAnswer("");
           setFeedback(null);
           setIsAnswered(false);
@@ -141,7 +141,7 @@ export default function Cards() {
               <input
                 type="text"
                 value={userAnswer}
-                onChange={(e) => setUserAnswer(e.target.value)}
+                onChange={(e: { target: { value: any; }; }) => setUserAnswer(e.target.value)}
                 placeholder="Skriv på norsk"
                 disabled={isAnswered}
               />

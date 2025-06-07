@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": false,
+      "restoreTime": "2025-03-31T11:00:57.3808154Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "155d204b-1abe-4093-909f-f418b83990f3"
+    },
+    "language-api.resourceGroupLocation": {
+      "Name": "language-api.resourceGroupLocation",
+      "Type": null,
+      "Value": "northeurope"
+    },
+    "language-api.resourceGroupName": {
+      "Name": "language-api.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "language-resource"
+    },
+    "mssql1.resourceGroupLocation": {
+      "Name": "mssql1.resourceGroupLocation",
+      "Type": "location",
+      "Value": "northeurope"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "language-resource"
+    },
+    "language-api.subscriptionId": {
+      "Name": "language-api.subscriptionId",
+      "Type": "subscription",
+      "Value": "155d204b-1abe-4093-909f-f418b83990f3"
+    },
+    "language-api.resourceName": {
+      "Name": "language-api.resourceName",
+      "Type": null,
+      "Value": "language-api"
+    }
+  }
+}

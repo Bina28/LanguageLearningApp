@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^18.3.23",
     "ajv": "^7.2.4"
   }
 }

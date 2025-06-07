@@ -156,3 +156,4 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebA
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Release\net9.0\WebApi.pdb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Release\net9.0\WebApi.genruntimeconfig.cache
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Release\net9.0\ref\WebApi.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\WebApi\WebApi\obj\Release\net9.0\staticwebassets.upToDateCheck.txt
