@@ -30,7 +30,7 @@ export default function SignUp() {
         return;
       }
   
-      const requestData = { fullName: name, email, password };
+   const requestData = { FullName: name, Email: email, Password: password };
   
       try {
         console.log("Sending Sign Up request:", requestData);

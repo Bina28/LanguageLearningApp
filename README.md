@@ -12,7 +12,7 @@ Example:
 
 ## 2. Change HTTP URL in Program.cs:
 - Open Program.cs in the API project.
-- Replace the default http://localhost:3001 (or any other address) with the correct URL that your API will be running on.
+- Replace the default http://localhost:3000 (or any other address) with the correct URL that your API will be running on.
 
 Example in Program.cs:
 var builder = WebApplication.CreateBuilder(args);
@@ -22,39 +22,26 @@ builder.WebHost.UseUrls("http://yourapiurl:port");
 
 var app = builder.Build();
 
-## 3. Change the API URL in Login.jsx:
-- Open Login.jsx in the React project.
-- Update the URL in the axios.post call to match the correct endpoint for your API.
+## 3. Edit the .env file
+In the root of your React project, create or edit a file named .env and add the actual URL of your backend API:
 
 Example:
-const response = await axios.post("http://yourapiurl:port/api/auth/login", {
-  email,
-  password,
-});
+REACT_APP_API_URL=http://localhost:5117
 
-## 4. Change the API URL in SignUp.jsx:
-- Open SignUp.jsx in the React project.
-- Update the URL in the axios.post call to match the correct endpoint for your API.
+🔁 Replace http://localhost:5117 with your actual backend URL if different.
 
-Example:
-const response = await axios.post("http://yourapiurl:port/api/auth/signup", {
-  email,
-  password,
-  fullName,
-});
+Important:
 
-## 5. Change the API URL in UserPage.jsx:
-- Open UserPage.jsx in the React project.
-- Update the URL in the axios.get call to match the correct endpoint for fetching the user profile.
+No spaces around =
 
-Example:
-const response = await axios.get("http://yourapiurl:port/api/auth/profile/" + storedUser.userId);
+No quotes around the URL
 
+Restart the React development server after changing .env
 
-## 6. System Design
+## 4. System Design
 
 ![image](https://github.com/user-attachments/assets/cf262fb6-f3fd-4fcd-b2ad-09815b9a8dec)
 
-## 7. Schema Diagram 
+## 5. Schema Diagram 
 
 ![alt text](image.png)
