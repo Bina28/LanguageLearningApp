@@ -10,6 +10,8 @@ import Courses from "./Components/Courses/Courses";
 import Cards from "./Components/Cards/Cards";
 import UserCourses from "./Components/UserCourses/UserCourses";
 import { UserProgressProvider } from "./Components/UserProgressContext";
+import "./App.css"; 
+import Layout from "./Components/Layout";
 
 function App() {
   const navigate = useNavigate();
@@ -32,21 +34,21 @@ function App() {
   }, [navigate]);
 
   return (
-    <>
-      <Navbar />
-      <UserProgressProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/:courseId" element={<Cards />} />
-          <Route path="/usercourses" element={<UserCourses />} />
+ <UserProgressProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="user" element={<UserPage />} />
+          <Route path="courses" element={<Courses />} />
+          <Route path="courses/:courseId" element={<Cards />} />
+          <Route path="usercourses" element={<UserCourses />} />
+        </Route>
 
-        </Routes>
-      </UserProgressProvider>
-    </>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+ 
+      </Routes>
+    </UserProgressProvider>
   );
 }
 

@@ -13,13 +13,25 @@ public class UserService:IUserService
 	{
 		_context = context;
 	}
-	public async Task UpdateUser(User user)
+	public async Task<OperationResult> UpdateUser(User user)
 	{
+		if (user == null) return new OperationResult
+		{
+			Success = false,
+			Message = "User cannot be null."
+		};
+
 		_context.Users.Update(user);
 		await _context.SaveChangesAsync();
+
+		return new OperationResult
+		{
+			Success = true,
+			Message = "User updated successfully."
+		};
 	}
 
-	public async Task<UserProfileDto?> GetUserProfile(int userId)
+	public async Task<UserProfileDto> GetUserProfile(int userId)
 	{
 		var user = await _context.Users.FindAsync(userId);
 		if (user == null) return null;
