@@ -1,36 +1,56 @@
+.edit-user-container{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 20rem);
+}
+
+
 .edit-user-form {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 2.5rem; /* Increased inner padding */
-  width: 90%; /* Relative width */
-  max-width: 400px; /* Maximum width */
-  margin: 0 auto; /* Center the form horizontally */
+  padding: 3.2rem;
+  margin: 0 auto;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 35rem;;
+}
+
+.edit-form-title{
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 2.4rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
-  width: 100%; /* Ensure full width */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center children horizontally */
+  gap: 1.4rem;
+}
+
+.edit-user-form label {
+  display: block;
+  color: #e6e6e6;
+  text-align: left;
+  font-size: 1.2rem;
+
 }
 
 .edit-user-form input {
-  width: 90%; /* Slightly less than full width */
-  padding: 12px 15px; /* Increased horizontal padding */
+  width: 100%;
+  padding: 1.2rem 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
-  color: white;
-  font-size: 1rem;
+    color: #e6e6e6;
+  font-size: 1.4rem;
   transition: all 0.3s ease;
-  text-align: center; /* Center text inside input */
+  text-align: center;
 }
-
-
 
 .edit-user-form input:focus {
   outline: none;
@@ -41,13 +61,13 @@
 .btn-row {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
 .edit-user-form button {
-  padding: 12px 24px;
-  font-size: 1rem;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.4rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
@@ -58,22 +78,32 @@
 }
 
 .edit-user-form button[type="submit"] {
-  background: rgba(0, 195, 255, 0.2);
-  color: #00c3ff;
+  background: linear-gradient(to right, #3a6ea5, #2a4f7a);
+  color: #e0eaf1;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 5px rgba(58, 110, 165, 0.3);
+  transition: all 0.3s ease;
 }
 
 .edit-user-form button[type="submit"]:hover {
-  background: rgba(0, 195, 255, 0.3);
+  background: linear-gradient(to right, #5b87c1, #3a5e9e);
   transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(91, 135, 193, 0.35);
 }
 
 .edit-user-form button[type="button"] {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ccc;
+  background: rgba(70, 85, 105, 0.4);
+  color: #cfd8e8;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
 .edit-user-form button[type="button"]:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: rgba(90, 110, 140, 0.6);
+  color: #e0eaf1;
   transform: translateY(-2px);
+  border-color: #5b87c1;
+  box-shadow: 0 0 6px rgba(91, 135, 193, 0.3);
 }

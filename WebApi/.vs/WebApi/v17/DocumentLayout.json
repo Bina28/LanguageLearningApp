@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\dtos\\usercoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\dtos\\usercoursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -68,10 +72,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|solutionrelative:webapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C2CA40A4-AFE2-4C05-BDBD-49EDD94052B1}|WebApi\\WebApi.csproj|c:\\users\\dyako\\onedrive\\skrivebord\\studyprojects\\languagelearningapp\\webapi\\webapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -121,11 +121,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "WebApi\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\UserService.cs",
+              "RelativeToolTip": "WebApi\\Services\\UserService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAWwCMAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T14:46:12.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserCourseController.cs",
+              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\UserCourseController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\UserCourseController.cs",
+              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\UserCourseController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\UserCourseController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T13:44:52.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LearningController.cs",
+              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\LearningController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\LearningController.cs",
+              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\LearningController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\LearningController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T14:51:12.048Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "WebApi\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\AuthService.cs",
+              "RelativeToolTip": "WebApi\\Services\\AuthService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAewCwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T14:38:32.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "WebApi\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "WebApi\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswC0AAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T13:15:53.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\UserController.cs",
@@ -138,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "LearningService.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\LearningService.cs",
               "RelativeDocumentMoniker": "WebApi\\Services\\LearningService.cs",
@@ -146,51 +208,11 @@
               "RelativeToolTip": "WebApi\\Services\\LearningService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwBEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:41:40.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:41:40.457Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "WebApi\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\UserService.cs",
-              "RelativeToolTip": "WebApi\\Services\\UserService.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAWwCMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:46:12.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserCourseController.cs",
-              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\UserCourseController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\UserCourseController.cs",
-              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\UserCourseController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\UserCourseController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T13:44:52.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LearningController.cs",
-              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\LearningController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\LearningController.cs",
-              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\LearningController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\LearningController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:51:12.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\AuthController.cs",
@@ -198,12 +220,11 @@
               "RelativeToolTip": "WebApi\\Controllers\\AuthController.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAgwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:48:40.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:48:40.455Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "WebApi\\Services\\IUserService.cs",
@@ -211,12 +232,11 @@
               "RelativeToolTip": "WebApi\\Services\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:45:57.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:45:57.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "OperationResult.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Models\\OperationResult.cs",
               "RelativeDocumentMoniker": "WebApi\\Models\\OperationResult.cs",
@@ -224,12 +244,11 @@
               "RelativeToolTip": "WebApi\\Models\\OperationResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T14:28:39.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T14:28:39.255Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Models\\ApiResponse.cs",
               "RelativeDocumentMoniker": "WebApi\\Models\\ApiResponse.cs",
@@ -237,25 +256,11 @@
               "RelativeToolTip": "WebApi\\Models\\ApiResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T13:37:50.991Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T13:37:50.991Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "WebApi\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Services\\AuthService.cs",
-              "RelativeToolTip": "WebApi\\Services\\AuthService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:38:32.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UserCourseDto.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Dtos\\UserCourseDto.cs",
               "RelativeDocumentMoniker": "WebApi\\Dtos\\UserCourseDto.cs",
@@ -263,12 +268,11 @@
               "RelativeToolTip": "WebApi\\Dtos\\UserCourseDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T13:07:37.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-21T13:07:37.399Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "UnitCompletionDto.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Dtos\\UnitCompletionDto.cs",
               "RelativeDocumentMoniker": "WebApi\\Dtos\\UnitCompletionDto.cs",
@@ -276,12 +280,11 @@
               "RelativeToolTip": "WebApi\\Dtos\\UnitCompletionDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T11:08:47.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T11:08:47.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Program.cs",
               "RelativeDocumentMoniker": "WebApi\\Program.cs",
@@ -289,12 +292,11 @@
               "RelativeToolTip": "WebApi\\Program.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACAAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T20:13:39.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-10T20:13:39.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Dtos\\RegisterDto.cs",
               "RelativeDocumentMoniker": "WebApi\\Dtos\\RegisterDto.cs",
@@ -306,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.json",
@@ -318,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\dyako\\AppData\\Local\\SourceServer\\ba41425476c2038a9d3f24c833852e8615435831c7b4614735151d21a3907028\\WebApi\\WebApi\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\ba41425476c2038a9d3f24c833852e8615435831c7b4614735151d21a3907028\\WebApi\\WebApi\\Program.cs",
@@ -330,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\appsettings.Development.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.Development.json",
@@ -339,18 +341,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-29T18:16:53.378Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "WebApi\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\WebApi\\WebApi\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "WebApi\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAswB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T13:15:53.543Z"
             },
             {
               "$type": "Document",

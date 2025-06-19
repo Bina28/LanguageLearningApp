@@ -21,7 +21,7 @@ export default function EditUserForm({ id, fullName, email, onUpdate, onCancel }
   return (
 <div className="edit-user-container">
   <form onSubmit={handleSubmit} className="edit-user-form">
-    <h2>Edit Profile</h2>
+    <h2 className="edit-form-title">Edit Profile</h2>
     
     <div className="form-group">
       <label htmlFor="fullName">Full Name</label>

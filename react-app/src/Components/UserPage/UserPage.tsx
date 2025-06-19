@@ -87,7 +87,7 @@ export default function UserPage() {
         />
       )}
       {!editing && (
-        <div className="user-container">
+        <section className="user-page-section">
           <motion.div
             className="user-card"
             initial={{ opacity: 0, y: 50 }}
@@ -98,7 +98,7 @@ export default function UserPage() {
             <h2 className="user-name">Welcome, {user.fullName}!</h2>
             <p className="user-email">Email: {user.email}</p>
 
-            <p style={{ color: "white" }}>Completed Units: {completedUnits}</p>
+            <p className="completed-units">Completed Units: {completedUnits}</p>
 
             <div className="progress-bar-container">
               <motion.div
@@ -111,10 +111,10 @@ export default function UserPage() {
             </div>
             <div className="user-buttons">
               <button onClick={() => setEditing(true)}>Update profile</button>
-              <button onClick={goToCourses}>See My Courses</button>
+              <button onClick={goToCourses}>My Courses</button>
             </div>
           </motion.div>
-        </div>
+        </section>
       )}
     </>
   );

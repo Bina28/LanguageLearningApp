@@ -4,7 +4,8 @@ import "./Home.css";
 
 export default function Home() {
   return (
-    <div className="home-container">
+    <section className="hero-section">
+
       <motion.h1 
         initial={{ opacity: 0, y: -50 }} 
         animate={{ opacity: 1, y: 0 }} 
@@ -28,8 +29,9 @@ export default function Home() {
         transition={{ delay: 1, duration: 1 }}
       >
         <Link to="/courses" className="btn">Explore Courses</Link>
-        <Link to="/signup" className="btn btn-alt">Sign Up</Link>
+        <Link to="/signup" className="btn btn--alt">Sign Up</Link>
       </motion.div>
-    </div>
+   
+</section>
   );
 }

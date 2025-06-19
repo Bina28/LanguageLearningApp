@@ -52,7 +52,8 @@ export default function Courses() {
   }, [searchQuery, page]);
 
   return (
-    <div className="courses-container">
+    <section className="courses-section">
+        <h2 className="course-title">Available Courses</h2>
       <div className="pagination-search-wrapper">
         <div className="pagination">
           <button onClick={() => setPage(1)} disabled={page === 1}>
@@ -99,7 +100,7 @@ export default function Courses() {
         </div>
       </div>
 
-      <h2 className="course-title">Available Courses</h2>
+    
       <div className="courses-grid">
         {courses.map((course) => {
           const isLocked = course.courseId > completedUnits+1;
@@ -122,6 +123,6 @@ export default function Courses() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

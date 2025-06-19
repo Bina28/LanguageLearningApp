@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-     <main style={{ paddingTop: '100px' }}> 
+     <main style={{ marginTop: '7.6rem' }}> 
         <Outlet /> 
       </main>
     </>

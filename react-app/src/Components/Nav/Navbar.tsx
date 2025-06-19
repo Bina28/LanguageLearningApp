@@ -6,42 +6,63 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("user"));
-  const [authUpdated, setAuthUpdated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("user")
+  );
+  const [authUpdated, setAuthUpdated] = useState(false);
   const logout = useLogout();
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsAuthenticated(!!localStorage.getItem("user"));
-  }); 
+  });
 
   const handleLogout = () => {
     logout();
     localStorage.removeItem("user");
     setIsAuthenticated(false);
-    setAuthUpdated(prev => !prev); 
+    setAuthUpdated((prev) => !prev);
     navigate("/login");
   };
 
   return (
-    <nav className="nav">
-      <Link to="/" className="logo">Logo</Link>
-      <ul>
-        <CustomLink to="/">Home</CustomLink>
-        {isAuthenticated ? (
-          <>
-            <CustomLink to="/courses">Courses</CustomLink>
-            <CustomLink to="/user">User Page</CustomLink>
-            <li onClick={handleLogout} className="logout-button">Log out</li>
-          </>
-        ) : (
-          <>
-            <CustomLink to="/login" onClick={() => setAuthUpdated(prev => !prev)}>Login</CustomLink>
-            <CustomLink to="/signup">Sign Up</CustomLink>
-          </>
-        )}
-      </ul>
-    </nav>
+    <header className="header">
+      <Link to="/" className="logo">
+        Logo
+      </Link>
+      <nav className="main-nav">
+        <ul className="main-nav-list">
+          <li>
+            <CustomLink to="/">Home</CustomLink>
+          </li>
+          {isAuthenticated ? (
+            <>
+              <li>
+                <CustomLink to="/courses">Courses</CustomLink>
+              </li>
+              <li>
+                <CustomLink to="/user">User Page</CustomLink>
+              </li>
+              <li onClick={handleLogout} className="main-nav-link ">Logout</li>
+            </>
+          ) : (
+            <>
+              <li>
+                <CustomLink
+                  to="/login"
+                  onClick={() => setAuthUpdated((prev) => !prev)}
+                >
+                  Login
+                </CustomLink>
+              </li>
+              <li>
+                <CustomLink to="/signup">Sign Up</CustomLink>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </header>
   );
 }
 
@@ -50,14 +71,19 @@ interface CustomLinkProps {
   children: React.ReactNode;
   onClick?: () => void;
 }
-
 function CustomLink({ to, children, onClick }: CustomLinkProps) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <li className={isActive ? "active" : ""} onClick={onClick}>
-      <Link to={to}>{children}</Link>
+    <li>
+      <Link
+        to={to}
+        onClick={onClick}
+        className={`main-nav-link ${isActive ? "active" : ""}`}
+      >
+        {children}
+      </Link>
     </li>
   );
 }
