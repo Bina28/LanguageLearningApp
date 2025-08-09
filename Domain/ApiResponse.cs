@@ -1,4 +1,5 @@
-﻿namespace WebApi.Models;
+﻿
+namespace Domain;
 
 public class ApiResponse
 {

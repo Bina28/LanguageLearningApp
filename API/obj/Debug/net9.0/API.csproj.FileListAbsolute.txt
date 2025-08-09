@@ -158,3 +158,10 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Api\obj\Deb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Api\obj\Debug\net9.0\API.pdb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Api\obj\Debug\net9.0\API.genruntimeconfig.cache
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Api\obj\Debug\net9.0\ref\API.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\MediatR.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\MediatR.Contracts.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

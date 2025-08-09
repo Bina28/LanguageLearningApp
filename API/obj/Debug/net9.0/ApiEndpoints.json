@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[WebApi.Models.Course, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Course, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -21,8 +21,8 @@
   },
   {
     "ContainingType": "API.Controllers.CoursesController",
-    "Method": "GetCourseDetail",
-    "RelativePath": "api/Courses/{id}",
+    "Method": "GetCards",
+    "RelativePath": "api/Courses/cards/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -35,7 +35,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "WebApi.Models.Course",
+        "Type": "System.Collections.Generic.List\u00601[[Application.Dtos.CardsDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

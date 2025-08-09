@@ -1,4 +1,4 @@
-﻿namespace WebApi.Models;
+﻿namespace Domain;
 
 public class OperationResult
 {

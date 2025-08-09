@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApi.Models;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Persistence;
 

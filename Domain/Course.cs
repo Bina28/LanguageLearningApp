@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Models;
+
+namespace Domain;
 
 public class Course
 {

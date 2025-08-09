@@ -1,19 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApi.Models;
+namespace Domain;
+
 
 public class UserCourse
 {
-	public string Id { get; set; } = Guid.NewGuid().ToString();
-	public int CourseId { get; set; } 
-	public DateTime? LastCompletedDay { get; set; } 
-	public int Attempts { get; set; }  
-	public bool IsCompleted { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public int CourseId { get; set; }
+    public DateTime? LastCompletedDay { get; set; }
+    public int Attempts { get; set; }
+    public bool IsCompleted { get; set; }
 
-	[ForeignKey("Id")]
-	public User User { get; set; }
+    [ForeignKey("Id")]
+    public User User { get; set; }
 
-	[ForeignKey("CourseId")]
-	public Course Course { get; set; }
+    [ForeignKey("CourseId")]
+    public Course Course { get; set; }
 }
