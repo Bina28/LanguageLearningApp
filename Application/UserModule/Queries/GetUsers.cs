@@ -7,10 +7,8 @@ namespace Application.UserModule.Queries;
 
 public class GetUsers
 {
-    public class Query: IRequest<List<User>>
-    {
-       
-    }
+    public class Query : IRequest<List<User>> { }
+    
 
     public class Handler(AppDbContext context) : IRequestHandler<Query, List<User>>
     {

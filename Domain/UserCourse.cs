@@ -12,8 +12,8 @@ public class UserCourse
     public bool IsCompleted { get; set; }
 
     [ForeignKey("Id")]
-    public User User { get; set; }
+    public required User User { get; set; }
 
     [ForeignKey("CourseId")]
-    public Course Course { get; set; }
+    public required Course Course { get; set; }
 }

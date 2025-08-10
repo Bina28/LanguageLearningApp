@@ -12,12 +12,12 @@ public class CourseCard
 	public int CourseId { get; set; } // Foreign Key
 
 	[Required]
-	public string EnglishText { get; set; } 
+	public required string EnglishText { get; set; } 
 
 	[Required]
-	public string NorwegianText { get; set; } 
+	public required string NorwegianText { get; set; } 
 
 	// Navigation Property
 	[ForeignKey("CourseId")]
-	public Course Course { get; set; }
+	public required Course Course { get; set; }
 }

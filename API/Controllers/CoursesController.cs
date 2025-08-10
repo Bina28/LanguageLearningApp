@@ -2,26 +2,24 @@
 using Application.LearningModule.Commands;
 using Application.LearningModule.Queries;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Persistence;
 
 
 namespace API.Controllers;
 
-public class CoursesController(AppDbContext context, IMediator mediator) : BaseApiController
+public class CoursesController : BaseApiController
 {
     [HttpGet]
     public async Task<ActionResult<List<Course>>> GetCourses()
     {
-        return await mediator.Send(new GetCourses.Query());
+        return await Mediator.Send(new GetCourses.Query());
     }
 
 
     [HttpGet("cards/{id}")]
     public async Task<ActionResult<List<CardsDto>>> GetCards(int id)
     {
-        return await mediator.Send(new GetCards.Query { Id = id });
+        return await Mediator.Send(new GetCards.Query { Id = id });
     }
     public async Task<ActionResult<bool>> CompleteUnit([FromBody] UnitCompletionDto request)
     {
@@ -31,20 +29,20 @@ public class CoursesController(AppDbContext context, IMediator mediator) : BaseA
             CorrectAnswers = request.CorrectAnswers
         };
 
-        return await mediator.Send(command);
+        return await Mediator.Send(command);
     }
 
 
     [HttpGet("progress/{userId}")]
-    public async Task<ActionResult<int>> GetCompletedUnits(int userId)
+    public async Task<ActionResult<string>> GetCompletedUnits(string userId)
     {
-        return await mediator.Send(new GetCompletedUnits.Query { UserId = userId });
+        return await Mediator.Send(new GetCompletedUnits.Query { UserId = userId });
     }
 
     [HttpGet("search")]
     public async Task<ActionResult<List<Course>>> SearchCourses(string? searchQuery)
     {
-        var courses = await mediator.Send(new SearchCourses.Query { SearchQuery = searchQuery });
+        var courses = await Mediator.Send(new SearchCourses.Query { SearchQuery = searchQuery });
 
         return Ok(courses);
     }
@@ -52,9 +50,9 @@ public class CoursesController(AppDbContext context, IMediator mediator) : BaseA
     [HttpPost]
     public async Task<IActionResult> AddOrUpdateUserCourse([FromBody] AddOrUpdateUserCourse command)
     {
-        await mediator.Send(command);
+        await Mediator.Send(command);
         return NoContent();
     }
 
- 
+
 }

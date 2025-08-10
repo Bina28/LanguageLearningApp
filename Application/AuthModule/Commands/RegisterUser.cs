@@ -1,4 +1,5 @@
 ﻿using Application.Dtos;
+using AutoMapper;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -13,22 +14,16 @@ public class RegisterUser
         public required RegisterDto Dto { get; set; }
     }
 
-    public class Handler(AppDbContext context) : IRequestHandler<Command, User>
+    public class Handler(AppDbContext context, IMapper mapper) : IRequestHandler<Command, User>
     {
         public async Task<User> Handle(Command request, CancellationToken cancellationToken)
         {
 
-            if (await context.Users.AnyAsync(u => u.Email == request.Dto.Email, cancellationToken: cancellationToken))
+            if (await context.Users.AnyAsync(u => u.Email == request.Dto.Email, cancellationToken))
                 return null;
 
 
-            var user = new User
-            {
-                FullName = request.Dto.FullName,
-                Email = request.Dto.Email,
-                PasswordHash = HashPassword(request.Dto.Password),
-                LastLoginDate = DateTime.Now
-            };
+            var user = mapper.Map<User>(request.Dto);
 
 
             context.Users.Add(user);
@@ -40,5 +35,5 @@ public class RegisterUser
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
     }
-    }
+}
 

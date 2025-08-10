@@ -9,10 +9,10 @@ public class Course
 	public int CourseId { get; set; }
 
 	[Required]
-	public string Title { get; set; } 
+	public required string Title { get; set; } 
 
 	[Required]
-	public string Description { get; set; } 
+	public required string Description { get; set; } 
 
 
 	public List<CourseCard> Cards { get; set; } = new();

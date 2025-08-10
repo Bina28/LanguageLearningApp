@@ -5,17 +5,19 @@ namespace Application.LearningModule.Queries;
 
 public class GetCompletedUnits
 {
-    public class Query : IRequest<int>
+    public class Query : IRequest<string>
     {
-        public int UserId { get; set; }
+        public required string UserId { get; set; }
     }
-    public class Handler(AppDbContext context) : IRequestHandler<Query, int>
+    public class Handler(AppDbContext context) : IRequestHandler<Query, string>
     {
         
-        public async Task<int> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<string> Handle(Query request, CancellationToken cancellationToken)
         {
             var user = await context.Users.FindAsync([request.UserId], cancellationToken);
-            return user?.CompletedUnits ?? 0;
+         return user != null
+            ? user.CompletedUnits.ToString()
+            : string.Empty;
         }
     }
 }
