@@ -165,3 +165,4 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Deb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\BCrypt.Net-Next.dll

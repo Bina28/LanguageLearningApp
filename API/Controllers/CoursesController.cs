@@ -45,7 +45,7 @@ public class CoursesController(AppDbContext context, IMediator mediator) : BaseA
     public async Task<ActionResult<List<Course>>> SearchCourses(string? searchQuery)
     {
         var courses = await mediator.Send(new SearchCourses.Query { SearchQuery = searchQuery });
-        
+
         return Ok(courses);
     }
 
@@ -55,4 +55,6 @@ public class CoursesController(AppDbContext context, IMediator mediator) : BaseA
         await mediator.Send(command);
         return NoContent();
     }
+
+ 
 }

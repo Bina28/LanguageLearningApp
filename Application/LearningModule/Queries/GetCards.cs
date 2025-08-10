@@ -9,7 +9,6 @@ public class GetCards
 {
     public class Query : IRequest<List<CardsDto>>
     {
-
         public required int Id { get; set; }
     }
 

@@ -7,7 +7,7 @@ namespace Application.LearningModule.Commands;
 
 public class AddOrUpdateUserCourse: IRequest<Unit>
 {
-    public string UserId { get; set; }
+    public required string UserId { get; set; }
     public int CourseId { get; set; }
     public bool IsCompleted { get; set; }
 
