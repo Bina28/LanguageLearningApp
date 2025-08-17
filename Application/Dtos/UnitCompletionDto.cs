@@ -2,6 +2,6 @@
 
 public class UnitCompletionDto
 {
-    public int Id { get; set; }
+    public  required string Id { get; set; }
     public int CorrectAnswers { get; set; }
 }

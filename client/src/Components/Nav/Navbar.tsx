@@ -1,27 +1,14 @@
 import React from "react";
-import { Link, useResolvedPath, useMatch } from "react-router-dom";
+import { Link, useResolvedPath, useMatch, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import { useLogout } from "../LoginSignup/Logout";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useUserContext } from "../../lib/hooks/UserContext";
 
 export default function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem("user")
-  );
-  const [, setAuthUpdated] = useState(false);
-  const logout = useLogout();
+  const { user, logout } = useUserContext();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem("user"));
-  });
 
   const handleLogout = () => {
     logout();
-    localStorage.removeItem("user");
-    setIsAuthenticated(false);
-    setAuthUpdated((prev) => !prev);
     navigate("/login");
   };
 
@@ -32,32 +19,19 @@ export default function Navbar() {
       </Link>
       <nav className="main-nav">
         <ul className="main-nav-list">
-          <li>
-            <CustomLink to="/">Home</CustomLink>
-          </li>
-          {isAuthenticated ? (
+          <CustomLink to="/">Home</CustomLink>
+          {user ? (
             <>
-              <li>
-                <CustomLink to="/courses">Courses</CustomLink>
+              <CustomLink to="/courses">Courses</CustomLink>
+              <CustomLink to={`/user/${user.id}`}>User Page</CustomLink>
+              <li onClick={handleLogout} className="main-nav-link">
+                Logout
               </li>
-              <li>
-                <CustomLink to="/user">User Page</CustomLink>
-              </li>
-              <li onClick={handleLogout} className="main-nav-link ">Logout</li>
             </>
           ) : (
             <>
-              <li>
-                <CustomLink
-                  to="/login"
-                  onClick={() => setAuthUpdated((prev) => !prev)}
-                >
-                  Login
-                </CustomLink>
-              </li>
-              <li>
-                <CustomLink to="/signup">Sign Up</CustomLink>
-              </li>
+              <CustomLink to="/login">Login</CustomLink>
+              <CustomLink to="/signup">Sign Up</CustomLink>
             </>
           )}
         </ul>

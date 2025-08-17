@@ -10,9 +10,9 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         CreateMap<RegisterDto, User>()
-            .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => BCrypt.Net.BCrypt.HashPassword(src.Password)))
-            .ForMember(dest => dest.LastLoginDate, opt => opt.MapFrom(_ => DateTime.Now))
-            .ForMember(dest => dest.CompletedUnits, opt => opt.MapFrom(_ => 0));
+           .ForMember(dest => dest.PasswordHash, opt => opt.Ignore()) 
+            .ForMember(dest => dest.LastLoginDate, opt => opt.Ignore())
+            .ForMember(dest => dest.CompletedUnits, opt => opt.Ignore());
 
         CreateMap<AddOrUpdateUserCourse, UserCourse>()
            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId))

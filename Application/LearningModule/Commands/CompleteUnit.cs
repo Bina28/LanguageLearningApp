@@ -7,7 +7,7 @@ public class CompleteUnit
 {
     public class Command : IRequest<bool>
     {
-        public required int UserId { get; set; }
+        public required string UserId { get; set; }
         public required int CorrectAnswers { get; set; }
     }
 

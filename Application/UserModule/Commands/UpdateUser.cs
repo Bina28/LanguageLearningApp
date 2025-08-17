@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Application.Dtos;
+using Domain;
 using MediatR;
 using Persistence;
 
@@ -8,16 +9,20 @@ public class UpdateUser {
     
 public class Command: IRequest
 {
-        public required User User { get; set; }
+        public required UserUpdateDto User { get; set; }
     }
 
     public class Handler(AppDbContext context) : IRequestHandler<Command>
     {
-        public  async Task Handle(Command request, CancellationToken cancellationToken)
+        public async Task Handle(Command request, CancellationToken cancellationToken)
         {
-            context.Users.Update(request.User);
+            var user = await context.Users.FindAsync([request.User.Id], cancellationToken) ?? throw new Exception("User not found");
+      user.FullName = request.User.FullName;
+            user.Email = request.User.Email;
+           
+
+            context.Users.Update(user);
             await context.SaveChangesAsync(cancellationToken);
-            
         }
     }
 }

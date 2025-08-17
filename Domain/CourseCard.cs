@@ -19,5 +19,5 @@ public class CourseCard
 
 	// Navigation Property
 	[ForeignKey("CourseId")]
-	public required Course Course { get; set; }
+	public  Course Course { get; set; }
 }

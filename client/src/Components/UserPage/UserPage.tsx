@@ -1,90 +1,39 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useUserProgress } from "../UserProgressContext";
 import "./UserPage.css";
 import EditUserForm from "../EditUserForm/EditUserForm";
-import agent from "../../lib/api/agent";
-
-interface User {
-  id: number;
-  email: string;
-  fullName: string;
-}
+import { useUser } from "../../lib/hooks/useUser";
+import { useState } from "react";
+import { useUserProgress } from "../../lib/hooks/useUserProgress";
 
 export default function UserPage() {
-  const [user, setUser] = useState<User | null>(null);
+  const { id } = useParams();
+  const { user, isLoadingUser } = useUser(id);
+  const { data: progressData, isLoading: isLoadingProgress } =
+    useUserProgress(id);
   const navigate = useNavigate();
-  const { completedUnits, refreshProgress } = useUserProgress();
+
   const [editing, setEditing] = useState(false);
 
-  useEffect(() => {
-    const userData = localStorage.getItem("user");
-
-    if (!userData) {
-      navigate("/login");
-      return;
-    }
-
-    try {
-      const parsedUser: User = JSON.parse(userData);
-
-      const fetchProfile = async () => {
-        try {
-          const response = await agent.get<User>(
-            `/api/auth/profile/${parsedUser.id}`
-          );
-
-          if (response.status === 200) {
-            setUser(response.data);
-            refreshProgress();
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
-      };
-
-      fetchProfile();
-    } catch (error) {
-      console.log(error);
-      navigate("/login");
-    }
-  });
-
-  const handleUpdate = async (updatedUser: User) => {
-    try {
-      await agent.put(`/api/user/update`, updatedUser);
-
-      setUser(updatedUser);
-      setEditing(false);
-    } catch (error) {
-      console.error("Update failed", error);
-      alert("Kunne ikke oppdatere profil. Prøv igjen senere.");
-    }
-  };
-
   const goToCourses = () => {
-    if (!user) {
-      console.error("User is null, cannot navigate to courses.");
-      return;
+    if (user) {
+      navigate(`/usercourses/${id}`);
     }
-    navigate("/usercourses", { state: { id: user.id } });
   };
 
-  if (!user) return <p>Loading user data...</p>;
+  if (isLoadingUser || isLoadingProgress) return <p>Loading user data...</p>;
+  if (!user) return <p>User not found</p>;
 
   return (
     <>
-      {editing && (
+      {editing && user ? (
         <EditUserForm
-          id={user.id}
-          fullName={user.fullName}
-          email={user.email}
-          onUpdate={handleUpdate}
+          id={user?.id ?? ""}
+          fullName={user.fullName ?? ""}
+          email={user.email ?? ""}
           onCancel={() => setEditing(false)}
         />
-      )}
-      {!editing && (
+      ) : (
         <section className="user-page-section">
           <motion.div
             className="user-card"
@@ -96,14 +45,20 @@ export default function UserPage() {
             <h2 className="user-name">Welcome, {user.fullName}!</h2>
             <p className="user-email">Email: {user.email}</p>
 
-            <p className="completed-units">Completed Units: {completedUnits}</p>
+            <p className="completed-units">
+              Completed Units: {progressData?.completedUnits ?? 0}
+            </p>
 
             <div className="progress-bar-container">
               <motion.div
                 className="progress-bar"
-                style={{ width: `${completedUnits * 10}%` }}
+                style={{
+                  width: `${(progressData?.completedUnits ?? 0) * 10}%`,
+                }}
                 initial={{ width: 0 }}
-                animate={{ width: `${completedUnits * 10}%` }}
+                animate={{
+                  width: `${(progressData?.completedUnits ?? 0) * 10}%`,
+                }}
                 transition={{ duration: 0.8 }}
               />
             </div>

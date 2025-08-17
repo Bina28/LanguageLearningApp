@@ -1,60 +1,44 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import personIcon from "../Assets/person.png";  
-import emailIcon from "../Assets/email.png";    
-import passwordIcon from "../Assets/password.png";  
+import personIcon from "../Assets/person.png";
+import emailIcon from "../Assets/email.png";
+import passwordIcon from "../Assets/password.png";
 import "./LoginSignup.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import { useForm } from "react-hook-form";
+import { useUser } from "../../lib/hooks/useUser";
+import { useUserContext } from "../../lib/hooks/UserContext";
 
-interface User {
-  id: number;
+type FormData = {
+  name: string;
   email: string;
-  fullName: string;
-}
+  password: string;
+  confirmPassword: string;
+};
 
 export default function SignUp() {
-    const [name, setName] = useState<string>("");  
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const { register, handleSubmit, watch } = useForm<FormData>();
+  const createUser = useUser();
+  const navigate = useNavigate();
+  const password = watch("password", "");
+  const { setUser } = useUserContext();
 
-    const navigate = useNavigate();
-  
-    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>):Promise<void> => {
-      e.preventDefault();
-      
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
+  const onSubmit = (data: FormData) => {
+    createUser.createUser.mutate(
+      {
+        fullName: data.name,
+        email: data.email,
+        password: data.password,
+      },
+      {
+        onSuccess: async (id) => {
+          const userObj = { id };
+          setUser(userObj);
+          localStorage.setItem("user", JSON.stringify(userObj)); 
+          navigate(`/user/${id}`);
+        },
       }
-  
-   const requestData = { FullName: name, Email: email, Password: password };
-  
-      try {
-        console.log("Sending Sign Up request:", requestData);
-        const apiUrl = process.env.REACT_APP_API_URL;
-        const response = await axios.post<User>(`${apiUrl}/api/auth/register`, requestData, {
-          headers: { "Content-Type": "application/json" },
-        });
-        const { id, fullName, email } = response.data;
-
-        // Save the user data to localStorage
-        localStorage.setItem("user", JSON.stringify({ id, fullName, email }));
-    
-         
-          navigate("/user");
-          
-        console.log("Registration Success:", response.data);
-        alert("Sign-up successful!");
-      
-      } catch (error) {
-        console.error("Error:", error instanceof Error ? error.message : "Unknown error");
-        alert(`An error occurred:  ${error instanceof Error ? error.message : "Unknown error"}`);
-      }
-    };
-  
+    );
+  };
 
   return (
     <div className="container">
@@ -62,45 +46,41 @@ export default function SignUp() {
         <h2 className="text">Sign Up</h2>
         <div className="underline"></div>
 
-        <form onSubmit={handleSubmit} className="inputs">
+        <form onSubmit={handleSubmit(onSubmit)} className="inputs">
           <div className="input">
-            <img src={personIcon} alt="Name" className="icon" /> 
+            <img src={personIcon} alt="Name" className="icon" />
             <input
               type="text"
               placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
+              {...register("name", { required: true })}
             />
           </div>
           <div className="input">
-            <img src={emailIcon} alt="Email" className="icon" /> 
+            <img src={emailIcon} alt="Email" className="icon" />
             <input
-              type="email"
+              type="text"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              {...register("email", { required: true })}
             />
           </div>
           <div className="input">
-            <img src={passwordIcon} alt="Password" className="icon" /> 
+            <img src={passwordIcon} alt="Password" className="icon" />
             <input
               type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+              placeholder="Pasword"
+              {...register("password", { required: true })}
             />
           </div>
           <div className="input">
-            <img src={passwordIcon} alt="Confirm Password" className="icon" /> 
+            <img src={passwordIcon} alt="Confirm Password" className="icon" />
             <input
               type="password"
+              {...register("confirmPassword", {
+                required: "Confirm your password",
+                validate: (value) =>
+                  value === password || "Passwords do not match",
+              })}
               placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
             />
           </div>
 
@@ -109,14 +89,12 @@ export default function SignUp() {
           </div>
 
           <div className="submit-container">
-            <button type="submit" className="submit">Sign Up</button>
+            <button type="submit" className="submit">
+              Sign Up
+            </button>
           </div>
         </form>
       </div>
     </div>
   );
-};
-
-
-
-
+}

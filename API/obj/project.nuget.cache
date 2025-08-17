@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sL2zq2qUPY0=",
+  "dgSpecHash": "0L7hmktp8Nc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyako\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\dyako\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

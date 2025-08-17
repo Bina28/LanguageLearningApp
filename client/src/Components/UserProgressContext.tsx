@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import agent from "../lib/api/agent";
 
 interface UserProgressContextType {
   completedUnits: number;
@@ -18,9 +18,9 @@ export const UserProgressProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
       const user = JSON.parse(userString);
       const userId = user.id;
-      const apiUrl = process.env.REACT_APP_API_URL;
-      const response = await axios.get<{ completedUnits: number }>(
-        `${apiUrl}/api/learning/progress/${userId}`
+  
+      const response = await agent.get<{ completedUnits: number }>(
+        `/courses/progress/${userId}`
       );
 
       setCompletedUnits(response.data.completedUnits);
@@ -40,6 +40,7 @@ export const UserProgressProvider: React.FC<{ children: React.ReactNode }> = ({ 
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useUserProgress = () => {
   const context = useContext(UserProgressContext);
   if (!context) {

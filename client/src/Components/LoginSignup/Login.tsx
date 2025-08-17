@@ -33,7 +33,7 @@ export default function Login() {
 
     try {
 
-      const response = await agent.post<User>(`/api/auth/login`, {
+      const response = await agent.post<User>(`/auth/login`, {
         email,
         password,
       });

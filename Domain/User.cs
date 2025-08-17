@@ -5,7 +5,7 @@ namespace Domain;
 
 public class User
 {
-	public string Id { get; set; } = Guid.NewGuid().ToString();
+	public required string Id { get; set; } 
 
 	[Required, MaxLength(100)]
 	public required string FullName { get; set; }
@@ -19,5 +19,5 @@ public class User
 	public int CompletedUnits { get; set; }
 
 	public DateTime? LastLoginDate { get; set; }
-	public List<UserCourse> UserCourses { get; set; } = new();
+	public List<UserCourse> UserCourses { get; set; } = [];
 }

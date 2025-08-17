@@ -1,45 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Courses.css";
-import { useUserProgress } from "../UserProgressContext";
-import agent from "../../lib/api/agent";
-
+import { useCourses } from "../../lib/hooks/useCourses";
+import { useUserProgress } from "../../lib/hooks/useUserProgress";
+import { useUserContext } from "../../lib/hooks/UserContext";
 
 export default function Courses() {
-  const { completedUnits } = useUserProgress();
-  const [courses, setCourses] = useState<Courses[]>([]);
+  const { user } = useUserContext();
+  const userId = user?.id;
+  const { data: progressData } = useUserProgress(userId);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const pageSize = 10;
-  const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const { data, isLoading } = useCourses(page, pageSize, searchQuery);
 
-  const fetchCourses = async () => {
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const endpoint = searchQuery
-        ? `${apiUrl}/api/learning/search`
-        : `${apiUrl}/api/learning/courses`;
-
-      const response = await agent.get(endpoint, {
-        params: searchQuery ? { searchQuery } : { pageIndex: page, pageSize },
-      });
-
-      console.log("API Response:", response.data);
-      setCourses(response.data.data.items || response.data.data);
-      setTotalPages(response.data.data.totalPages || 1);
-    } catch (error) {
-      console.error("Error fetching courses: ", error);
-    }
-  };
-
-  useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      fetchCourses();
-    }, 300);
-
-    return () => clearTimeout(delayDebounceFn);
-  }, [searchQuery, page]);
+  if (isLoading) return <p>Loading...</p>;
+  const totalPages = data?.totalPages || 1;
+  console.log(data);
 
   return (
     <section className="courses-section">
@@ -91,8 +69,9 @@ export default function Courses() {
       </div>
 
       <div className="courses-grid">
-        {courses.map((course) => {
-          const isLocked = course.courseId > completedUnits + 1;
+        {data?.items.map((course: Course) => {
+          const isLocked =
+            course.courseId > (progressData?.completedUnits ?? 0) + 1;
 
           return (
             <div

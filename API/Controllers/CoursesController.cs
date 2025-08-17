@@ -21,6 +21,8 @@ public class CoursesController : BaseApiController
     {
         return await Mediator.Send(new GetCards.Query { Id = id });
     }
+    
+    [HttpPost("completeunit")]
     public async Task<ActionResult<bool>> CompleteUnit([FromBody] UnitCompletionDto request)
     {
         var command = new CompleteUnit.Command
@@ -47,7 +49,7 @@ public class CoursesController : BaseApiController
         return Ok(courses);
     }
 
-    [HttpPost]
+    [HttpPut]
     public async Task<IActionResult> AddOrUpdateUserCourse([FromBody] AddOrUpdateUserCourse command)
     {
         await Mediator.Send(command);

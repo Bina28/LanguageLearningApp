@@ -14,10 +14,10 @@ public class GetUserProfile
 
     public class Handler(AppDbContext context, IMapper mapper) : IRequestHandler<Query, UserProfileDto>
     {
-        public async Task<UserProfileDto?> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<UserProfileDto> Handle(Query request, CancellationToken cancellationToken)
         {
             var user = await context.Users.FindAsync([request.UserId], cancellationToken);
-            return user == null ? null : mapper.Map<UserProfileDto>(user);
+            return  mapper.Map<UserProfileDto>(user);
         }
     }
 }

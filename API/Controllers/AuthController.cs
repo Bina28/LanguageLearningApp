@@ -1,6 +1,7 @@
 ﻿using Application.AuthModule.Commands;
 using Application.Dtos;
 using Application.UserModule.Queries;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -8,10 +9,10 @@ namespace API.Controllers;
 public class AuthController : BaseApiController
 {
     [HttpPost("register")]
-    public async Task<ActionResult> RegisterUser(RegisterDto registerDto)
+    public async Task<ActionResult<string>> RegisterUser(RegisterDto registerDto)
     {
-        await Mediator.Send(new RegisterUser.Command { Dto = registerDto });
-        return Ok();
+       return  await Mediator.Send(new RegisterUser.Command { Dto = registerDto });
+          
 
     }
 
