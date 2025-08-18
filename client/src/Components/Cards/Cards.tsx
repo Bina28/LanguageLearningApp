@@ -48,22 +48,20 @@ export default function Cards() {
         if (!userString) return;
 
         const user = JSON.parse(userString);
-        const userId = user.id; // string (GUID)
+        const userId = user.id;
 
-        // Complete unit if passed
         if (isCompleted) {
           await completeUnit({
-            Id: userId, // også string, backend må akseptere string
+            Id: userId,
             CorrectAnswers: correctAnswers + (isCorrect ? 1 : 0),
           });
         }
-        // Update progress (string ID)
+
         await updateProgress.mutateAsync({
-          userid:userId,
+          userid: userId,
           courseId: Number(courseId),
           isCompleted,
         });
-
 
         setShowResult(true);
       }

@@ -72,21 +72,21 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Forgot Password */
-.forgot-password {
+
+.links {
     margin-top: 10px;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
 }
 
-.forgot-password span {
+.links span {
     color: #00ffff;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
-.forgot-password span:hover {
+.links span:hover {
     text-decoration: underline;
 }
 

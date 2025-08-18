@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Courses.css";
 import { useCourses } from "../../lib/hooks/useCourses";
@@ -14,6 +14,23 @@ export default function Courses() {
   const pageSize = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const { data, isLoading } = useCourses(page, pageSize, searchQuery);
+
+  const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchQuery(searchInput);
+      setPage(1);
+    }, 1000);
+
+    return () => clearTimeout(handler);
+  }, [searchInput]);
 
   if (isLoading) return <p>Loading...</p>;
   const totalPages = data?.totalPages || 1;
@@ -62,8 +79,8 @@ export default function Courses() {
             className="search-input"
             type="text"
             placeholder="Search courses..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
       </div>

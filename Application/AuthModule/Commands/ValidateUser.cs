@@ -8,13 +8,13 @@ namespace Application.AuthModule.Commands;
 
 public class ValidateUser
 {
-    public class Command : IRequest<User?>
+    public class Command : IRequest<string>
     {
         public required LoginDto LoginDto { get; set; }
     }
-    public class Handler(AppDbContext context) : IRequestHandler<Command, User?>
+    public class Handler(AppDbContext context) : IRequestHandler<Command, string>
     {
-        public async Task<User?> Handle(Command request, CancellationToken cancellationToken)
+        public async Task<string?> Handle(Command request, CancellationToken cancellationToken)
         {
             var user = await context.Users
                 .FirstOrDefaultAsync(u => u.Email == request.LoginDto.Email, cancellationToken);
@@ -32,7 +32,7 @@ public class ValidateUser
             context.Users.Update(user);
             await context.SaveChangesAsync(cancellationToken);
 
-            return user;
+            return user.Id;
         }
     }
 }

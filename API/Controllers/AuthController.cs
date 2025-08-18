@@ -23,11 +23,11 @@ public class AuthController : BaseApiController
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
+    public async Task<ActionResult<string>> Login([FromBody] LoginDto loginDto)
     {
-        await Mediator.Send(new ValidateUser.Command { LoginDto = loginDto });
+       return await Mediator.Send(new ValidateUser.Command { LoginDto = loginDto });
 
-        return Ok();
+       
 
     }
 

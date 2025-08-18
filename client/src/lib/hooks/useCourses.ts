@@ -1,22 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import agent from "../api/agent";
 
-// Fetch list of courses (with pagination + search)
+type PaginatedCourses ={
+  items: Course[];
+  totalPages: number;
+}
+
 export const useCourses = (page: number, pageSize: number, searchQuery: string) => {
-  return useQuery({
+  return useQuery<PaginatedCourses>({
     queryKey: ["courses", page, searchQuery],
     queryFn: async () => {
-      const endpoint = searchQuery ? `/courses/search` : `/courses`;
-      const response = await agent.get(endpoint, {
-        params: { pageIndex: page, pageSize, ...(searchQuery && { searchQuery }) },
+      const response = await agent.get("/courses", {
+        params: { page, pageSize, ...(searchQuery && { searchQuery }) },
       });
 
-      // Sjekk om API returnerer Array direkte eller objekt
-      const items = Array.isArray(response.data) ? response.data : response.data.data.items;
-      const totalPages = response.data.totalPages || 1;
+      const items = response.data.items;
+      const totalPages = response.data.totalPages;
 
       return { items, totalPages };
     },
-    staleTime: 500,
+  
   });
 };
