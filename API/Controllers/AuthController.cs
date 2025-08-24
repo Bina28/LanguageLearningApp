@@ -1,33 +1,30 @@
-﻿using Application.AuthModule.Commands;
+﻿
 using Application.Dtos;
+using Application.UserModule.Commands;
 using Application.UserModule.Queries;
-using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 public class AuthController : BaseApiController
 {
-    [HttpPost("register")]
-    public async Task<ActionResult<string>> RegisterUser(RegisterDto registerDto)
+    [HttpPost]
+    public async Task<ActionResult<string>> CreateUser(CreateUserDto createUserDto)
     {
-       return  await Mediator.Send(new RegisterUser.Command { Dto = registerDto });
-          
+        return HandleResult(await Mediator.Send(new CreateUser.Command { CreateUserDto = createUserDto }));
 
     }
 
     [HttpGet("{userId}")]
-    public async Task<ActionResult<UserProfileDto>> GetUser(string userId)
+    public async Task<ActionResult<UserProfileDto>> GetUserProfile(string userId)
     {
-        return await Mediator.Send(new GetUserProfile.Query { UserId = userId });
+        return HandleResult(await Mediator.Send(new GetUserProfile.Query { UserId = userId }));
     }
 
     [HttpPost("login")]
     public async Task<ActionResult<string>> Login([FromBody] LoginDto loginDto)
     {
-       return await Mediator.Send(new ValidateUser.Command { LoginDto = loginDto });
-
-       
+        return HandleResult(await Mediator.Send(new ValidateUser.Command { LoginDto = loginDto }));
 
     }
 

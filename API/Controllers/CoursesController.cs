@@ -1,7 +1,7 @@
 ﻿using Application.Dtos;
 using Application.LearningModule.Commands;
 using Application.LearningModule.Queries;
-using Domain;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,30 +9,30 @@ namespace API.Controllers;
 
 public class CoursesController : BaseApiController
 {
-  [HttpGet]
-public async Task<ActionResult<PaginatedCoursesDto>> GetCourses(
-    [FromQuery] string? searchQuery,
-    [FromQuery] int page = 1,
-    [FromQuery] int pageSize = 10)
-{
-    var result = await Mediator.Send(new SearchCourses.Query
+    [HttpGet]
+    public async Task<ActionResult<PaginatedCoursesDto>> GetCourses(
+      [FromQuery] string? searchQuery,
+      [FromQuery] int page = 1,
+      [FromQuery] int pageSize = 10)
     {
-        SearchQuery = searchQuery,
-        Page = page,
-        PageSize = pageSize
-    });
+        var result = await Mediator.Send(new SearchCourses.Query
+        {
+            SearchQuery = searchQuery,
+            Page = page,
+            PageSize = pageSize
+        });
 
-    return Ok(result);
-}
+        return Ok(result);
+    }
 
     [HttpGet("cards/{id}")]
     public async Task<ActionResult<List<CardsDto>>> GetCards(int id)
     {
         return await Mediator.Send(new GetCards.Query { Id = id });
     }
-    
+
     [HttpPost("completeunit")]
-    public async Task<ActionResult<bool>> CompleteUnit([FromBody] UnitCompletionDto request)
+    public async Task<ActionResult> CompleteUnit([FromBody] UnitCompletionDto request)
     {
         var command = new CompleteUnit.Command
         {
@@ -40,14 +40,14 @@ public async Task<ActionResult<PaginatedCoursesDto>> GetCourses(
             CorrectAnswers = request.CorrectAnswers
         };
 
-        return await Mediator.Send(command);
+        return HandleResult(await Mediator.Send(command));
     }
 
 
     [HttpGet("progress/{userId}")]
-    public async Task<ActionResult<string>> GetCompletedUnits(string userId)
+    public async Task<ActionResult<int>> GetCompletedUnits(string userId)
     {
-        return await Mediator.Send(new GetCompletedUnits.Query { UserId = userId });
+        return HandleResult(await Mediator.Send(new GetCompletedUnits.Query { UserId = userId }));
     }
 
     // [HttpGet("search")]

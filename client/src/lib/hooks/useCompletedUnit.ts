@@ -11,7 +11,7 @@ export const useCompletedUnit = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: CompleteUnitRequest) => {
-      const response = await agent.post<boolean>("/courses/completeunit", data);
+      const response = await agent.post("/courses/completeunit", data);
       return response.data;
     },
     onSuccess: () => {

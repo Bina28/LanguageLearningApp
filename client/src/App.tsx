@@ -10,6 +10,7 @@ import UserCourses from "./Components/UserCourses/UserCourses";
 import Login from "./Components/LoginSignup/Login";
 import SignUp from "./Components/LoginSignup/SignUp";
 import { UserProvider } from "./lib/hooks/UserContext";
+import NotFound from "./Components/Errors/NotFound";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="courses" element={<Courses />} />
           <Route path="courses/:courseId" element={<Cards />} />
           <Route path="usercourses/:id" element={<UserCourses />} />
-          
+          <Route path="not-found" element={<NotFound />}/>
         </Route>
 
         <Route path="/login" element={<Login />} />

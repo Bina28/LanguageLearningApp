@@ -9,10 +9,10 @@ namespace API.Controllers;
 public class UserController : BaseApiController
 {
     [HttpPut]
-    public async Task<IActionResult> UpdateUser([FromBody] UserUpdateDto user)
+    public async Task<IActionResult> UpdateUser( UserUpdateDto user)
     {
-        await Mediator.Send(new UpdateUser.Command { User = user });
-        return NoContent();
+        return HandleResult(await Mediator.Send(new UpdateUser.Command { User = user }));
+
     }
 
 

@@ -5,16 +5,12 @@ namespace Domain;
 
 public class Course
 {
-	[Key]
 	public int CourseId { get; set; }
 
-	[Required]
 	public required string Title { get; set; } 
 
-	[Required]
 	public required string Description { get; set; } 
 
-
-	public List<CourseCard> Cards { get; set; } = new();
-	public List<UserCourse> UserCourses { get; set; } = new();
+	public List<CourseCard> Cards { get; set; } = [];
+	public List<UserCourse> UserCourses { get; set; } = [];
 }

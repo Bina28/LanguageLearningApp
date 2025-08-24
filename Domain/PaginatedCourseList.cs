@@ -1,18 +1,11 @@
 ﻿
 namespace Domain;
 
-public class PaginatedCourseList<T>
+public class PaginatedCourseList<T>(List<T> items, int pageIndex, int totalPages)
 {
-	public List<T> Items { get; }
-	public int PageIndex { get; }
-	public int TotalPages { get; }
-	public bool HasPreviousPage => PageIndex > 1;
+  public List<T> Items { get; } = items;
+  public int PageIndex { get; } = pageIndex;
+  public int TotalPages { get; } = totalPages;
+  public bool HasPreviousPage => PageIndex > 1;
 	public bool HasNextPage => PageIndex < TotalPages;
-
-	public PaginatedCourseList(List<T> items, int pageIndex, int totalPages)
-	{
-		Items = items;
-		PageIndex = pageIndex;
-		TotalPages = totalPages;
-	}
 }

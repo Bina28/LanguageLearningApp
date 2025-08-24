@@ -169,3 +169,5 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Deb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\bin\Debug\net9.0\package-lock.json
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\bin\Debug\net9.0\package.json
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\bin\Debug\net9.0\FluentValidation.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll

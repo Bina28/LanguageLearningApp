@@ -10,7 +10,7 @@ export default function useLogin() {
   return useMutation({
     mutationFn: async (loginDto: { email: string; password: string }) => {
       const response = await agent.post("/auth/login", loginDto);
-      return response.data; // forventer at backend returnerer { id: string }
+      return response.data; 
     },
     onSuccess: (userId) => {
       if (!userId) throw new Error("Invalid email or password.");

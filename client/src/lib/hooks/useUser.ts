@@ -6,7 +6,7 @@ export const useUser = (id?: string) => {
 
   const createUser = useMutation({
     mutationFn: async (user: User) => {
-      const response = await agent.post("/auth/register", user);
+      const response = await agent.post("/auth", user);
       console.log(response);
       return response.data;
     },
