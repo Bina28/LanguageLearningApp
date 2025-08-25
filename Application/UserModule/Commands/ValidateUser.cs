@@ -22,12 +22,6 @@ public class ValidateUser
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.PasswordHash))
                 return Result<string>.Failure("Invalid email or password", 401);
 
-
-            if (user.LastLoginDate.HasValue && (DateTime.UtcNow - user.LastLoginDate.Value).TotalHours > 24)
-            {
-                return Result<string>.Failure("Session expired. Please log in again.", 403);
-            }
-
             user.LastLoginDate = DateTime.Now;
             context.Users.Update(user);
             await context.SaveChangesAsync(cancellationToken);

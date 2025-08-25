@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { router } from "../../app/router/Routes";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -11,9 +11,6 @@ const sleep = (delay: number) => {
 const agent = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
-
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const navigate = useNavigate();
 
 agent.interceptors.response.use(
   async (response) => {
@@ -44,7 +41,7 @@ agent.interceptors.response.use(
           toast.error("Unauthorized");
           break;
         case 404:
-          navigate("/not-found");
+          router.navigate("/not-found");
           break;
         case 500:
           console.error("Server Error", data);
