@@ -21,7 +21,7 @@ public class UpdateUser
             if (user is null)
                 return Result<Unit>.Failure("User not found", 404);
 
-            user.FullName = request.User.FullName;
+           
             user.Email = request.User.Email;
 
             await context.SaveChangesAsync(cancellationToken);

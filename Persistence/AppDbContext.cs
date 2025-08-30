@@ -1,22 +1,24 @@
 ﻿using Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Persistence;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User>
 {
-	public AppDbContext(DbContextOptions options) : base(options)
+	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 	{
 	}
 
-	public required DbSet<User> Users { get; set; }
+
 	public required DbSet<Course> Courses { get; set; }
 	public required DbSet<CourseCard> CourseCards { get; set; }
 	public required DbSet<UserCourse> UserCourses { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
-	{
+	{ base.OnModelCreating(modelBuilder);
+
 		modelBuilder.Entity<CourseCard>()
 		.HasOne(c => c.Course)
 		.WithMany(c => c.Cards)
@@ -24,7 +26,7 @@ public class AppDbContext : DbContext
 		.OnDelete(DeleteBehavior.Cascade);
 
 		modelBuilder.Entity<UserCourse>()
-	  .HasKey(uc => new { uc.Id, uc.CourseId });
+		.HasKey(uc => new { uc.Id, uc.CourseId });
 
 		modelBuilder.Entity<UserCourse>()
 			.HasOne(uc => uc.User)
@@ -35,7 +37,7 @@ public class AppDbContext : DbContext
 			.HasOne(uc => uc.Course)
 			.WithMany(c => c.UserCourses)
 			.HasForeignKey(uc => uc.CourseId);
-			
+
 
 		modelBuilder.Entity<Course>().HasData(new List<Course>
 		{
@@ -50,20 +52,20 @@ public class AppDbContext : DbContext
 			new Course { CourseId = 9, Title = "Work & Business", Description = "Professional conversations" },
 			new Course { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergency" },
 			new Course { CourseId = 11, Title = "Weather", Description = "Talking about the weather" },
-            new Course { CourseId = 12, Title = "Hobbies & Interests", Description = "Discussing hobbies and free time" },
-            new Course { CourseId = 13, Title = "Health & Medical", Description = "Going to the doctor and describing symptoms" },
-            new Course { CourseId = 14, Title = "At the Hotel", Description = "Checking in, booking, and hotel services" },
-            new Course { CourseId = 15, Title = "Public Transport", Description = "Using buses, trains, and taxis" },
-            new Course { CourseId = 16, Title = "At the Airport", Description = "Common phrases at the airport" },
-            new Course { CourseId = 17, Title = "Making Appointments", Description = "Scheduling and confirming meetings" },
-            new Course { CourseId = 18, Title = "Entertainment", Description = "Movies, music, and leisure activities" },
-            new Course { CourseId = 19, Title = "Technology & Devices", Description = "Talking about gadgets and tech" },
-            new Course { CourseId = 20, Title = "Sports", Description = "Discussing sports and fitness" },
-            new Course { CourseId = 21, Title = "House & Home", Description = "Describing homes and furniture" },
-            new Course { CourseId = 22, Title = "Family & Relationships", Description = "Talking about family members" },
-            new Course { CourseId = 23, Title = "Celebrations & Holidays", Description = "Wishing and talking about traditions" },
-            new Course { CourseId = 24, Title = "Idioms & Expressions", Description = "Learning common idioms" },
-            new Course { CourseId = 25, Title = "Advanced Conversations", Description = "Deep discussions on various topics" }
+						new Course { CourseId = 12, Title = "Hobbies & Interests", Description = "Discussing hobbies and free time" },
+						new Course { CourseId = 13, Title = "Health & Medical", Description = "Going to the doctor and describing symptoms" },
+						new Course { CourseId = 14, Title = "At the Hotel", Description = "Checking in, booking, and hotel services" },
+						new Course { CourseId = 15, Title = "Public Transport", Description = "Using buses, trains, and taxis" },
+						new Course { CourseId = 16, Title = "At the Airport", Description = "Common phrases at the airport" },
+						new Course { CourseId = 17, Title = "Making Appointments", Description = "Scheduling and confirming meetings" },
+						new Course { CourseId = 18, Title = "Entertainment", Description = "Movies, music, and leisure activities" },
+						new Course { CourseId = 19, Title = "Technology & Devices", Description = "Talking about gadgets and tech" },
+						new Course { CourseId = 20, Title = "Sports", Description = "Discussing sports and fitness" },
+						new Course { CourseId = 21, Title = "House & Home", Description = "Describing homes and furniture" },
+						new Course { CourseId = 22, Title = "Family & Relationships", Description = "Talking about family members" },
+						new Course { CourseId = 23, Title = "Celebrations & Holidays", Description = "Wishing and talking about traditions" },
+						new Course { CourseId = 24, Title = "Idioms & Expressions", Description = "Learning common idioms" },
+						new Course { CourseId = 25, Title = "Advanced Conversations", Description = "Deep discussions on various topics" }
 
 
 		});

@@ -10,3 +10,4 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Domain\obj\
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Domain\obj\Debug\net9.0\refint\Domain.dll
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Domain\obj\Debug\net9.0\Domain.pdb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Domain\obj\Debug\net9.0\ref\Domain.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\Domain\obj\Debug\net9.0\Domain.csproj.AssemblyReference.cache
