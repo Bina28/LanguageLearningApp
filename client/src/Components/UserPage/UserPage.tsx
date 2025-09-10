@@ -1,36 +1,34 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./UserPage.css";
 import EditUserForm from "../EditUserForm/EditUserForm";
-import { useUser } from "../../lib/hooks/useUser";
 import { useState } from "react";
 import { useUserProgress } from "../../lib/hooks/useUserProgress";
+import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function UserPage() {
-  const { id } = useParams();
-  const { user, isLoadingUser } = useUser(id);
+ const {currentUser, loadingUserInfo} = useAccount();
   const { data: progressData, isLoading: isLoadingProgress } =
-    useUserProgress(id);
+    useUserProgress(currentUser?.id);
   const navigate = useNavigate();
-
   const [editing, setEditing] = useState(false);
 
   const goToCourses = () => {
-    if (user) {
-      navigate(`/usercourses/${id}`);
+    if (currentUser) {
+      navigate(`/usercourses/${currentUser.id}`);
     }
   };
 
-  if (isLoadingUser || isLoadingProgress) return <p>Loading user data...</p>;
-  if (!user) return <p>User not found</p>;
+  if (loadingUserInfo || isLoadingProgress) return <p>Loading user data...</p>;
+  if (!currentUser) return <p>User not found</p>;
 
   return (
     <>
-      {editing && user ? (
+      {editing && currentUser? (
         <EditUserForm
-          id={user?.id ?? ""}
-          fullName={user.fullName ?? ""}
-          email={user.email ?? ""}
+          id={currentUser?.id ?? ""}
+          displayName={currentUser.displayName ?? ""}
+          email={currentUser.email ?? ""}
           onCancel={() => setEditing(false)}
         />
       ) : (
@@ -42,8 +40,8 @@ export default function UserPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="profile-pic"></div>
-            <h2 className="user-name">Welcome, {user.fullName}!</h2>
-            <p className="user-email">Email: {user.email}</p>
+            <h2 className="user-name">Welcome, {currentUser.displayName}!</h2>
+            <p className="user-email">Email: {currentUser.email}</p>
 
             <p className="completed-units">
               Completed Units: {progressData?.completedUnits ?? 0}

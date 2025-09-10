@@ -1,10 +1,11 @@
 ﻿using Application.Core;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.LearningModule.Queries;
 
-public class GetCompletedUnits
+public class GetLastCompletedCourse
 {
     public class Query : IRequest<Result<int>>
     {
@@ -20,7 +21,13 @@ public class GetCompletedUnits
             if (user == null)
                 return Result<int>.Failure("User not found", 404);
 
-            return Result<int>.Success(user.CompletedUnits);
+     var lastCompletedCourse = await context.UserCourses
+            .Where(uc => uc.UserId == request.UserId)
+            .OrderByDescending(uc => uc.CourseId)
+            .Select(uc => uc.CourseId)
+            .FirstOrDefaultAsync(cancellationToken);
+            
+            return Result<int>.Success(lastCompletedCourse);
         }
     }
 }

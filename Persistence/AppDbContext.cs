@@ -17,7 +17,8 @@ public class AppDbContext : IdentityDbContext<User>
 	public required DbSet<UserCourse> UserCourses { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
-	{ base.OnModelCreating(modelBuilder);
+	{
+		base.OnModelCreating(modelBuilder);
 
 		modelBuilder.Entity<CourseCard>()
 		.HasOne(c => c.Course)
@@ -26,18 +27,20 @@ public class AppDbContext : IdentityDbContext<User>
 		.OnDelete(DeleteBehavior.Cascade);
 
 		modelBuilder.Entity<UserCourse>()
-		.HasKey(uc => new { uc.Id, uc.CourseId });
+				.HasKey(uc => uc.Id);
 
 		modelBuilder.Entity<UserCourse>()
-			.HasOne(uc => uc.User)
-			.WithMany(u => u.UserCourses)
-			.HasForeignKey(uc => uc.Id);
+						 .HasOne(uc => uc.User)
+						 .WithMany(u => u.UserCourses)
+						 .HasForeignKey(uc => uc.UserId) // FK til User.Id
+						 .OnDelete(DeleteBehavior.Cascade);
 
+		// UserCourse -> Course
 		modelBuilder.Entity<UserCourse>()
-			.HasOne(uc => uc.Course)
-			.WithMany(c => c.UserCourses)
-			.HasForeignKey(uc => uc.CourseId);
-
+				.HasOne(uc => uc.Course)
+				.WithMany(c => c.UserCourses)
+				.HasForeignKey(uc => uc.CourseId)
+				.OnDelete(DeleteBehavior.Cascade);
 
 		modelBuilder.Entity<Course>().HasData(new List<Course>
 		{

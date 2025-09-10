@@ -1,43 +1,32 @@
 import "./EditUserForm.css";
-
 import { useForm } from "react-hook-form";
 import { useUpdateUser } from "../../lib/hooks/useUserUpdate";
 
 
-
-type EditUser = {
-  id: string;
-  email: string;
-  fullName: string;
-
-};
-
-type EditUserFormProps = EditUser & {
+type EditUserFormProps = User & {
   onCancel: () => void;
 };
 
 export default function EditUserForm({
   id,
-  fullName,
+  displayName,
   email,
   onCancel,
 }: EditUserFormProps) {
-
-  const { register, handleSubmit } = useForm<EditUser>({
+  const { register, handleSubmit } = useForm<User>({
     defaultValues: {
       id,
-      fullName,
+      displayName,
       email,
     },
   });
 
   const { updateUser } = useUpdateUser();
 
-  const onSubmit = async (data: EditUser) => {
+  const onSubmit = async (data: User) => {
     await updateUser.mutateAsync(data);
     onCancel();
   };
-
 
   return (
     <div className="edit-user-container">
@@ -45,11 +34,11 @@ export default function EditUserForm({
         <h2 className="edit-form-title">Edit Profile</h2>
 
         <div className="form-group">
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="displayName">Full Name</label>
           <input
             type="text"
             placeholder="Full Name"
-            {...register("fullName", { required: true })}
+            {...register("displayName", { required: true })}
           />
         </div>
 

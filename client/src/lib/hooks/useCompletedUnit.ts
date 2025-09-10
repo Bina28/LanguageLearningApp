@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
 
 type CompleteUnitRequest = {
-  Id: string;
+  userId?: string;
   CorrectAnswers: number;
 };
 
@@ -11,7 +11,7 @@ export const useCompletedUnit = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: CompleteUnitRequest) => {
-      const response = await agent.post("/courses/completeunit", data);
+      const response = await agent.post("/courses", data);
       return response.data;
     },
     onSuccess: () => {

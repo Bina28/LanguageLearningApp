@@ -5,12 +5,9 @@ export const useUserProgress = (id?: string) => {
   return useQuery({
     queryKey: ["userProgress", id],
     queryFn: async () => {
-      const response = await agent.get<{ completedUnits: number }>(
-        `/courses/progress/${id}`
-      );
+      const response = await agent.get(`/courses/progress/${id}`);
       return response.data;
     },
-    enabled: !!id, 
+    enabled: !!id,
   });
 };
-

@@ -1,10 +1,11 @@
+import { useAccount } from "../../lib/hooks/useAccount";
 import { useCourse } from "../../lib/hooks/useCourse";
 import "./UserCourses.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function UserCourses() {
-  const { id } = useParams();
-  const { userCourseData, isLoading } = useCourse(id);
+const {currentUser} =useAccount();
+  const { userCourseData, isLoading } = useCourse(currentUser?.id);
 
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function UserCourses() {
           </thead>
           <tbody>
             {userCourseData.map((course) => (
-              <tr key={`${course.courseId}-${id}`}>
+              <tr key={`${course.courseId}-${currentUser?.id}`}>
                 <td>{course.courseTitle}</td>
                 <td>{course.courseDescription}</td>
                 <td>{course.attempts}</td>
@@ -43,7 +44,7 @@ export default function UserCourses() {
       ) : (
         <p className="text-red-500">No user data available.</p>
       )}
-      <button className="back-button" onClick={() => navigate(`/user/${id}`)}>
+      <button className="back-button" onClick={() => navigate(`/user/${currentUser?.id}`)}>
         Go Back
       </button>
     </div>

@@ -3,25 +3,21 @@ import { useNavigate } from "react-router-dom";
 import "./Courses.css";
 import { useCourses } from "../../lib/hooks/useCourses";
 import { useUserProgress } from "../../lib/hooks/useUserProgress";
-import { useUserContext } from "../../lib/hooks/UserContext";
+
+import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function Courses() {
-  const { user } = useUserContext();
-  const userId = user?.id;
+ const {currentUser} = useAccount();
+  const userId = currentUser?.id;
   const { data: progressData } = useUserProgress(userId);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const pageSize = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const { data, isLoading } = useCourses(page, pageSize, searchQuery);
-
   const [searchInput, setSearchInput] = useState("");
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
+
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -34,7 +30,7 @@ export default function Courses() {
 
   if (isLoading) return <p>Loading...</p>;
   const totalPages = data?.totalPages || 1;
-  console.log(data);
+
 
   return (
     <section className="courses-section">

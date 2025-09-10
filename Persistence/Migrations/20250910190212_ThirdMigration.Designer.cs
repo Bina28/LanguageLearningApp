@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250830195626_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20250910190212_ThirdMigration")]
+    partial class ThirdMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1001,10 +1001,10 @@ namespace Persistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("Attempts")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Attempts")
+                    b.Property<int>("CourseId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsCompleted")
@@ -1013,9 +1013,15 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("LastCompletedDay")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id", "CourseId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserCourses");
                 });
@@ -1169,7 +1175,7 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.User", "User")
                         .WithMany("UserCourses")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

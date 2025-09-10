@@ -25,7 +25,7 @@ builder.Services.AddMediatR(x =>
 });
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+
 builder.Services.AddTransient<ExeptionMiddleware>();
 builder.Services.AddIdentityApiEndpoints<User>(opt =>
 {
@@ -48,7 +48,7 @@ var app = builder.Build();
 
 app.UseMiddleware<ExeptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader()
-.AllowCredentials() 
+.AllowCredentials()
 .AllowAnyMethod()
 .WithOrigins("http://localhost:3000", "https://localhost:3000"));
 app.UseAuthentication();

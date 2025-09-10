@@ -1,15 +1,17 @@
-import React from "react";
-import { Link, useResolvedPath, useMatch, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useUserContext } from "../../lib/hooks/UserContext";
+
+import { useAccount } from "../../lib/hooks/useAccount";
+import CustomNavLink from "./CustomNavLink";
 
 export default function Navbar() {
-  const { user, logout } = useUserContext();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const { currentUser, logoutUser } = useAccount();
+  const handleLogout = async () => {
+    try {
+      await logoutUser.mutateAsync();
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
 
   return (
@@ -19,45 +21,28 @@ export default function Navbar() {
       </Link>
       <nav className="main-nav">
         <ul className="main-nav-list">
-          <CustomLink to="/">Home</CustomLink>
-          {user ? (
+          <CustomNavLink to="/">Home</CustomNavLink>
+          {currentUser ? (
             <>
-              <CustomLink to="/courses">Courses</CustomLink>
-              <CustomLink to={`/user/${user.id}`}>User Page</CustomLink>
-              <li onClick={handleLogout} className="main-nav-link">
+              <CustomNavLink to="/courses">Courses</CustomNavLink>
+              <CustomNavLink to={`/user/${currentUser.id}`}>
+                User Page
+              </CustomNavLink>
+              <li
+                className="main-nav-link"
+              onClick={handleLogout}
+              >
                 Logout
               </li>
             </>
           ) : (
             <>
-              <CustomLink to="/login">Login</CustomLink>
-              <CustomLink to="/signup">Sign Up</CustomLink>
+              <CustomNavLink to="/login">Login</CustomNavLink>
+              <CustomNavLink to="/signup">Sign Up</CustomNavLink>
             </>
           )}
         </ul>
       </nav>
     </header>
-  );
-}
-
-interface CustomLinkProps {
-  to: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-}
-function CustomLink({ to, children, onClick }: CustomLinkProps) {
-  const resolvedPath = useResolvedPath(to);
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-
-  return (
-    <li>
-      <Link
-        to={to}
-        onClick={onClick}
-        className={`main-nav-link ${isActive ? "active" : ""}`}
-      >
-        {children}
-      </Link>
-    </li>
   );
 }

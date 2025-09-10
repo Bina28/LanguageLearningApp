@@ -1,45 +1,36 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useAccount } from "../../lib/hooks/useAccount";
+import {
+  type RegisterSchema,
+  registerSchema,
+} from "../../lib/schemas/registerSchema";
 import personIcon from "../Assets/person.png";
 import emailIcon from "../Assets/email.png";
 import passwordIcon from "../Assets/password.png";
-import "./LoginSignup.css";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useUser } from "../../lib/hooks/useUser";
-import { useUserContext } from "../../lib/hooks/UserContext";
 
-type FormData = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+export default function RegistrationForm() {
+  const { registerUser } = useAccount();
 
-export default function SignUp() {
-  const { register, handleSubmit, watch } = useForm<FormData>();
-  const createUser = useUser();
-  const navigate = useNavigate();
-  const password = watch("password", "");
-  const { setUser } = useUserContext();
+  const {register,  handleSubmit, setError } = useForm<RegisterSchema>({
+    mode: "onTouched",
+    resolver: zodResolver(registerSchema),
+  });
 
-  const onSubmit = (data: FormData) => {
-    createUser.createUser.mutate(
-      {
-        fullName: data.name,
-        email: data.email,
-        password: data.password,
+  const onSubmit = async (data: RegisterSchema) => {
+    await registerUser.mutateAsync(data, {
+      onError: (error) => {
+        if (Array.isArray(error)) {
+          error.forEach((err) => {
+            if (err.includes("Email")) setError("email", { message: err });
+            else if (err.includes("Password"))
+              setError("password", { message: err });
+          });
+        }
       },
-      {
-        onSuccess: async (id) => {
-          const userObj = { id };
-          setUser(userObj);
-          localStorage.setItem("user", JSON.stringify(userObj)); 
-          navigate(`/user/${id}`);
-        },
-      }
-    );
+    });
   };
-
   return (
     <div className="container">
       <div className="glass-box">
@@ -52,7 +43,7 @@ export default function SignUp() {
             <input
               type="text"
               placeholder="Full Name"
-              {...register("name", { required: true })}
+              {...register("displayName", { required: true })}
             />
           </div>
           <div className="input">
@@ -71,18 +62,7 @@ export default function SignUp() {
               {...register("password", { required: true })}
             />
           </div>
-          <div className="input">
-            <img src={passwordIcon} alt="Confirm Password" className="icon" />
-            <input
-              type="password"
-              {...register("confirmPassword", {
-                required: "Confirm your password",
-                validate: (value) =>
-                  value === password || "Passwords do not match",
-              })}
-              placeholder="Confirm Password"
-            />
-          </div>
+      
 
           <div className="forgot-password">
             Already have an account? <Link to="/login">Login</Link>

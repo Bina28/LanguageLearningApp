@@ -1,34 +1,33 @@
-import { useEffect } from "react";
-
 import emailIcon from "../Assets/email.png";
 import passwordIcon from "../Assets/password.png";
 import "./LoginSignup.css";
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import useLogin from "../../lib/hooks/useLogin";
+import { useAccount } from "../../lib/hooks/useAccount";
+import { loginSchema, type LoginSchema } from "../../lib/schemas/loginSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import "./LoginSignup.css";
 
-type LoginForm = {
-  email: string;
-  password: string;
-};
-
-export default function Login() {
-  const { register, handleSubmit } = useForm<LoginForm>();
+export default function LoginForm() {
+  const { loginUser } = useAccount();
   const navigate = useNavigate();
-  const { mutate: login } = useLogin();
+  const location = useLocation();
 
-  useEffect(() => {
-    const userId = localStorage.getItem("user");
-    const expiresAt = localStorage.getItem("expiresAt");
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid, isSubmitting },
+  } = useForm<LoginSchema>({
+    mode: "onTouched",
+    resolver: zodResolver(loginSchema),
+  });
 
-    if (userId && expiresAt && Date.now() < parseInt(expiresAt, 10)) {
-      navigate(`/user/${userId}`);
-    }
-  }, [navigate]);
-
-  const onSubmit = (data: LoginForm) => {
-    login(data);
+  const onSubmit = async (data: LoginSchema) => {
+    await loginUser.mutateAsync(data, {
+      onSuccess: () => {
+        navigate(location.state?.from || "/courses");
+      },
+    });
   };
 
   return (
@@ -64,7 +63,11 @@ export default function Login() {
           </div>
 
           <div className="submit-container">
-            <button className="submit" type="submit">
+            <button
+              className="submit"
+              type="submit"
+              disabled={!isValid || isSubmitting}
+            >
               Login
             </button>
           </div>

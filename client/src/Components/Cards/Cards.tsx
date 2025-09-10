@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import { useCards } from "../../lib/hooks/useCards";
 import { useUserProgressUpdate } from "../../lib/hooks/useUserProgressUpdate";
 import { useCompletedUnit } from "../../lib/hooks/useCompletedUnit";
+import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function Cards() {
   const { courseId } = useParams();
   const { cards, isLoadingCards } = useCards(courseId);
   const { updateProgress } = useUserProgressUpdate();
   const { mutateAsync: completeUnit } = useCompletedUnit();
-
+  const { currentUser } = useAccount();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -44,21 +45,15 @@ export default function Cards() {
       } else {
         const isCompleted = correctAnswers + (isCorrect ? 1 : 0) >= 3;
 
-        const userString = localStorage.getItem("user");
-        if (!userString) return;
-
-        const user = JSON.parse(userString);
-        const userId = user.id;
-
         if (isCompleted) {
           await completeUnit({
-            Id: userId,
+            userId: currentUser?.id,
             CorrectAnswers: correctAnswers + (isCorrect ? 1 : 0),
           });
         }
 
         await updateProgress.mutateAsync({
-          userid: userId,
+          userId: currentUser?.id,
           courseId: Number(courseId),
           isCompleted,
         });

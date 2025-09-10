@@ -5,10 +5,10 @@ type Course = {
 };
 
 type User = {
-  id?: string;
-  email?: string;
-  fullName?: string;
-  password?: string;
+  id: string;
+  email: string;
+  displayName: string;
+  imageUrl?: string;
 };
 
 type CourseDetails = {
@@ -36,7 +36,7 @@ type Cards = {
 };
 
 type UpdatedProgress = {
-  userid: string;
+  userId?: string;
   courseId: number;
   isCompleted: boolean;
 };
