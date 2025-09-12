@@ -21,7 +21,7 @@ public class GetUserCourseInfo
         {
             var userCourses = await context.UserCourses
      .Include(uc => uc.Course)
-     .Where(uc => uc.Id == request.UserId)
+     .Where(uc => uc.UserId == request.UserId)
      .ProjectTo<UserCourseDto>(mapper.ConfigurationProvider)
      .ToListAsync(cancellationToken);
             return userCourses;

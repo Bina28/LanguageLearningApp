@@ -45,6 +45,7 @@ export const useAccount = () => {
     queryKey: ["user"],
     queryFn: async () => {
       const response = await agent.get<User>("account/user-info");
+
       return response.data;
     },
     enabled: !queryClient.getQueryData(["user"]),

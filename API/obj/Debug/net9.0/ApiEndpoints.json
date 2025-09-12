@@ -36,84 +36,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API.Controllers.AuthController",
-    "Method": "CreateUser",
-    "RelativePath": "api/Auth",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createUserDto",
-        "Type": "Application.Dtos.CreateUserDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "API.Controllers.AuthController",
-    "Method": "GetUserProfile",
-    "RelativePath": "api/Auth/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Application.Dtos.UserProfileDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "API.Controllers.AuthController",
-    "Method": "Login",
-    "RelativePath": "api/Auth/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "loginDto",
-        "Type": "Application.Dtos.LoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[Domain.User, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "\u003CMapIdentityApi\u003Eb__1_3",
     "RelativePath": "api/confirmEmail",
@@ -184,30 +106,14 @@
   },
   {
     "ContainingType": "API.Controllers.CoursesController",
-    "Method": "AddOrUpdateUserCourse",
-    "RelativePath": "api/Courses",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "Application.LearningModule.Commands.AddOrUpdateUserCourse",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.CoursesController",
     "Method": "GetCards",
-    "RelativePath": "api/Courses/cards/{id}",
+    "RelativePath": "api/Courses/{courseId}/cards",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "courseId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -226,24 +132,8 @@
   },
   {
     "ContainingType": "API.Controllers.CoursesController",
-    "Method": "CompleteUnit",
-    "RelativePath": "api/Courses/completeunit",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Application.Dtos.UnitCompletionDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.CoursesController",
-    "Method": "GetCompletedUnits",
-    "RelativePath": "api/Courses/progress/{userId}",
+    "Method": "GetLastCompletedCourse",
+    "RelativePath": "api/Courses/{userId}/last-completed",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -536,25 +426,50 @@
     ]
   },
   {
-    "ContainingType": "API.Controllers.UserController",
+    "ContainingType": "API.Controllers.UsersController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Domain.User, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.UsersController",
     "Method": "UpdateUser",
-    "RelativePath": "api/User",
+    "RelativePath": "api/Users/{userId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
         "Name": "user",
-        "Type": "Application.Dtos.UserUpdateDto",
+        "Type": "Application.Dtos.UserDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API.Controllers.UserController",
+    "ContainingType": "API.Controllers.UsersController",
     "Method": "GetUserCourses",
-    "RelativePath": "api/User/{userId}",
+    "RelativePath": "api/Users/{userId}/courses",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -578,23 +493,19 @@
     ]
   },
   {
-    "ContainingType": "API.Controllers.UserController",
-    "Method": "GetUsers",
-    "RelativePath": "api/User/users",
-    "HttpMethod": "GET",
+    "ContainingType": "API.Controllers.UsersController",
+    "Method": "CompleteCourse",
+    "RelativePath": "api/Users/complete-course",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.User, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "command",
+        "Type": "Application.LearningModule.Commands.CompleteCourse\u002BCommand",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -23,10 +23,17 @@ export default function EditUserForm({
 
   const { updateUser } = useUpdateUser();
 
-  const onSubmit = async (data: User) => {
-    await updateUser.mutateAsync(data);
-    onCancel();
-  };
+const onSubmit = async (data: User) => {
+  await updateUser.mutateAsync({
+    userId: data.id, // this will go into the URL
+    body: {
+      displayName: data.displayName,
+      email: data.email,
+    },
+  });
+  onCancel();
+};
+
 
   return (
     <div className="edit-user-container">

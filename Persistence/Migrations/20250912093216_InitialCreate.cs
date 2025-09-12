@@ -202,7 +202,7 @@ namespace Persistence.Migrations
                 name: "UserCourses",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
                     CourseId = table.Column<int>(type: "INTEGER", nullable: false),
                     LastCompletedDay = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Attempts = table.Column<int>(type: "INTEGER", nullable: false),
@@ -210,10 +210,10 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserCourses", x => new { x.Id, x.CourseId });
+                    table.PrimaryKey("PK_UserCourses", x => new { x.UserId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_UserCourses_AspNetUsers_Id",
-                        column: x => x.Id,
+                        name: "FK_UserCourses_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);

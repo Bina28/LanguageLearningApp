@@ -25,7 +25,7 @@ export default function Navbar() {
           {currentUser ? (
             <>
               <CustomNavLink to="/courses">Courses</CustomNavLink>
-              <CustomNavLink to={`/user/${currentUser.id}`}>
+              <CustomNavLink to={'/account/user-info'}>
                 User Page
               </CustomNavLink>
               <li

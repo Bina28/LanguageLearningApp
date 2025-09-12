@@ -38,5 +38,6 @@ type Cards = {
 type UpdatedProgress = {
   userId?: string;
   courseId: number;
-  isCompleted: boolean;
+  correctAnswers: number;
 };
+

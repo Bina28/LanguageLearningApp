@@ -44,7 +44,7 @@ const {currentUser} =useAccount();
       ) : (
         <p className="text-red-500">No user data available.</p>
       )}
-      <button className="back-button" onClick={() => navigate(`/user/${currentUser?.id}`)}>
+      <button className="back-button" onClick={() => navigate('/account/user-info')}>
         Go Back
       </button>
     </div>

@@ -8,14 +8,14 @@ import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function UserPage() {
  const {currentUser, loadingUserInfo} = useAccount();
-  const { data: progressData, isLoading: isLoadingProgress } =
+  const {  progressData, isLoadingProgress } =
     useUserProgress(currentUser?.id);
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
 
   const goToCourses = () => {
     if (currentUser) {
-      navigate(`/usercourses/${currentUser.id}`);
+      navigate(`/users/${currentUser.id}/courses`);
     }
   };
 

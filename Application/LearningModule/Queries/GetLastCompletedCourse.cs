@@ -21,12 +21,13 @@ public class GetLastCompletedCourse
             if (user == null)
                 return Result<int>.Failure("User not found", 404);
 
-     var lastCompletedCourse = await context.UserCourses
-            .Where(uc => uc.UserId == request.UserId)
-            .OrderByDescending(uc => uc.CourseId)
-            .Select(uc => uc.CourseId)
-            .FirstOrDefaultAsync(cancellationToken);
-            
+            var lastCompletedCourse = await context.UserCourses
+                .Where(uc => uc.UserId == request.UserId && uc.IsCompleted)
+                 .OrderByDescending(uc => uc.CourseId)
+                .Select(uc => uc.CourseId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+
             return Result<int>.Success(lastCompletedCourse);
         }
     }

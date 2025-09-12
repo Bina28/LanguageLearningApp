@@ -5,7 +5,8 @@ export const useUserProgressUpdate = () => {
   const queryClient = useQueryClient();
   const updateProgress = useMutation({
     mutationFn: async (progress: UpdatedProgress) => {
-      await agent.put(`/courses`, progress);
+      console.log(progress);
+      await agent.post("/users/complete-course", progress);
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({

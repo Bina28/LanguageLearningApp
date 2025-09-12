@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 public class UsersController : BaseApiController
-
-
-{ [HttpGet]
+{
+    [HttpGet]
     public async Task<ActionResult<List<User>>> GetUsers()
     {
         var users = await Mediator.Send(new GetUsers.Query());
@@ -21,8 +20,8 @@ public class UsersController : BaseApiController
     [HttpPut("{userId}")]
     public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserDto user)
     {
-    
-        return HandleResult(await Mediator.Send(new UpdateUser.Command { UserId=userId, UserDto=user}));
+
+        return HandleResult(await Mediator.Send(new UpdateUser.Command { UserId = userId, UserDto = user }));
     }
 
     [HttpGet("{userId}/courses")]
@@ -31,19 +30,13 @@ public class UsersController : BaseApiController
         return await Mediator.Send(new GetUserCourseInfo.Query { UserId = userId });
     }
 
-     [HttpPost("{userId}/courses/{courseId}/complete/{correctAnswers}")]
-    public async Task<ActionResult> CompleteCourse(string userId, int courseId, int correctAnswers)
+    [HttpPost("complete-course")]
+    public async Task<ActionResult> CompleteCourse([FromBody] CompleteCourse.Command command)
     {
-        var command = new CompleteCourse.Command
-        {
-            UserId = userId,
-            CourseId = courseId,
-            CorrectAnswers = correctAnswers
-        };
         return HandleResult(await Mediator.Send(command));
     }
 
 
-   
+
 
 }

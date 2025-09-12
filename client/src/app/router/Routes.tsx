@@ -4,12 +4,13 @@ import App from "../../App";
 import Home from "../../Components/Home/Home";
 import UserPage from "../../Components/UserPage/UserPage";
 import Courses from "../../Components/Courses/Courses";
-import Cards from "../../Components/Cards/Cards";
+
 import UserCourses from "../../Components/UserCourses/UserCourses";
 import NotFound from "../../Components/Errors/NotFound";
 import LoginForm from "../../Components/LoginSignup/LoginForm";
 import RegistrationForm from "../../Components/LoginSignup/RegistrationForm";
 import RequireAuth from "./RequireAuth";
+import Cards from "../../Components/Cards/Cards";
 
 export const router = createBrowserRouter([
   {
@@ -23,10 +24,10 @@ export const router = createBrowserRouter([
       {
         element: <RequireAuth />,
         children: [
-          { path: "user/:id", element: <UserPage /> },
+          { path: "account/user-info", element: <UserPage /> },
           { path: "courses", element: <Courses /> },
-          { path: "courses/:courseId", element: <Cards /> },
-          { path: "usercourses/:id", element: <UserCourses /> },
+          { path: "courses/:courseId/cards", element: <Cards /> },
+          { path: "users/:id/courses", element: <UserCourses /> },
         ],
       },
       { path: "", element: <Home /> },

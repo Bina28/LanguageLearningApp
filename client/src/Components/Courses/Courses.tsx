@@ -3,21 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "./Courses.css";
 import { useCourses } from "../../lib/hooks/useCourses";
 import { useUserProgress } from "../../lib/hooks/useUserProgress";
-
 import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function Courses() {
- const {currentUser} = useAccount();
+  const { currentUser } = useAccount();
   const userId = currentUser?.id;
-  const { data: progressData } = useUserProgress(userId);
+  const  lastCompletedCourse  = useUserProgress(userId);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const pageSize = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const { data, isLoading } = useCourses(page, pageSize, searchQuery);
   const [searchInput, setSearchInput] = useState("");
-
-
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -30,7 +27,6 @@ export default function Courses() {
 
   if (isLoading) return <p>Loading...</p>;
   const totalPages = data?.totalPages || 1;
-
 
   return (
     <section className="courses-section">
@@ -83,15 +79,14 @@ export default function Courses() {
 
       <div className="courses-grid">
         {data?.items.map((course: Course) => {
-          const isLocked =
-            course.courseId > (progressData?.completedUnits ?? 0) + 1;
+          const isLocked = course.courseId > lastCompletedCourse + 1;
 
           return (
             <div
               key={course.courseId}
               className={`course-card ${isLocked ? "locked" : ""}`}
               onClick={() =>
-                !isLocked && navigate(`/courses/${course.courseId}`)
+                !isLocked && navigate(`/courses/${course.courseId}/cards`)
               }
             >
               {isLocked && <span className="lock-icon">🔒</span>}

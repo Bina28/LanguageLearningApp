@@ -995,13 +995,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.UserCourse", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Attempts")
+                    b.Property<int>("CourseId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("Attempts")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsCompleted")
@@ -1010,15 +1010,9 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("LastCompletedDay")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "CourseId");
 
                     b.HasIndex("CourseId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserCourses");
                 });

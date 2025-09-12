@@ -1,97 +1,80 @@
-import "./Cards.css";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useCards } from "../../lib/hooks/useCards";
 import { useUserProgressUpdate } from "../../lib/hooks/useUserProgressUpdate";
-import { useCompletedUnit } from "../../lib/hooks/useCompletedUnit";
+import { useParams } from "react-router-dom";
 import { useAccount } from "../../lib/hooks/useAccount";
+import "./Cards.css";
 
-export default function Cards() {
+export default function Card() {
   const { courseId } = useParams();
   const { cards, isLoadingCards } = useCards(courseId);
-  const { updateProgress } = useUserProgressUpdate();
-  const { mutateAsync: completeUnit } = useCompletedUnit();
-  const { currentUser } = useAccount();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [showResult, setShowResult] = useState(false);
+  const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
+  const { updateProgress } = useUserProgressUpdate();
+  const { currentUser } = useAccount();
+  const [isFinished, setIsFinished] = useState(false);
+  const userId = currentUser?.id;
   const [feedback, setFeedback] = useState<string | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
 
-  if (isLoadingCards) return <p>Loading...</p>;
-  if (!cards || cards.length === 0) return <p>No cards found</p>;
+  if (!cards || cards.length === 0) return <p>No cards available</p>;
 
-  const handleCheckAnswer = async () => {
-    const isCorrect =
-      userAnswer.trim().toLowerCase() ===
-      cards[currentIndex].norwegianText.toLowerCase();
+  if (isLoadingCards) return <p>Is loading a flashcard...</p>;
 
-    if (isCorrect) {
-      setCorrectAnswers((prev) => prev + 1);
+  const correct =
+    userAnswer.trim().toLowerCase() ===
+    cards[index].norwegianText.toLowerCase();
+
+  const handleSubmit = () => {
+    if (correct) {
+      setCountCorrectAnswers((prev) => prev + 1);
       setFeedback("✅ Riktig!");
     } else {
-      setFeedback(`❌ Feil! Riktig svar: ${cards[currentIndex].norwegianText}`);
+      setFeedback(`❌ Feil! Riktig svar: ${cards[index].norwegianText}`);
     }
+  };
 
-    setIsAnswered(true);
-
-    setTimeout(async () => {
-      if (currentIndex + 1 < cards.length) {
-        setCurrentIndex((prev) => prev + 1);
-        setUserAnswer("");
-        setFeedback(null);
-        setIsAnswered(false);
-      } else {
-        const isCompleted = correctAnswers + (isCorrect ? 1 : 0) >= 3;
-
-        if (isCompleted) {
-          await completeUnit({
-            userId: currentUser?.id,
-            CorrectAnswers: correctAnswers + (isCorrect ? 1 : 0),
-          });
-        }
-
-        await updateProgress.mutateAsync({
-          userId: currentUser?.id,
-          courseId: Number(courseId),
-          isCompleted,
-        });
-
-        setShowResult(true);
-      }
-    }, 2500);
+  const handleNext = () => {
+    if (index + 1 < cards.length) {
+      setIndex((prev) => prev + 1);
+      setUserAnswer("");
+    } else {
+      setIsFinished(true);
+      updateProgress.mutate({
+        userId,
+        courseId: Number(courseId),
+        correctAnswers: countCorrectAnswers,
+      });
+    }
   };
 
   return (
     <div className="flashcard-container">
-      {showResult ? (
-        <div className="result">
-          <h2>
-            Du fikk {correctAnswers} av {cards.length} riktige!
-          </h2>
-          {correctAnswers >= 3 ? (
-            <p>✅ Du kan gå videre til neste unit!</p>
-          ) : (
-            <p>❌ Prøv igjen for å bestå denne unit.</p>
-          )}
-        </div>
-      ) : (
-        <div className="flashcard-wrapper">
-          {feedback && <p className="feedback">{feedback}</p>}
-          <div className="flashcard">
-            <h2>{cards[currentIndex].englishText}</h2>
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-              placeholder="Skriv på norsk"
-              disabled={isAnswered}
-            />
-            <button onClick={handleCheckAnswer} disabled={isAnswered}>
-              Submit
-            </button>
+      {!isFinished && (
+        <div className="flashcard">
+          <h2>{cards?.[index].englishText}</h2>
+          <input
+            type="text"
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            placeholder="Skriv på norsk"
+          />
+          <div className="btn-cards-container">
+            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleNext}>Next</button>
           </div>
+          <div className="flashcard-wrapper">
+            {feedback && <p className="feedback">{feedback}</p>}
+          </div>
+        </div>
+      )}
+
+      {isFinished && (
+        <div className="result-container">
+          <h2 className="result-title">Result</h2>
+          <p className="result-text">
+            You got {countCorrectAnswers} out of {cards.length} correct!
+          </p>
         </div>
       )}
     </div>

@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250910183801_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20250912093216_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -998,7 +998,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.UserCourse", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("CourseId")
@@ -1013,11 +1013,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("LastCompletedDay")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id", "CourseId");
+                    b.HasKey("UserId", "CourseId");
 
                     b.HasIndex("CourseId");
 
@@ -1173,7 +1169,7 @@ namespace Persistence.Migrations
 
                     b.HasOne("Domain.User", "User")
                         .WithMany("UserCourses")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -11,7 +11,6 @@ public class AppDbContext : IdentityDbContext<User>
 	{
 	}
 
-
 	public required DbSet<Course> Courses { get; set; }
 	public required DbSet<CourseCard> CourseCards { get; set; }
 	public required DbSet<UserCourse> UserCourses { get; set; }
@@ -20,15 +19,18 @@ public class AppDbContext : IdentityDbContext<User>
 	{
 		base.OnModelCreating(modelBuilder);
 
+		// CourseCard -> Course
 		modelBuilder.Entity<CourseCard>()
 		.HasOne(c => c.Course)
 		.WithMany(c => c.Cards)
 		.HasForeignKey(c => c.CourseId)
 		.OnDelete(DeleteBehavior.Cascade);
 
+		// Composite key for UserCourse
 		modelBuilder.Entity<UserCourse>()
-				.HasKey(uc => uc.Id);
+				.HasKey(uc => new { uc.UserId, uc.CourseId });
 
+    // UserCourse -> User
 		modelBuilder.Entity<UserCourse>()
 						 .HasOne(uc => uc.User)
 						 .WithMany(u => u.UserCourses)

@@ -5,7 +5,7 @@ export const useCourse = (id?: string) => {
   const { data: userCourseData, isLoading: isLoading } = useQuery({
     queryKey: ["userCourse", id],
     queryFn: async () => {
-      const response = await agent.get<CourseDetails[]>(`/user/${id}`);
+      const response = await agent.get<CourseDetails[]>(`/users/${id}/courses`);
       console.log("Courses data:", userCourseData);
 
       return response.data;

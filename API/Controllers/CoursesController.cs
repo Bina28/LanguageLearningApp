@@ -40,15 +40,4 @@ public class CoursesController : BaseApiController
     }
 
 
-    // [HttpGet("search")]
-    // public async Task<ActionResult<List<Course>>> SearchCourses(string? searchQuery)
-    // {
-    //     var courses = await Mediator.Send(new SearchCourses.Query { SearchQuery = searchQuery });
-
-    //     return Ok(courses);
-    // }
-
-
-
-
 }
