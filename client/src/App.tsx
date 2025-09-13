@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import "./App.css";
+import "./global.css";
 import Navbar from "./Components/Nav/Navbar";
 import Home from "./Components/Home/Home";
 

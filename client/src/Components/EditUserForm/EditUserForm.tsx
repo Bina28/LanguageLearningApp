@@ -25,7 +25,7 @@ export default function EditUserForm({
 
 const onSubmit = async (data: User) => {
   await updateUser.mutateAsync({
-    userId: data.id, // this will go into the URL
+    userId: data.id, 
     body: {
       displayName: data.displayName,
       email: data.email,

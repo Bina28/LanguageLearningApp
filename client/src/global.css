@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  /* font-size: 10px; 
+  10px/16px = 0.625 = 62.5% 
+  */
+  font-size: 62.5%;
+}
+
+body {
+  background: linear-gradient(to right, #1e1e2f, #252540);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.btn {
+  display: inline-block;
+
+  text-decoration: none;
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  font-weight: 600;
+
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  border-radius: 9px;
+  transition: all 0.3s;
+
+}

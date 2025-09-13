@@ -39,7 +39,7 @@ export default function UserPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="profile-pic"></div>
+            <div className="profile-img"></div>
             <h2 className="user-name">Welcome, {currentUser.displayName}!</h2>
             <p className="user-email">Email: {currentUser.email}</p>
 
@@ -60,9 +60,9 @@ export default function UserPage() {
                 transition={{ duration: 0.8 }}
               />
             </div>
-            <div className="user-buttons">
-              <button onClick={() => setEditing(true)}>Update profile</button>
-              <button onClick={goToCourses}>My Courses</button>
+            <div className="user-action">
+              <button className="btn user-btn" onClick={() => setEditing(true)}>Update profile</button>
+              <button className="btn user-btn" onClick={goToCourses}>My Courses</button>
             </div>
           </motion.div>
         </section>

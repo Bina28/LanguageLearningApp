@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCards } from "../../lib/hooks/useCards";
 import { useUserProgressUpdate } from "../../lib/hooks/useUserProgressUpdate";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAccount } from "../../lib/hooks/useAccount";
 import "./Cards.css";
 
@@ -49,32 +49,40 @@ export default function Card() {
   };
 
   return (
-    <div className="flashcard-container">
+    <div className="flashcard">
+      {feedback && !isFinished && (
+        <p className="flashcard-feedback">{feedback}</p>
+      )}
       {!isFinished && (
-        <div className="flashcard">
+        <div className="flashcard-content">
           <h2>{cards?.[index].englishText}</h2>
           <input
             type="text"
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
             placeholder="Skriv på norsk"
+            className="flashcard-input"
           />
-          <div className="btn-cards-container">
-            <button onClick={handleSubmit}>Submit</button>
-            <button onClick={handleNext}>Next</button>
-          </div>
-          <div className="flashcard-wrapper">
-            {feedback && <p className="feedback">{feedback}</p>}
+          <div className="flashcard-actions">
+            <button className="btn flashcard-btn" onClick={handleSubmit}>
+              Submit
+            </button>
+            <button className="btn flashcard-btn" onClick={handleNext}>
+              Next
+            </button>
           </div>
         </div>
       )}
 
       {isFinished && (
-        <div className="result-container">
+        <div className="result">
           <h2 className="result-title">Result</h2>
           <p className="result-text">
             You got {countCorrectAnswers} out of {cards.length} correct!
           </p>
+          <Link to="/courses" className="btn result-btn">
+            Go back to cards page
+          </Link>
         </div>
       )}
     </div>
