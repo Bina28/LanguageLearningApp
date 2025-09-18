@@ -10,7 +10,6 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-   background: linear-gradient(to right, #1e1e2f, #252540);
 }
 
 .main-nav-list {
@@ -25,18 +24,41 @@
 .logo:link,
 .main-nav-link,
 .logo:visited {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
-  color: white;
+  color: #1f2937;
   text-decoration: none;
   transition: all 0.3s;
   display: inline-block;
 }
 
-.main-nav-link:hover,
-.main-nav-link:active {
-  color: #1e90ff;
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  color: white;
+  background: #ff4757;
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
 }
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  transform: translateY(-4px);
+}
+
 .logo {
   margin-left: 5rem;
+}
+
+.main-nav-link.logout-btn {
+  border: #d1d5db 1px solid;
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.main-nav-link.logout-btn:hover {
+  background-color: #ff4757;
+  color: white;
+  transform: translateY(-4px);
 }

@@ -31,14 +31,14 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="container">
-      <div className="glass-box">
-        <h2 className="text">Login</h2>
-        <div className="underline"></div>
+    <div className="form-container">
+      <div className="form">
+        <h2 className="form-title">Login</h2>
+        <div className="form-underline"></div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="inputs">
-            <div className="input">
+          <div className="form-inputs">
+            <div className="form-input">
               <img src={emailIcon} alt="Email" className="icon" />
               <input
                 type="text"
@@ -46,7 +46,7 @@ export default function LoginForm() {
                 {...register("email", { required: true })}
               />
             </div>
-            <div className="input">
+            <div className="form-input">
               <img src={passwordIcon} alt="Password" className="icon" />
               <input
                 type="password"
@@ -55,16 +55,13 @@ export default function LoginForm() {
               />
             </div>
           </div>
-          <div className="links">
-            Forgot password? <span>Click here</span>
-          </div>
-          <div className="links">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
+          <div className="form-link-text">
+            Don't have an account? <Link to="/signup"> Sign Up</Link>
           </div>
 
-          <div className="submit-container">
+          <div className="submit-btn-container">
             <button
-              className="submit"
+              className="btn submit-btn"
               type="submit"
               disabled={!isValid || isSubmitting}
             >
