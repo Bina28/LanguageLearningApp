@@ -1,14 +1,20 @@
 import emailIcon from "../Assets/email.png";
 import passwordIcon from "../Assets/password.png";
 import "./LoginSignup.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAccount } from "../../lib/hooks/useAccount";
 import { loginSchema, type LoginSchema } from "../../lib/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./LoginSignup.css";
 
-export default function LoginForm() {
+export default function LoginForm({
+  onClose,
+  onSwitchToSignup,
+}: {
+  onClose: () => void;
+  onSwitchToSignup: () => void;
+}) {
   const { loginUser } = useAccount();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,6 +31,7 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginSchema) => {
     await loginUser.mutateAsync(data, {
       onSuccess: () => {
+        onClose();
         navigate(location.state?.from || "/courses");
       },
     });
@@ -33,6 +40,9 @@ export default function LoginForm() {
   return (
     <div className="form-container">
       <div className="form">
+        <button className="close-btn" onClick={onClose}>
+          &times;
+        </button>
         <h2 className="form-title">Login</h2>
         <div className="form-underline"></div>
 
@@ -56,7 +66,14 @@ export default function LoginForm() {
             </div>
           </div>
           <div className="form-link-text">
-            Don't have an account? <Link to="/signup"> Sign Up</Link>
+            Don't have an account?{" "}
+            <button
+              type="button"
+              className="link-btn"
+              onClick={onSwitchToSignup}
+            >
+              Sign Up
+            </button>
           </div>
 
           <div className="submit-btn-container">

@@ -4,11 +4,8 @@ import App from "../../App";
 import Home from "../../Components/Home/Home";
 import UserPage from "../../Components/UserPage/UserPage";
 import Courses from "../../Components/Courses/Courses";
-
 import UserCourses from "../../Components/UserCourses/UserCourses";
 import NotFound from "../../Components/Errors/NotFound";
-import LoginForm from "../../Components/LoginSignup/LoginForm";
-import RegistrationForm from "../../Components/LoginSignup/RegistrationForm";
 import RequireAuth from "./RequireAuth";
 import Cards from "../../Components/Cards/Cards";
 
@@ -31,9 +28,7 @@ export const router = createBrowserRouter([
         ],
       },
       { path: "", element: <Home /> },
-      { path: "not-found", element: <NotFound /> },
-      { path: "login", element: <LoginForm /> },
-      { path: "signup", element: <RegistrationForm /> },
+      { path: "not-found", element: <NotFound /> }, 
       { path: "*", element: <Navigate replace to="/not-found" /> },
     ],
   },

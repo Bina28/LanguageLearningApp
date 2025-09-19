@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+
 import { useAccount } from "../../lib/hooks/useAccount";
 import {
   type RegisterSchema,
@@ -10,10 +10,16 @@ import personIcon from "../Assets/person.png";
 import emailIcon from "../Assets/email.png";
 import passwordIcon from "../Assets/password.png";
 
-export default function RegistrationForm() {
+export default function RegistrationForm({
+  onClose,
+  onSwitchToLogin,
+}: {
+  onClose: () => void;
+  onSwitchToLogin: () => void;
+}) {
   const { registerUser } = useAccount();
 
-  const {register,  handleSubmit, setError } = useForm<RegisterSchema>({
+  const { register, handleSubmit, setError } = useForm<RegisterSchema>({
     mode: "onTouched",
     resolver: zodResolver(registerSchema),
   });
@@ -32,44 +38,49 @@ export default function RegistrationForm() {
     });
   };
   return (
-    <div className="container">
-      <div className="glass-box">
-        <h2 className="text">Sign Up</h2>
-        <div className="underline"></div>
+    <div className="form-container">
+      <div className="form">
+             <button className="close-btn" onClick={onClose}>
+          &times;
+        </button>
+        <h2 className="form-title">Sign Up</h2>
+        <div className="form-underline"></div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-inputs">
+            <div className="form-input">
+              <img src={personIcon} alt="Name" className="icon" />
+              <input
+                type="text"
+                placeholder="Full Name"
+                {...register("displayName", { required: true })}
+              />
+            </div>
+            <div className="form-input">
+              <img src={emailIcon} alt="Email" className="icon" />
+              <input
+                type="text"
+                placeholder="Email"
+                {...register("email", { required: true })}
+              />
+            </div>
+            <div className="form-input">
+              <img src={passwordIcon} alt="Password" className="icon" />
+              <input
+                type="password"
+                placeholder="Pasword"
+                {...register("password", { required: true })}
+              />
+            </div>
+          </div>
+             <div className="form-link-text">
+          Already have an account?{" "}
+          <button className="link-btn" type="button" onClick={onSwitchToLogin}>
+            Login
+          </button>
+        </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="inputs">
-          <div className="input">
-            <img src={personIcon} alt="Name" className="icon" />
-            <input
-              type="text"
-              placeholder="Full Name"
-              {...register("displayName", { required: true })}
-            />
-          </div>
-          <div className="input">
-            <img src={emailIcon} alt="Email" className="icon" />
-            <input
-              type="text"
-              placeholder="Email"
-              {...register("email", { required: true })}
-            />
-          </div>
-          <div className="input">
-            <img src={passwordIcon} alt="Password" className="icon" />
-            <input
-              type="password"
-              placeholder="Pasword"
-              {...register("password", { required: true })}
-            />
-          </div>
-      
-
-          <div className="forgot-password">
-            Already have an account? <Link to="/login">Login</Link>
-          </div>
-
-          <div className="submit-container">
-            <button type="submit" className="submit">
+          <div className="submit-btn-container">
+            <button type="submit" className="btn submit-btn">
               Sign Up
             </button>
           </div>

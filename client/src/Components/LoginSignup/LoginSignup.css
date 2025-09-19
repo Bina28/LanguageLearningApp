@@ -1,28 +1,19 @@
-/* 📦 Container */
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 7.6rem);
-  background-image: linear-gradient(
-    to right bottom,
-    #f0faff,
-    #e0f4ff,
-    #d0eeff,
-    #c0e8ff,
-    #b0e2ff
-  );
 }
 
 .form {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  padding: 4rem;
-  border-radius: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 40rem;
+  background-color: white;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 35rem;
+  padding: 2rem 3rem;
   text-align: center;
   animation: fadeUp 0.8s ease-out;
+  position: relative;
 }
 
 .form-title {
@@ -110,15 +101,17 @@
   line-height: 1.6;
 }
 
-.form-link-text a {
+.link-btn {
   margin-left: 0.4rem;
   color: #ff6c79;
   font-weight: 500;
   text-decoration: none;
   transition: 0.3s ease-in-out;
+  background-color: white;
+  border: none;
 }
 
-.form-link-text a:hover {
+.link-btn:hover {
   color: #e84150;
   text-decoration: underline;
 }
@@ -144,14 +137,18 @@
   transform: scale(1.05);
 }
 
-/* Sign-up Button */
-.gray {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.6);
-  width: 150px;
-  text-align: center;
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #797f87;
+  transition: color 0.2s ease;
 }
 
-.gray:hover {
-  background: rgba(255, 255, 255, 0.3);
+.close-btn:hover {
+  color: #e84150;
 }

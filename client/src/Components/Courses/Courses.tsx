@@ -5,10 +5,25 @@ import { useCourses } from "../../lib/hooks/useCourses";
 import { useUserProgress } from "../../lib/hooks/useUserProgress";
 import { useAccount } from "../../lib/hooks/useAccount";
 
+const courseIcons = [
+  "/icons/greetings.png",
+  "/icons/numbers.png",
+  "/icons/common-phrases.png",
+  "/icons/colors.png",
+  "/icons/days.png",
+  "/icons/weather.png",
+  "/icons/food.png",
+  "/icons/family.png",
+  "/icons/travel.png",
+  "/icons/shopping.png",
+];
+
+
+
 export default function Courses() {
   const { currentUser } = useAccount();
   const userId = currentUser?.id;
-  const  lastCompletedCourse  = useUserProgress(userId);
+  const lastCompletedCourse = useUserProgress(userId);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const pageSize = 10;
@@ -30,7 +45,15 @@ export default function Courses() {
 
   return (
     <section className="courses-section">
-      <h2 className="course-title">Available Courses</h2>
+      <div className="courses-text-container">
+        <p className="courses-pretitle">Start learning today</p>
+        <h2 className="course-title">Available Courses</h2>
+        <p className="courses-description">
+          Each course includes interactive flashcards, quizzes, and exercises to
+          make your learning effective and fun.
+        </p>
+      </div>
+
       <div className="pagination-search-wrapper">
         <div className="pagination">
           <button onClick={() => setPage(1)} disabled={page === 1}>
@@ -91,7 +114,8 @@ export default function Courses() {
             >
               {isLocked && <span className="lock-icon">🔒</span>}
               <div className="course-content">
-                <div className="course-index">Unit {course.courseId}</div>
+                <div className="course-index">Course {course.courseId}</div>
+                <img src={courseIcons[course.courseId-1]} alt="" className="course-icon"/>
                 <div className="course-name">{course.title}</div>
                 <div className="course-description">{course.description}</div>
               </div>

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useAccount } from "../../lib/hooks/useAccount";
+import Logo from "../Assets/LEXI.png";
 
-export default function Navbar() {
+export default function Navbar({
+  setModal,
+}: {
+  setModal: (v: "login" | "signup" | null) => void;
+}) {
   const { currentUser, logoutUser } = useAccount();
 
   const handleLogout = async () => {
@@ -16,7 +21,7 @@ export default function Navbar() {
   return (
     <header className="header">
       <Link to="/" className="logo">
-        Logo
+        <img src={Logo} alt="" />
       </Link>
       <nav className="main-nav">
         <ul className="main-nav-list">
@@ -33,7 +38,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to={"/account/user-info"} className="main-nav-link">
+                <Link to="/account/user-info" className="main-nav-link">
                   User Page
                 </Link>
               </li>
@@ -44,17 +49,20 @@ export default function Navbar() {
           ) : (
             <>
               <li>
-                <Link
-                  className="main-nav-link"
-                  to="/login"                  
+                <button
+                  className="main-nav-link nav-btn"
+                  onClick={() => setModal("login")}
                 >
                   Login
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/signup" className="main-nav-link nav-cta">
+                <button
+                  className="main-nav-link nav-cta nav-btn"
+                  onClick={() => setModal("signup")}
+                >
                   Sign Up
-                </Link>
+                </button>
               </li>
             </>
           )}

@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import "./Home.css";
 import { useAccount } from "../../lib/hooks/useAccount";
-import heroImg from "../Assets/hero.png";
+import heroImg from "../Assets/hero.jpg";
 
 export default function Home() {
   const { currentUser } = useAccount();
+  const { setModal } = useOutletContext<{
+    setModal: (v: "login" | "signup" | null) => void;
+  }>();
+
   return (
     <section className="hero-section">
       <div className="hero-content">
@@ -27,20 +31,30 @@ export default function Home() {
         </motion.p>
 
         {currentUser ? (
-          <div className="hero-action">
+          <motion.div
+            className="hero-action"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <Link to="/courses" className="btn btn-courses">
               Continue Learning
             </Link>
             <Link to="/account/user-info" className="btn btn-profile">
               My Profile
             </Link>
-          </div>
+          </motion.div>
         ) : (
-          <div className="hero-cta">
-            <Link to="/login" className="btn btn-login">
+          <motion.div
+            className="hero-cta"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <button className="btn btn-login" onClick={() => setModal("login")}>
               Get Started
-            </Link>
-          </div>
+            </button>
+          </motion.div>
         )}
       </div>
 
