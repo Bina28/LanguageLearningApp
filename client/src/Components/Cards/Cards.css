@@ -14,7 +14,10 @@
   align-items: center;
   width: 30rem;
   height: 20rem;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background-image: url("/card-img.png");
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   padding: 2rem;
   border-radius: 10px;

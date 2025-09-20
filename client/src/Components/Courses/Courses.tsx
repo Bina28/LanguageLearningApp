@@ -8,14 +8,14 @@ import { useAccount } from "../../lib/hooks/useAccount";
 const courseIcons = [
   "/icons/greetings.png",
   "/icons/numbers.png",
-  "/icons/common-phrases.png",
-  "/icons/colors.png",
-  "/icons/days.png",
-  "/icons/weather.png",
+  "/icons/commonPhrases.png",
   "/icons/food.png",
-  "/icons/family.png",
-  "/icons/travel.png",
+  "/icons/directions.png",
   "/icons/shopping.png",
+  "/icons/time.png",
+  "/icons/travel.png",
+  "/icons/work.png",
+  "/icons/emergency.png",
 ];
 
 
@@ -46,8 +46,8 @@ export default function Courses() {
   return (
     <section className="courses-section">
       <div className="courses-text-container">
-        <p className="courses-pretitle">Start learning today</p>
-        <h2 className="course-title">Available Courses</h2>
+        <h4 className="courses-pretitle">Start learning today</h4>
+        <h2 className="course-title">Explore Courses</h2>
         <p className="courses-description">
           Each course includes interactive flashcards, quizzes, and exercises to
           make your learning effective and fun.
@@ -118,6 +118,10 @@ export default function Courses() {
                 <img src={courseIcons[course.courseId-1]} alt="" className="course-icon"/>
                 <div className="course-name">{course.title}</div>
                 <div className="course-description">{course.description}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow-icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
               </div>
             </div>
           );
