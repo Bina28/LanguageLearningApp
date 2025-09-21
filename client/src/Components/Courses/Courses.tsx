@@ -48,7 +48,7 @@ export default function Courses() {
       <div className="courses-text-container">
         <h4 className="courses-pretitle">Start learning today</h4>
         <h2 className="course-title">Explore Courses</h2>
-        <p className="courses-description">
+        <p className="courses-subtitle">
           Each course includes interactive flashcards, quizzes, and exercises to
           make your learning effective and fun.
         </p>

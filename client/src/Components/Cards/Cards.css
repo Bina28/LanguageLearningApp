@@ -1,51 +1,129 @@
 .flashcard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 90vh;
-  gap: 2rem;
+  height: calc(100vh - 7.9rem);
+  padding-top: 6rem;
+  background: linear-gradient(135deg, #fc7d88, #f5f5dc, #44a0fc);
+}
+
+.flashcard-header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.flashcards-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  padding-bottom: 1.6rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+.flashcards-subtitle {
+  font-size: 1.6rem;
+  color: #797f87;
+  text-align: center;
+}
+
+.flashcards-container{
+margin-top: 8rem;
+}
+
+.flashcard-feedback {
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1.2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  color: #1e1e2f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+font-size: 1.2rem;
+  /* Animation */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: feedbackIn 0.4s forwards;
+}
+
+@keyframes feedbackIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .flashcard-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 30rem;
   height: 20rem;
-  background-image: url("/card-img.png");
-  background-size: cover; 
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  background-color: #ffffffdd;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   text-align: center;
-  gap: 1.8rem;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Pop animation */
+  transform: scale(0.95);
+  animation: cardPop 0.4s forwards;
+}
+
+.flashcard-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes cardPop {
+  to {
+    transform: scale(1);
+  }
+}
+
+.flashcard-question {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .flashcard-input {
-  padding: 1rem;
-  font-size: 1.6rem;
-  border-radius: 0.5rem;
-  border: none;
-  text-align: center;
   width: 80%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+  background-color: #fafafa;
+  color: #1e1e2f;
+  transition: all 0.3s ease;
+  margin: 1.8rem 0 2.4rem;
+}
+
+.flashcard-input:focus {
+  border-color: #ff4757;
+  box-shadow: 0 0 6px rgba(255, 71, 87, 0.4);
 }
 
 .flashcard-actions {
   display: flex;
-  gap: 10px;
+  gap: 1.2rem;
 }
 
 .flashcard-btn {
-  background-color: #ffcc00;
+  padding: 1.2rem 2.4rem;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .flashcard-btn:hover {
-  background-color: #ffaa00;
+  transform: translateY(-1px);
 }
 
 .flashcard-btn:disabled {
@@ -53,35 +131,68 @@
   cursor: not-allowed;
 }
 
-.flashcard-feedback {
-  font-size: 1.8rem;
-  font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 1rem 1.6rem;
-  border-radius: 5px;
+.flashcard-btn.submit {
+  background-color: #ff4757;
+  color: #fff;
+}
+
+.flashcard-btn.submit:hover {
+  background-color: #ff6c79;
+}
+
+.flashcard-btn.next {
+  background-color: #1e90ff;
+  color: #fff;
+}
+
+.flashcard-btn.next:hover {
+  background-color: #3aa0ff;
 }
 
 .result {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.2rem;
+  gap: 2rem;
+  padding: 4rem;
+  background-color: #ffffffcc;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  text-align: center;
+
+  opacity: 0;
+  animation: resultFadeIn 0.5s forwards;
+}
+
+@keyframes resultFadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .result-title {
   font-size: 2.4rem;
+  font-weight: 700;
+  color: #1e1e2f;
 }
 
 .result-text {
   font-size: 1.6rem;
+  color: #555;
 }
 
 .result-btn {
-  background-color: #ffcc00;
-  color: #1e1e2f;
+  background-color: #1e90ff;
+  color: #fff;
+  padding: 1.2rem 2.4rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .result-btn:hover {
-  background-color: #e6b800;
-  transform: translateY(-2px);
+  background-color: #3aa0ff;
+  transform: translateY(-1px);
 }

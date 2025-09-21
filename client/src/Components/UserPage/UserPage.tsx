@@ -7,11 +7,14 @@ import { useUserProgress } from "../../lib/hooks/useUserProgress";
 import { useAccount } from "../../lib/hooks/useAccount";
 
 export default function UserPage() {
- const {currentUser, loadingUserInfo} = useAccount();
-  const {  progressData, isLoadingProgress } =
-    useUserProgress(currentUser?.id);
+  const { currentUser, loadingUserInfo } = useAccount();
+  const { progressData, isLoadingProgress } = useUserProgress(currentUser?.id);
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
+
+  const totalUnits = 25;
+  const completed = progressData?.completedUnits ?? 0;
+  const progressPercent = Math.min((completed / totalUnits) * 100, 100);
 
   const goToCourses = () => {
     if (currentUser) {
@@ -24,7 +27,7 @@ export default function UserPage() {
 
   return (
     <>
-      {editing && currentUser? (
+      {editing && currentUser ? (
         <EditUserForm
           id={currentUser?.id ?? ""}
           displayName={currentUser.displayName ?? ""}
@@ -50,19 +53,20 @@ export default function UserPage() {
             <div className="progress-bar-container">
               <motion.div
                 className="progress-bar"
-                style={{
-                  width: `${(progressData?.completedUnits ?? 0) * 10}%`,
-                }}
+                style={{ width: `${progressPercent}%` }}
                 initial={{ width: 0 }}
-                animate={{
-                  width: `${(progressData?.completedUnits ?? 0) * 10}%`,
-                }}
+                animate={{ width: `${progressPercent}%` }}
                 transition={{ duration: 0.8 }}
               />
             </div>
+
             <div className="user-action">
-              <button className="btn user-btn" onClick={() => setEditing(true)}>Update profile</button>
-              <button className="btn user-btn" onClick={goToCourses}>My Courses</button>
+              <button className="btn user-btn" onClick={() => setEditing(true)}>
+                Update profile
+              </button>
+              <button className="btn user-btn" onClick={goToCourses}>
+                See Progress
+              </button>
             </div>
           </motion.div>
         </section>

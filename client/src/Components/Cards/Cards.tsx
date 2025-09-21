@@ -15,7 +15,8 @@ export default function Card() {
   const { currentUser } = useAccount();
   const [isFinished, setIsFinished] = useState(false);
   const userId = currentUser?.id;
-  const [feedback, setFeedback] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   if (!cards || cards.length === 0) return <p>No cards available</p>;
 
@@ -32,12 +33,15 @@ export default function Card() {
     } else {
       setFeedback(`❌ Feil! Riktig svar: ${cards[index].norwegianText}`);
     }
+    setHasSubmitted(true);
   };
 
   const handleNext = () => {
+    setHasSubmitted(false);
+    setFeedback("");
+    setUserAnswer("");
     if (index + 1 < cards.length) {
       setIndex((prev) => prev + 1);
-      setUserAnswer("");
     } else {
       setIsFinished(true);
       updateProgress.mutate({
@@ -50,41 +54,58 @@ export default function Card() {
 
   return (
     <div className="flashcard">
-      {feedback && !isFinished && (
-        <p className="flashcard-feedback">{feedback}</p>
-      )}
-      {!isFinished && (
-        <div className="flashcard-content">
-          <h2>{cards?.[index].englishText}</h2>
-          <input
-            type="text"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-            placeholder="Skriv på norsk"
-            className="flashcard-input"
-          />
-          <div className="flashcard-actions">
-            <button className="btn flashcard-btn" onClick={handleSubmit}>
-              Submit
-            </button>
-            <button className="btn flashcard-btn" onClick={handleNext}>
-              Next
-            </button>
-          </div>
-        </div>
-      )}
+      <div className="flashcards-header">
+        <h2 className="flashcards-title">Flashcards Challenge</h2>
+        <p className="flashcards-subtitle">
+          Answer at least 3 out of 5 questions correctly to unlock the next
+          level.
+        </p>
+      </div>
 
-      {isFinished && (
-        <div className="result">
-          <h2 className="result-title">Result</h2>
-          <p className="result-text">
-            You got {countCorrectAnswers} out of {cards.length} correct!
-          </p>
-          <Link to="/courses" className="btn result-btn">
-            Go back to cards page
-          </Link>
-        </div>
-      )}
+      <div className="flashcards-container">
+        {feedback && !isFinished && (
+          <p className="flashcard-feedback">{feedback}</p>
+        )}
+        {!isFinished && (
+          <div className="flashcard-content">
+            <h2 className="flashcard-question">{cards?.[index].englishText}</h2>
+            <input
+              type="text"
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+              placeholder="Skriv på norsk"
+              className="flashcard-input"
+            />
+            <div className="flashcard-actions">
+              <button
+                className="btn submit flashcard-btn"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+              <button
+                className="btn next flashcard-btn"
+                onClick={handleNext}
+                disabled={!hasSubmitted}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
+
+        {isFinished && (
+          <div className="result">
+            <h2 className="result-title">Result</h2>
+            <p className="result-text">
+              You got {countCorrectAnswers} out of {cards.length} correct!
+            </p>
+            <Link to="/courses" className="btn result-btn">
+              Go back to cards page
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

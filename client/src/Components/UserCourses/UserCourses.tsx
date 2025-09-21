@@ -4,7 +4,7 @@ import "./UserCourses.css";
 import { useNavigate } from "react-router-dom";
 
 export default function UserCourses() {
-const {currentUser} =useAccount();
+  const { currentUser } = useAccount();
   const { userCourseData, isLoading } = useCourse(currentUser?.id);
 
   const navigate = useNavigate();
@@ -12,8 +12,11 @@ const {currentUser} =useAccount();
   if (isLoading) return <p>Loading...</p>;
   if (!userCourseData) return <p>No data found</p>;
   return (
-    <div className="table-container">
-      <h2 className="course-title">Course Progress Summary</h2>
+    <div className="course-summary">
+  <h2 className="course-summary-title">My Learning Progress</h2>
+  <p className="course-summary-subtitle">
+    Track your course completions and stay motivated. Complete 3 out of 5 questions to unlock the next level!
+  </p>
       {userCourseData ? (
         <table>
           <thead>
@@ -44,8 +47,11 @@ const {currentUser} =useAccount();
       ) : (
         <p className="text-red-500">No user data available.</p>
       )}
-      <button className="back-button" onClick={() => navigate('/account/user-info')}>
-        Go Back
+      <button
+        className="btn return-btn"
+        onClick={() => navigate("/account/user-info")}
+      >
+        Back to Profile
       </button>
     </div>
   );
