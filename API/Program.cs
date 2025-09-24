@@ -1,9 +1,12 @@
 using API.Middleware;
 using Application.Core;
+using Application.Interfaces;
 using Application.LearningModule.Queries;
 using Application.Validators;
 using Domain;
 using FluentValidation;
+using Infrastructure;
+using Infrastructure.Photos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -23,8 +26,12 @@ builder.Services.AddMediatR(x =>
   x.RegisterServicesFromAssemblyContaining<GetCourses.Handler>();
   x.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
-
+builder.Services.AddScoped<IUserAccessor, UserAccessor>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+builder.Services.Configure<CloudinarySettings>(
+    builder.Configuration.GetSection("CloudinarySettings")
+);
 
 builder.Services.AddTransient<ExeptionMiddleware>();
 builder.Services.AddIdentityApiEndpoints<User>(opt =>

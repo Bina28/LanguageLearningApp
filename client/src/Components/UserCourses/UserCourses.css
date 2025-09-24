@@ -2,26 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4rem;
-  font-family: "Poppins", sans-serif;
+  margin-top: 5.6rem;
 }
 
 .course-summary-title {
-  font-size: 3rem; /* 30px */
+  font-size: 3rem;
   font-weight: 600;
-  color: #1e3a5f; /* mørk blå */
+  color: #1e3a5f;
   margin-bottom: 0.8rem;
 }
 
 .course-summary-subtitle {
-  font-size: 1.6rem; /* 16px */
+  font-size: 1.6rem;
   color: #797f87;
   text-align: center;
   margin-bottom: 2.4rem;
   max-width: 60rem;
+  line-height: 1.5;
 }
 
-/* Table */
 table {
   width: 100%;
   max-width: 90rem;
@@ -31,74 +30,37 @@ table {
   border-radius: 0.75rem;
   box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 }
 
-/* Table headers */
 th {
-  background-color: #1e90ff; /* blå aksent */
+  background-color: #1e90ff;
   color: white;
   font-weight: 500;
   padding: 1rem 1.5rem;
   text-align: center;
   font-size: 1.2rem;
-  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.2); /* subtil linje */
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
 }
 
-/* Table cells */
 td {
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   text-align: center;
-  color: #1f2937; /* mørk grå/blå */
+  color: #1f2937;
 }
 
-/* Alternating row colors */
 tbody tr:nth-child(even) {
-  background-color: rgba(30, 144, 255, 0.03); /* lys blå */
+  background-color: rgba(30, 144, 255, 0.03);
 }
 
-/* Hover effect for rows */
-tbody tr:hover {
-  background-color: rgba(255, 108, 121, 0.08); /* lys coral */
-  transition: background-color 0.3s ease;
-}
-
-/* Completed / not completed indicators */
-.completed {
-  color: #1e90ff; /* blå ✔️ */
-  font-weight: 600;
-}
-
-.not-completed {
-  color: #ff6c79; /* coral ❌ */
-  font-weight: 600;
-}
-
-/* Return / back button */
 .return-btn {
-  background-color: #ff4757; /* coral */
+  background-color: #ff4757;
   color: white;
-  font-size: 1.4rem;
-  font-weight: 500;
-  padding: 0.8rem 2rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
-  max-width: 15rem;
 }
 
 .return-btn:hover {
-  background-color: #ff6c79; /* lysere coral */
-}
-
-/* Optional: responsive table */
-@media (max-width: 768px) {
-  table, th, td {
-    font-size: 1.4rem;
-    padding: 0.75rem 1rem;
-  }
+  background-color: #ff6c79;
 }

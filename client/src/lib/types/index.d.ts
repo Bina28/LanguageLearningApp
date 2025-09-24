@@ -41,3 +41,9 @@ type UpdatedProgress = {
   correctAnswers: number;
 };
 
+type Profile = {
+  id: string;
+  displayName: string;
+  bio: string;
+  imageUrl: string;
+};
