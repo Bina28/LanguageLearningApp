@@ -21,8 +21,6 @@ type CourseDetails = {
   courseDescription: string;
 };
 
-type UpdateUser = Omit<User, "password">;
-
 type UserContextType = {
   user: User | null;
   setUser: (user: User | null) => void;
@@ -44,6 +42,11 @@ type UpdatedProgress = {
 type Profile = {
   id: string;
   displayName: string;
-  bio: string;
-  imageUrl: string;
+  bio?: string;
+  imageUrl?: string;
+};
+
+type Photo = {
+  id: string;
+  url: string;
 };

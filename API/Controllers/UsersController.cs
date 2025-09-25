@@ -1,6 +1,6 @@
 ﻿using Application.Dtos;
 using Application.LearningModule.Commands;
-using Application.UserModule.Commands;
+
 using Application.UserModule.Queries;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +17,6 @@ public class UsersController : BaseApiController
     }
 
 
-    [HttpPut("{userId}")]
-    public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserDto user)
-    {
-
-        return HandleResult(await Mediator.Send(new UpdateUser.Command { UserId = userId, UserDto = user }));
-    }
-
     [HttpGet("{userId}/courses")]
     public async Task<ActionResult<List<UserCourseDto>>> GetUserCourses(string userId)
     {
@@ -35,8 +28,5 @@ public class UsersController : BaseApiController
     {
         return HandleResult(await Mediator.Send(command));
     }
-
-
-
 
 }

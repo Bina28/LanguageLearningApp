@@ -1,50 +1,50 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./UserPage.css";
 import EditUserForm from "../EditUserForm/EditUserForm";
 import { useState } from "react";
 import { useUserProgress } from "../../lib/hooks/useUserProgress";
-import { useAccount } from "../../lib/hooks/useAccount";
+import { useProfile } from "../../lib/hooks/useProfile";
 
 export default function UserPage() {
-  const { currentUser, loadingUserInfo } = useAccount();
-  const { progressData, isLoadingProgress } = useUserProgress(currentUser?.id);
+  const { id } = useParams();
+  const { profile, loadingProfile, isCurrentUser } = useProfile(id);
+
+  const { progressData, isLoadingProgress } = useUserProgress(id);
   const navigate = useNavigate();
-  const [editing, setEditing] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const totalUnits = 25;
   const completed = progressData?.completedUnits ?? 0;
   const progressPercent = Math.min((completed / totalUnits) * 100, 100);
 
   const goToCourses = () => {
-    if (currentUser) {
-      navigate(`/users/${currentUser.id}/courses`);
+    if (profile) {
+      navigate(`/users/${id}/courses`);
     }
   };
 
-  if (loadingUserInfo || isLoadingProgress) return <p>Loading user data...</p>;
-  if (!currentUser) return <p>User not found</p>;
+  if (loadingProfile || isLoadingProgress) return <p>Loading user data...</p>;
+  if (!profile) return <p>User not found</p>;
 
   return (
     <>
-      {editing && currentUser ? (
-        <EditUserForm
-          id={currentUser?.id ?? ""}
-          displayName={currentUser.displayName ?? ""}
-          email={currentUser.email ?? ""}
-          onCancel={() => setEditing(false)}
-        />
-      ) : (
-        <section className="user-page-section">
+      <section className="user-page-section">
+        {!editMode && (
           <motion.div
             className="user-card"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="profile-img"></div>
-            <h2 className="user-name">Welcome, {currentUser.displayName}!</h2>
-            <p className="user-email">Email: {currentUser.email}</p>
+            <img
+              src={profile.imageUrl}
+              className="profile-img"
+              alt="profile image"
+            />
+
+            <h2 className="user-name">Welcome, {profile.displayName}!</h2>
+            <p className="user-bio">Bio: {profile.bio}</p>
 
             <p className="completed-units">
               Completed Units: {progressData?.completedUnits ?? 0}
@@ -61,16 +61,22 @@ export default function UserPage() {
             </div>
 
             <div className="user-action">
-              <button className="btn user-btn" onClick={() => setEditing(true)}>
-                Update profile
-              </button>
+              {isCurrentUser && (
+                <button
+                  className="btn user-btn"
+                  onClick={() => setEditMode(!editMode)}
+                >
+                  Update profile
+                </button>
+              )}
               <button className="btn user-btn" onClick={goToCourses}>
                 See Progress
               </button>
             </div>
           </motion.div>
-        </section>
-      )}
+        )}
+        {editMode && <EditUserForm setEditMode={setEditMode} />}
+      </section>
     </>
   );
 }

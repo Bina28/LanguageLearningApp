@@ -38,7 +38,7 @@ export default function Navbar({
                 </Link>
               </li>
               <li>
-                <Link to="/account/user-info" className="main-nav-link">
+                <Link to={`/profiles/${currentUser.id}`} className="main-nav-link">
                   User Page
                 </Link>
               </li>

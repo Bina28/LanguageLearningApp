@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       {
         element: <RequireAuth />,
         children: [
-          { path: "account/user-info", element: <UserPage /> },
+          { path: "profiles/:id", element: <UserPage /> },
           { path: "courses", element: <Courses /> },
           { path: "courses/:courseId/cards", element: <Cards /> },
           { path: "users/:id/courses", element: <UserCourses /> },
