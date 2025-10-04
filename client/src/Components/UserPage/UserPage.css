@@ -82,12 +82,12 @@
   border: none;
   border-radius: 12px;
   padding: 1rem 0;
-  font-weight: 600;
-  width: 100%; /* full bredde */
+  width: 100%; 
   transition: all 0.3s ease;
 }
 
 .user-btn:hover {
   background-color: #e84152;
   transform: translateY(-2px);
+  
 }

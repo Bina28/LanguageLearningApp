@@ -4,7 +4,7 @@ using Application.Profiles.DTOs;
 using Application.Profiles.Queries;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+
 
 namespace API.Controllers;
 
@@ -13,7 +13,7 @@ public class ProfilesController : BaseApiController
   [HttpPost("add-photo")]
   public async Task<ActionResult<Photo>> AddPhoto([FromForm] IFormFile file)
   {
-    return HandleResult(await Mediator.Send(new AddPhoto.Command { File = file }));
+    return HandleResult(await Mediator.Send(new AddOrUpdatePhoto.Command { File = file }));
   }
 
   [HttpGet("{userId}/photos")]

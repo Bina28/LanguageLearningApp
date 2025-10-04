@@ -3,19 +3,20 @@ import { motion } from "framer-motion";
 import "./UserPage.css";
 import EditUserForm from "../EditUserForm/EditUserForm";
 import { useState } from "react";
-import { useUserProgress } from "../../lib/hooks/useUserProgress";
+
 import { useProfile } from "../../lib/hooks/useProfile";
+import { useUserProgress } from "../../lib/hooks/useUserProgress";
 
 export default function UserPage() {
   const { id } = useParams();
   const { profile, loadingProfile, isCurrentUser } = useProfile(id);
 
-  const { progressData, isLoadingProgress } = useUserProgress(id);
+  const { lastCompletedCourse, isLoadingProgress } = useUserProgress(id);
   const navigate = useNavigate();
   const [editMode, setEditMode] = useState(false);
 
   const totalUnits = 25;
-  const completed = progressData?.completedUnits ?? 0;
+  const completed = lastCompletedCourse ?? 0;
   const progressPercent = Math.min((completed / totalUnits) * 100, 100);
 
   const goToCourses = () => {
@@ -47,7 +48,7 @@ export default function UserPage() {
             <p className="user-bio">Bio: {profile.bio}</p>
 
             <p className="completed-units">
-              Completed Units: {progressData?.completedUnits ?? 0}
+              Completed Units: {lastCompletedCourse ?? 0}
             </p>
 
             <div className="progress-bar-container">
@@ -70,7 +71,7 @@ export default function UserPage() {
                 </button>
               )}
               <button className="btn user-btn" onClick={goToCourses}>
-                See Progress
+                See progress
               </button>
             </div>
           </motion.div>

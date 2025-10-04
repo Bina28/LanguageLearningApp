@@ -12,6 +12,6 @@ public class User : IdentityUser
 	public int CompletedUnits { get; set; } = 0;
 	public DateTime? LastLoginDate { get; set; }
 	public List<UserCourse> UserCourses { get; set; } = [];
-	public Photo Photo { get; set; } = null!;
+	public Photo? Photo { get; set; } 
 
 }

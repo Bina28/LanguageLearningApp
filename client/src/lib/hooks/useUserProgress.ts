@@ -1,9 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
 
 export const useUserProgress = (id?: string) => {
-  const query = useQuery({
-    queryKey: ["userProgress", id],
+  const queryClient = useQueryClient();
+
+  const updateProgress = useMutation({
+    mutationFn: async (progress: UpdatedProgress) => {
+      console.log(progress);
+      await agent.post("/users/complete-course", progress);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["progress"],
+      });
+    },
+  });
+
+  const { data: lastCompletedCourse, isLoading: isLoadingProgress } = useQuery({
+    queryKey: ["progress", id],
     queryFn: async () => {
       if (!id) return 0;
       const response = await agent.get(`/courses/${id}/last-completed`);
@@ -12,6 +26,9 @@ export const useUserProgress = (id?: string) => {
     enabled: !!id,
   });
 
-
-  return query.data ?? 0;
+  return {
+    updateProgress,
+    lastCompletedCourse,
+    isLoadingProgress,
+  };
 };

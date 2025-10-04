@@ -27,7 +27,7 @@ public class CompleteCourse
             var userCourse = await context.UserCourses
                 .FirstOrDefaultAsync(uc => uc.UserId == request.UserId && uc.CourseId == request.CourseId, cancellationToken);
 
-            bool completed = request.CorrectAnswers > 3;
+            bool completed = request.CorrectAnswers >= 3;
 
             if (userCourse == null)
             {
@@ -56,7 +56,7 @@ public class CompleteCourse
                 }
             }
             Console.WriteLine($"UserCourse: {userCourse.UserId}-{userCourse.CourseId}, Attempts={userCourse.Attempts}, IsCompleted={userCourse.IsCompleted}");
-Console.WriteLine($"User.CompletedUnits: {user.CompletedUnits}");
+            Console.WriteLine($"User.CompletedUnits: {user.CompletedUnits}");
 
             try
             {

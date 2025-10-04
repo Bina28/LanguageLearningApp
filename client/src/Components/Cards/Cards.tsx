@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useCards } from "../../lib/hooks/useCards";
-import { useUserProgressUpdate } from "../../lib/hooks/useUserProgressUpdate";
+import { useUserProgress} from "../../lib/hooks/useUserProgress";
 import { Link, useParams } from "react-router-dom";
 import { useAccount } from "../../lib/hooks/useAccount";
 import "./Cards.css";
@@ -11,7 +11,7 @@ export default function Card() {
   const [index, setIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
-  const { updateProgress } = useUserProgressUpdate();
+  const { updateProgress } = useUserProgress();
   const { currentUser } = useAccount();
   const [isFinished, setIsFinished] = useState(false);
   const userId = currentUser?.id;

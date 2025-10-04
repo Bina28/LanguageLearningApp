@@ -2,14 +2,12 @@
 #1f2937
 #797f87
 #8f949b
+#c7cacd
 
 #ff4757
 #ff6c79
 #1e90ff
 */
-
-
-
 
 * {
   margin: 0;
@@ -48,4 +46,14 @@ body {
 
 .btn:hover {
   transform: translateY(-4px);
+}
+
+.profile-img {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  background: url("https://via.placeholder.com/100") center/cover no-repeat;
+  position: absolute;
+  transform: translateX(-50%);
+  border: 4px solid rgba(255, 255, 255, 0.5);
 }

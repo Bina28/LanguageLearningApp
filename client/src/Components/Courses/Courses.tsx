@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Courses.css";
 import { useCourses } from "../../lib/hooks/useCourses";
-import { useUserProgress } from "../../lib/hooks/useUserProgress";
 import { useAccount } from "../../lib/hooks/useAccount";
+import { useUserProgress } from "../../lib/hooks/useUserProgress";
 
 const courseIcons = [
   "/icons/greetings.png",
@@ -18,12 +18,10 @@ const courseIcons = [
   "/icons/emergency.png",
 ];
 
-
-
 export default function Courses() {
   const { currentUser } = useAccount();
   const userId = currentUser?.id;
-  const lastCompletedCourse = useUserProgress(userId);
+  const { lastCompletedCourse } = useUserProgress(userId);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const pageSize = 10;
@@ -102,7 +100,8 @@ export default function Courses() {
 
       <div className="courses-grid">
         {data?.items.map((course: Course) => {
-          const isLocked = course.courseId > lastCompletedCourse + 1;
+          const progressValue = lastCompletedCourse ?? 0;
+          const isLocked = course.courseId > progressValue + 1;
 
           return (
             <div
@@ -115,13 +114,27 @@ export default function Courses() {
               {isLocked && <span className="lock-icon">🔒</span>}
               <div className="course-content">
                 <div className="course-index">Course {course.courseId}</div>
-                <img src={courseIcons[course.courseId-1]} alt="" className="course-icon"/>
+                <img
+                  src={courseIcons[course.courseId - 1]}
+                  alt=""
+                  className="course-icon"
+                />
                 <div className="course-name">{course.title}</div>
                 <div className="course-description">{course.description}</div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="arrow-icon">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
-
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="arrow-icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
               </div>
             </div>
           );

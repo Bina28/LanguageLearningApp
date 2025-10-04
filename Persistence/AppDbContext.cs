@@ -16,8 +16,6 @@ public class AppDbContext : IdentityDbContext<User>
 	public required DbSet<UserCourse> UserCourses { get; set; }
 	public required DbSet<Photo> Photos { get; set; }
 
-
-
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		base.OnModelCreating(modelBuilder);
