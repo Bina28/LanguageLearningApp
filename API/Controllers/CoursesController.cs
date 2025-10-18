@@ -1,6 +1,8 @@
-﻿using Application.Dtos;
+﻿using Application.Core;
+using Application.Dtos;
 using Application.LearningModule.Commands;
 using Application.LearningModule.Queries;
+using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,19 +12,9 @@ namespace API.Controllers;
 public class CoursesController : BaseApiController
 {
     [HttpGet]
-    public async Task<ActionResult<PaginatedCoursesDto>> GetCourses(
-      [FromQuery] string? searchQuery,
-      [FromQuery] int page = 1,
-      [FromQuery] int pageSize = 10)
+    public async Task<ActionResult<PageList<Course, int?>>> GetCourses(int? cursor)  
     {
-        var result = await Mediator.Send(new SearchCourses.Query
-        {
-            SearchQuery = searchQuery,
-            Page = page,
-            PageSize = pageSize
-        });
-
-        return Ok(result);
+        return HandleResult(await Mediator.Send(new GetCourses.Query { Cursor = cursor }));
     }
 
     [HttpGet("{courseId}/cards")]

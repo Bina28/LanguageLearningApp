@@ -1,24 +1,41 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from '@tanstack/react-query';
 import agent from "../api/agent";
 
-type PaginatedCourses ={
-  items: Course[];
-  totalPages: number;
-}
+export const useCourses = () => {
+ const {data: coursesGroup, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage} =useInfiniteQuery<PageList<Course, number>>({
+    queryKey: ["courses"],
+    queryFn: async ({pageParam = null}) => {
+      const response = await agent.get<PageList<Course, number>>("/courses", {
+        params: {
+          cursor : pageParam,
+          pageSize: 3
+        }
+      }) ;
+      return response.data
 
-export const useCourses = (page: number, pageSize: number, searchQuery: string) => {
-  return useQuery<PaginatedCourses>({
-    queryKey: ["courses", page, searchQuery],
-    queryFn: async () => {
-      const response = await agent.get("/courses", {
-        params: { page, pageSize, ...(searchQuery && { searchQuery }) },
-      });
-
-      const items = response.data.items;
-      const totalPages = response.data.totalPages;
-
-      return { items, totalPages };
     },
-  
-  });
-};
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    enabled: location.pathname === '/courses',
+    select: data => ({
+      ...data,
+      pages: data.pages.map((page)=>({
+        ...page,
+        items:page.items.map(course=> ({
+           ...course,
+        })      
+       
+      )}))
+    })
+
+  })
+
+return {
+  coursesGroup,
+  isLoading,
+  isFetchingNextPage,
+  hasNextPage,
+  fetchNextPage
+}}
+
+

@@ -1,3 +1,8 @@
+type PageList<T, TCursor>= {
+items : T[];
+nextCursor: TCursor;
+}
+
 type Course = {
   courseId: number;
   title: string;
