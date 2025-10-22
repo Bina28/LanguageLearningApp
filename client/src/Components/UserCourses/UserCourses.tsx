@@ -13,10 +13,11 @@ export default function UserCourses() {
   if (!userCourseData) return <p>No data found</p>;
   return (
     <div className="course-summary">
-  <h2 className="course-summary-title">My Learning Progress</h2>
-  <p className="course-summary-subtitle">
-    Track your course completions and stay motivated. Complete 3 out of 5 questions to unlock the next level!
-  </p>
+      <h2 className="course-summary-title">My Learning Progress</h2>
+      <p className="course-summary-subtitle">
+        Track your course completions and stay motivated. Complete 3 out of 5
+        questions to unlock the next level!
+      </p>
       {userCourseData ? (
         <table>
           <thead>
@@ -49,7 +50,7 @@ export default function UserCourses() {
       )}
       <button
         className="btn return-btn"
-        onClick={() => navigate("/account/user-info")}
+        onClick={() => navigate(`/profiles/${currentUser?.id}`)}
       >
         Back to Profile
       </button>

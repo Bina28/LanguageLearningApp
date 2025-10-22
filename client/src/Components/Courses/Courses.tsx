@@ -24,7 +24,13 @@ export default function Courses() {
   const userId = currentUser?.id;
   const { lastCompletedCourse } = useUserProgress(userId);
   const navigate = useNavigate();
-  const { coursesGroup, isLoading, hasNextPage, fetchNextPage } = useCourses();
+  const {
+    coursesGroup,
+    isLoading,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = useCourses();
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
@@ -48,18 +54,17 @@ export default function Courses() {
           make your learning effective and fun.
         </p>
       </div>
-
       <div className="courses-grid">
-        {coursesGroup.pages.map((page, pageIndex) =>
-          page.items.map((course, courseIndex) => {
-            const isLastPage = pageIndex === coursesGroup.pages.length - 1;
-            const isLastCourse = courseIndex === page.items.length - 1;
+        {coursesGroup.pages.map((page) =>
+          page.items.map((course) => {
             const progressValue = lastCompletedCourse ?? 0;
             const isLocked = course.courseId > progressValue + 1;
             return (
               <div
                 key={course.courseId}
-                ref={isLastPage && isLastCourse ? ref : null}
+                ref={
+                  course.courseId === coursesGroup.pages.length - 1 ? ref : null
+                }
                 className={`course-card ${isLocked ? "locked" : ""}`}
                 onClick={() =>
                   !isLocked && navigate(`/courses/${course.courseId}/cards`)
@@ -95,6 +100,13 @@ export default function Courses() {
           })
         )}
       </div>
+      <button
+        className="btn loadPage-btn"
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        Load page
+      </button>
     </section>
   );
 }

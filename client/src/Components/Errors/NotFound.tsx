@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="notfound-icon">🔍❌</div>
       <h1>Ooops - we couldn't find what you are looking for</h1>
       <Link to="/" className="notfound-button">
-        Return to the activities page
+        Return to the home page
       </Link>
     </div>
   );

@@ -57,21 +57,6 @@ public class AppDbContext : IdentityDbContext<User>
 			new() { CourseId = 8, Title = "Travel", Description = "Useful phrases for traveling" },
 			new() { CourseId = 9, Title = "Work & Business", Description = "Professional conversations" },
 			new() { CourseId = 10, Title = "Emergency Situations", Description = "Asking for help and emergency" },
-			new() { CourseId = 11, Title = "Weather", Description = "Talking about the weather" },
-						new() { CourseId = 12, Title = "Hobbies & Interests", Description = "Discussing hobbies and free time" },
-						new() { CourseId = 13, Title = "Health & Medical", Description = "Going to the doctor and describing symptoms" },
-						new() { CourseId = 14, Title = "At the Hotel", Description = "Checking in, booking, and hotel services" },
-						new() { CourseId = 15, Title = "Public Transport", Description = "Using buses, trains, and taxis" },
-						new() { CourseId = 16, Title = "At the Airport", Description = "Common phrases at the airport" },
-						new() { CourseId = 17, Title = "Making Appointments", Description = "Scheduling and confirming meetings" },
-						new() { CourseId = 18, Title = "Entertainment", Description = "Movies, music, and leisure activities" },
-						new() { CourseId = 19, Title = "Technology & Devices", Description = "Talking about gadgets and tech" },
-						new() { CourseId = 20, Title = "Sports", Description = "Discussing sports and fitness" },
-						new() { CourseId = 21, Title = "House & Home", Description = "Describing homes and furniture" },
-						new() { CourseId = 22, Title = "Family & Relationships", Description = "Talking about family members" },
-						new() { CourseId = 23, Title = "Celebrations & Holidays", Description = "Wishing and talking about traditions" },
-						new() { CourseId = 24, Title = "Idioms & Expressions", Description = "Learning common idioms" },
-						new() { CourseId = 25, Title = "Advanced Conversations", Description = "Deep discussions on various topics" }
 
 
 		});

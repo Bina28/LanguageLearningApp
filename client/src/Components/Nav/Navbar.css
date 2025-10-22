@@ -92,3 +92,17 @@
   height: auto;
   display: block;
 }
+¨
+.top-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background-color: #4CAF50;
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+.top-loader.visible {
+  width: 100%;
+}

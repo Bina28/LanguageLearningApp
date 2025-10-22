@@ -7,11 +7,11 @@ using Persistence;
 namespace Application.LearningModule.Queries;
 public class GetCourses
 {
-    private const int MaxPageSize = 50;
+    private const int MaxPageSize =10;
     public class Query : IRequest<Result<PageList<Course, int?>>>
     {
         public int? Cursor { get; set; }
-        private int _pageSize=10;
+        private int _pageSize=3;
 
         public int PageSize
         {

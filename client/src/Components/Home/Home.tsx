@@ -40,7 +40,7 @@ export default function Home() {
             <Link to="/courses" className="btn btn-courses">
               Continue Learning
             </Link>
-            <Link to="/account/user-info" className="btn btn-profile">
+            <Link to={`/profiles/${currentUser.id}`} className="btn btn-profile">
               My Profile
             </Link>
           </motion.div>
