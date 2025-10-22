@@ -5,7 +5,14 @@
 [🔗 View Online Demo](https://languageapp-gbdeb7dnbacvhxhd.swedencentral-01.azurewebsites.net/)
 
 ---
+## 🖼 Screenshots
 
+
+| Landing Page | Courses Page | Edit Profile Page | Profile Page |
+|--------------|--------------|-----------------|--------------|
+| <img src="https://github.com/user-attachments/assets/969354ff-39ea-4297-bf28-1f790de9b27d" width="250"/> | <img src="https://github.com/user-attachments/assets/369f9582-725e-4081-99e7-9501f9004260" width="250"/> | <img src="https://github.com/user-attachments/assets/d2f31e8a-69a7-4ab2-a59f-bfe516d14fc9" width="250"/> | <img src="https://github.com/user-attachments/assets/41bb0206-0f1b-4a36-a54f-5f4ae6f7d502" width="250"/> |
+
+---
 
 
 ## 🌟 Overview
@@ -131,14 +138,7 @@ Domain/        # Entities and models
 Infrastructure/ # External services, DB access
 ```
 ---
-## 🖼 Screenshots
 
-
-| Landing Page | Courses Page | Edit Profile Page | Profile Page |
-|--------------|--------------|-----------------|--------------|
-| <img src="https://github.com/user-attachments/assets/969354ff-39ea-4297-bf28-1f790de9b27d" width="250"/> | <img src="https://github.com/user-attachments/assets/369f9582-725e-4081-99e7-9501f9004260" width="250"/> | <img src="https://github.com/user-attachments/assets/d2f31e8a-69a7-4ab2-a59f-bfe516d14fc9" width="250"/> | <img src="https://github.com/user-attachments/assets/41bb0206-0f1b-4a36-a54f-5f4ae6f7d502" width="250"/> |
-
----
 
 ## 🔮 Future Improvements
 
