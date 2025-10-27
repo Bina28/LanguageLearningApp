@@ -8,6 +8,7 @@ import UserCourses from "../../Components/UserCourses/UserCourses";
 import NotFound from "../../Components/Errors/NotFound";
 import RequireAuth from "./RequireAuth";
 import Cards from "../../Components/Cards/Cards";
+import AuthCallback from "../../Components/LoginSignup/AuthCallback";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ export const router = createBrowserRouter([
         ],
       },
       { path: "", element: <Home /> },
-      { path: "not-found", element: <NotFound /> }, 
+      { path: "not-found", element: <NotFound /> },
+      { path: "auth-callback", element: <AuthCallback /> },
       { path: "*", element: <Navigate replace to="/not-found" /> },
     ],
   },

@@ -37,6 +37,13 @@ export default function LoginForm({
     });
   };
 
+  const loginWithGithub = () => {
+  const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+  const redirectUrl = import.meta.env.VITE_REDIRECT_URL;
+  window.location.href = 
+    `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=read:user user:email`;
+};
+
   return (
     <div className="form-container">
       <div className="form">
@@ -73,6 +80,9 @@ export default function LoginForm({
               onClick={onSwitchToSignup}
             >
               Sign Up
+            </button>
+            <button onClick={loginWithGithub}>
+              Login with GitHub
             </button>
           </div>
 
