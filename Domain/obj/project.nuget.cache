@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "nb2GoIbg/ew=",
+=======
+  "dgSpecHash": "y9aPoRyDxAI=",
+>>>>>>> b1b1e519e26bab98db6e37a74e49051710d23f99
   "success": true,
-  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\test\\LanguageLearningApp\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyako\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.8\\microsoft.aspnetcore.cryptography.internal.9.0.8.nupkg.sha512",
     "C:\\Users\\dyako\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.8\\microsoft.aspnetcore.cryptography.keyderivation.9.0.8.nupkg.sha512",

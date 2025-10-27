@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "unMxknQWqtY=",
+=======
+  "dgSpecHash": "UcUbIwS0AMY=",
+>>>>>>> b1b1e519e26bab98db6e37a74e49051710d23f99
   "success": true,
-  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\StudyProjects\\LanguageLearningApp\\Persistence\\Persistence.csproj",
+  "projectFilePath": "C:\\Users\\dyako\\OneDrive\\Skrivebord\\test\\LanguageLearningApp\\Persistence\\Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyako\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\dyako\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
