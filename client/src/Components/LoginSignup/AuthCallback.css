@@ -1,0 +1,32 @@
+.github-section {
+  margin-top: 9.8rem;
+}
+
+.github-container {
+  margin: 0 auto;
+  width: 30rem;
+  height: auto;
+  box-shadow: 5px 5px 10px 2px rgb(0, 0, 0, 0.1);
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 5%;
+}
+
+.github-content {
+  padding: 3.4rem 3.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+
+.github-title {
+  font-size: 2.4rem;
+  text-align: center;
+  color: #1f2937;
+}
+
+p {
+  color: #797f87;
+}

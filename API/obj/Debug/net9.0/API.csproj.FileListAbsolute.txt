@@ -176,9 +176,6 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Deb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\scopedcss\bundle\API.styles.css
-C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\compressed\pv8owm2yjh-vo714haz4k.gz
-C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\compressed\ue5to089y9-rkqfrzgum3.gz
-C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\compressed\1dpm1p8bmc-iy8vym9ia0.gz
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\compressed\4pit3vs01m-69kjnsiwqx.gz
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\staticwebassets.build.json.cache
@@ -190,3 +187,6 @@ C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Deb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\API.pdb
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\API.genruntimeconfig.cache
 C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\API\obj\Debug\net9.0\ref\API.dll
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\obj\Debug\net9.0\compressed\lfwbgjw4z2-xvx1iq0vmt.gz
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\obj\Debug\net9.0\compressed\vrapu8b2g0-m9qsgp66db.gz
+C:\Users\dyako\OneDrive\Skrivebord\StudyProjects\LanguageLearningApp\api\obj\Debug\net9.0\compressed\1dpm1p8bmc-99cgeostej.gz

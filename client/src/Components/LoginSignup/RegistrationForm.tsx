@@ -40,7 +40,7 @@ export default function RegistrationForm({
   return (
     <div className="form-container">
       <div className="form">
-             <button className="close-btn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose}>
           &times;
         </button>
         <h2 className="form-title">Sign Up</h2>
@@ -72,18 +72,19 @@ export default function RegistrationForm({
               />
             </div>
           </div>
-             <div className="form-link-text">
-          Already have an account?{" "}
-          <button className="link-btn" type="button" onClick={onSwitchToLogin}>
-            Login
-          </button>
-        </div>
-
-          <div className="submit-btn-container">
-            <button type="submit" className="btn submit-btn">
-              Sign Up
+          <div className="form-link-text">
+            Already have an account?{" "}
+            <button
+              className="link-btn"
+              type="button"
+              onClick={onSwitchToLogin}
+            >
+              Login
             </button>
           </div>
+          <button type="submit" className="btn form--btn signup--btn">
+            Sign Up
+          </button>
         </form>
       </div>
     </div>

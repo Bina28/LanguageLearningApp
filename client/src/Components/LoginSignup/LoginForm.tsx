@@ -1,7 +1,7 @@
 import emailIcon from "../Assets/email.png";
 import passwordIcon from "../Assets/password.png";
 import "./LoginSignup.css";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAccount } from "../../lib/hooks/useAccount";
 import { loginSchema, type LoginSchema } from "../../lib/schemas/loginSchema";
@@ -38,11 +38,10 @@ export default function LoginForm({
   };
 
   const loginWithGithub = () => {
-  const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
-  const redirectUrl = import.meta.env.VITE_REDIRECT_URL;
-  window.location.href = 
-    `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=read:user user:email`;
-};
+    const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+    const redirectUrl = import.meta.env.VITE_REDIRECT_URL;
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=read:user user:email`;
+  };
 
   return (
     <div className="form-container">
@@ -73,7 +72,7 @@ export default function LoginForm({
             </div>
           </div>
           <div className="form-link-text">
-            Don't have an account?{" "}
+            Don't have an account?
             <button
               type="button"
               className="link-btn"
@@ -81,19 +80,18 @@ export default function LoginForm({
             >
               Sign Up
             </button>
-            <button onClick={loginWithGithub}>
-              Login with GitHub
-            </button>
-          </div>
-
-          <div className="submit-btn-container">
-            <button
-              className="btn submit-btn"
-              type="submit"
-              disabled={!isValid || isSubmitting}
-            >
-              Login
-            </button>
+            <div className="login-btn-container">
+              <button onClick={loginWithGithub} className="btn github--btn">
+                Login with GitHub
+              </button>
+              <button
+                className="btn form--btn"
+                type="submit"
+                disabled={!isValid || isSubmitting}
+              >
+                Login
+              </button>
+            </div>
           </div>
         </form>
       </div>
